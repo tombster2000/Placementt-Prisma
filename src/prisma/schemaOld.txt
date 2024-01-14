@@ -1,0 +1,146 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Student {
+  id            String    @id @unique
+  forname       String
+  surname       String
+  email         String
+  activatedDate DateTime
+  cohortId      Int
+  instituteId   Int
+  cohort        Cohort    @relation(fields: [cohortId], references: [cohortId])
+  institute     Institute @relation(fields: [instituteId], references: [instituteId])
+}
+
+model ProviderStaff {
+  id            String   @id @unique
+  forname       String
+  surname       String
+  email         String
+  userType      String?
+  activatedDate DateTime?
+  providerId    Int
+  provider      Provider @relation(fields: [providerId], references: [providerId])
+}
+
+model InstituteStaff {
+  id            String    @id @unique
+  forname       String?
+  surname       String
+  email         String
+  activatedDate DateTime?
+  instituteId   Int
+  institute     Institute @relation(fields: [instituteId], references: [instituteId])
+  Tasks         Tasks[]
+}
+
+model InstituteStudent {
+  id            String    @id @unique
+  forname       String?
+  surname       String
+  email         String
+  activatedDate DateTime?
+  cohortId      Int
+  cohort        Cohort  @relation(fields: [cohortId], references: [cohortId])
+  instituteId   Int
+  institute     Institute @relation(fields: [instituteId], references: [instituteId])
+  Tasks         Tasks[]
+}
+
+
+model Institute {
+  instituteId    Int              @id @default(autoincrement())
+  instituteName  String?
+  addressId      String            @unique
+  address        Address          @relation(fields: [addressId], references: [addressId])
+  instituteStaff InstituteStaff[]
+  students       Student[]
+}
+
+model Providers {
+  providerId    Int              @id @default(autoincrement())
+  name  String?
+  addressId      String            @unique
+  address        Address          @relation(fields: [addressId], references: [addressId])
+  placements   Placement[]
+  listings     PlacementListings[]
+
+}
+
+
+model Product {
+  id                 Int    @id @default(autoincrement())
+  productName        String?
+  productDescription String?
+  tasks              Tasks?
+}
+
+model Contacts {
+  id                 Int    @id @default(autoincrement())
+  uid                String
+  address_line1      String
+  address_line2      String
+}
+
+model Cohort {
+  cohortId            Int       @id @default(autoincrement())
+  cohortName          String?
+  continousPlacements String?
+  submissionStartDate DateTime?
+  submissionEndDate   DateTime?
+  placementStartDate  DateTime?
+  placementEndDate    DateTime?
+  students            Student[]
+}
+
+model Tasks {
+  taskId           Int            @id @default(autoincrement())
+  createdDate      DateTime?
+  completedDate    DateTime?
+  productId        Int            @unique
+  instituteStaffId String
+  instituteStaff   InstituteStaff @relation(fields: [instituteStaffId], references: [id])
+  product          Product        @relation(fields: [productId], references: [id])
+}
+
+model Placement {
+  placementId        String  @unique              
+  placementName      String?
+  startDate          DateTime?
+  endDate            DateTime?
+  duration           Int?
+  providerId         Int
+  placementListingId Int
+  listing            PlacementListings @relation(fields: [placementListingId], references: [placementListingId])
+  provider           Providers          @relation(fields: [providerId], references: [providerId])
+}
+
+model PlacementListings {
+  placementListingId   Int         @id @default(autoincrement())
+  placementListingName String?
+  privacy              String?
+  providerId           Int
+  placements           Placement[]
+  provider             Providers    @relation(fields: [providerId], references: [providerId])
+}
+
+model Address {
+  addressId    String        @id @unique
+  addressLine1 String?
+  addressLine2 String?
+  geoHash      String?
+  Country      String?
+  Locality     String?
+  PostCode     String?
+  institute    Institute?
+  provider     Providers?
+}

@@ -1,0 +1,321 @@
+generator lib {
+  provider = "prisma-client-js"
+  output   = "../../lib/prisma/generated/client"
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/client"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+model Addresses {
+    addressId    Int              @id @default(autoincrement())
+    address_line1   String
+    address_line2   String
+    contactForename String
+    contactSurname  String
+    country         String
+    email           String
+    geoHash         String
+    locality        String
+    oId             Int
+    product         String
+    phone           String
+    postal_code     String
+}
+
+model Blogs {
+    blogId       Int              @id @default(autoincrement())
+    author      String
+    category    String
+    summary     String
+    tags        String
+    title       String
+    uploaded    String
+    body        Json
+}
+model BugReports {
+    bugReportId     Int              @id @default(autoincrement())
+    bug             String
+    date            DateTime
+    description     String
+    severity        String
+    status          String
+    uid             String
+}
+
+model BusinessInterest {
+    businessInterestId  Int              @id @default(autoincrement())
+    email               String
+    forename            String
+    surname             String
+    sector              String?
+    subsector           String?
+}
+
+model Cohorts {
+    cohortId            Int              @id @default(autoincrement())
+    designatedStaff     String           @unique
+    oId                 Int           @unique
+    product             String
+    stage               String
+    placementType       String
+    name                String
+    startPlacements     String
+    endPlacements       String
+    startSubmission     String
+    endSubmission       String
+    includedFiles       String[]
+    includedForms       String[]
+    workflow            String
+}
+
+model Contacts {
+    contactId    Int              @id @default(autoincrement())
+    address_line1   String
+    address_line2   String
+    contactForename String
+    contactSurname  String
+    country         String
+    created         String
+    locality        String
+    name            String
+    providerEmail   String
+    providerPhone   String
+    postal_code     String
+    uid             String
+}
+
+model Downtime {
+    downtimeId  Int              @id @default(autoincrement())
+    active      Boolean
+    body        String
+    products    String[]
+    title       String
+}
+
+model FeatureRequests {
+    featureRequestId    Int              @id @default(autoincrement())
+    date                DateTime
+    description         String
+    feature             String
+    impact              String
+    uid                 String
+}
+
+model Feedback {
+    feedbackId  Int              @id @default(autoincrement())
+    created     DateTime
+    msg         String
+    title       String
+    uid         String
+}
+
+model Forms {
+    formId          Int              @id @default(autoincrement())
+    form            Json
+    oId             Int
+    product         String
+    updated         String
+}
+
+model Institutes {
+    instituteId             Int              @id @default(autoincrement())
+    address_line1           String
+    address_line2           String
+    admin                   String
+    country                 String
+    externalProviderUploads Boolean
+    geoHash                 String
+    locality                String
+    name                    String
+    postal_code             String
+    referral                String?
+    status                  String
+    studentsFields          String[]
+    staff                   Int
+    staffActive             Int
+    students                Int
+    studentsActive          Int
+    staffFields             String[]
+    staffGuidance           Json
+    studentsGuidance        Json
+    verifiedProviders       String[]
+}
+
+model Jobs {
+    jobId       Int              @id @default(autoincrement())
+    started     String
+    updated     String?
+    finished    String?
+    title       String
+    description String
+    status      String
+    logs        Json
+    outputMsg   String?
+    viewedBy    String[]
+    oId         Int
+    product     String
+}
+
+model Logs {
+    logId       Int              @id @default(autoincrement())
+    oId         Int
+    provider    Json
+    students    Json
+    staff       Json
+    uid         String
+}
+
+model PlacementListings {
+    placementListingId      Int         @id @default(autoincrement())
+    addressId               String      @unique
+    contactForename         String
+    contactSurname          String
+    created                 DateTime
+    mapConsent              Boolean
+    mapConsentDate          String
+    providerEmail           String
+    providerId              String      @unique
+    providerPhone           String
+    savedBy                 Json
+    questions               Json
+    title                   String
+    uploadedBy              String
+}
+
+model Placements {
+    placementId     Int              @id @default(autoincrement())
+    activeDates     String[]
+    address_line1   String
+    address_line2   String
+    cohortId        Int
+    contactForename String
+    contactSurname  String
+    country         String
+    created         String
+    draft           Boolean
+    endDate         String
+    flags           String[]
+    geoHash         String
+    inProgress      Boolean
+    leadTimes       String[]
+    locality        String
+    name            String
+    oId             Int?
+    parentEmailed   DateTime?
+    parentExpiry    String?
+    parentKey       String?
+    postal_code     String
+    product         String?
+    providerEmail   String?
+    providerEmailed DateTime?
+    providerExpiry  String?
+    providerKey     String?
+    providerName    String?
+    providerPhone   String
+    nextStatus      Int?
+    status          Int
+    startDate       String
+    title           String
+    uid             String
+    forms           Json
+    questions       Json
+    uploadedBy      String
+    userGroup       Int?
+}
+
+model Providers {
+    providerId          Int              @id @default(autoincrement())
+    contactForename     String
+    contactSurname      String
+    defAddress          Int
+    email               String
+    mapConsent          Boolean
+    insurance           Boolean
+    mapConsentDate      String
+    name                String
+    phone               String
+    rememberConsent     Boolean
+    rememberConsentDate String
+    savedBy             Json
+    sector              String
+    subsector           String
+    uploadedBy          String
+    website             String
+}
+
+model Referrals {
+    referralId      Int              @id @default(autoincrement())
+    expiry          DateTime
+    name            String
+    product         String
+    signUps         Int
+    volume          Int
+}
+
+model UserGroups {
+    userGroupId     Int              @id @default(autoincrement())
+    default         Boolean
+    name            String
+    oId             Int
+    product         String
+    template        String
+    updated         String
+}
+
+model StudentUsers {
+    studentUserId   String              @unique
+    status          String
+    analytics       Json
+    created         String
+    details         Json
+    email           String
+    referral        String
+    units           String
+    userType        String
+}
+
+model InstituteStaff {
+    instituteStaffId    String              @unique
+    created             String
+    details             Json
+    email               String
+    oId                 String
+    status              String
+    userGroup           String
+    userType            String
+}
+
+model InstituteStudents {
+    instituteStudentId  String              @unique
+    activated           String
+    created             String
+    cohortId            Int
+    details             Json
+    email               String
+    flags               String[]
+    oId                 Int
+    resetExpiry         DateTime
+    status              String
+    userGroup           Int
+    userType            String
+}
+
+model ProviderStaff {
+    providerStaffId     String              @unique
+    created             String
+    details             Json
+    cohortId            Int
+    email               String
+    notes               Json
+    oId                 String
+    status              String
+    userGroup           String
+    userType            String
+}
