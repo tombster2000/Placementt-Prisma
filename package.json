@@ -1,0 +1,30 @@
+{
+    "private": false,
+    "name": "placementt-prisma",
+    "author": "Placementt",
+    "version": "1.0.2",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "scripts": {
+        "lint": "eslint --ext .js,.ts .",
+        "prebuild": "rimraf build",
+        "build": "tsc",
+        "prestart": "rimraf build",
+        "start": "tsc -w",
+        "pack": "yarn pack",
+        "deploy": "yarn generateDB && tsc && yarn publish",
+        "generateDB": "yarn prisma generate --schema=./src/prisma/schema.prisma"
+    },
+    "dependencies": {
+        "@prisma/client": "5.8.0",
+        "@types/node": "^20.11.0"
+    },
+    "devDependencies": {
+        "npm-run-all": "^4.1.5",
+        "prisma": "^5.8.0",
+        "rimraf": "^3.0.2"
+    },
+    "engines": {
+        "node": "18"
+    }
+}
