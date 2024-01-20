@@ -2,7 +2,7 @@
     "private": false,
     "name": "placementt-prisma",
     "author": "Placementt",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "main": "lib/index.js",
     "types": "lib/index.d.ts",
     "scripts": {
@@ -14,7 +14,8 @@
         "pack": "yarn pack",
         "deploy": "yarn generateDB && tsc && yarn publish",
         "generateDB": "yarn prisma generate --schema=./src/prisma/schema.prisma",
-        "migrate:dev": "yarn generateDB && prisma migrate dev  --schema=./src/prisma/schema.prisma"
+        "migrate:dev": "yarn generateDB && prisma migrate dev  --schema=./src/prisma/schema.prisma",
+        "format": "yarn prisma format  --schema=./src/prisma/schema.prisma"
     },
     "dependencies": {
         "@prisma/client": "5.8.0",
