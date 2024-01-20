@@ -22,14 +22,14 @@ model Student {
 }
 
 model ProviderStaff {
-  id            String   @id @unique
+  id            String    @id @unique
   forname       String
   surname       String
   email         String
   userType      String?
   activatedDate DateTime?
   providerId    Int
-  provider      Provider @relation(fields: [providerId], references: [providerId])
+  provider      Provider  @relation(fields: [providerId], references: [providerId])
 }
 
 model InstituteStaff {
@@ -50,49 +50,49 @@ model InstituteStudent {
   email         String
   activatedDate DateTime?
   cohortId      Int
-  cohort        Cohort  @relation(fields: [cohortId], references: [cohortId])
+  cohort        Cohort    @relation(fields: [cohortId], references: [cohortId])
   instituteId   Int
   institute     Institute @relation(fields: [instituteId], references: [instituteId])
   Tasks         Tasks[]
 }
 
-
 model Institute {
-  instituteId    Int              @id @default(autoincrement())
-  instituteName  String?
-  addressId      String            @unique
-  address        Address          @relation(fields: [addressId], references: [addressId])
-  instituteStaff InstituteStaff[]
-  students       Student[]
+  instituteId      Int                @id @default(autoincrement())
+  instituteName    String?
+  addressId        String             @unique
+  address          Address            @relation(fields: [addressId], references: [addressId])
+  instituteStaff   InstituteStaff[]
+  students         Student[]
+  InstituteStudent InstituteStudent[]
 }
 
-model Providers {
-  providerId    Int              @id @default(autoincrement())
-  name  String?
-  addressId      String            @unique
-  address        Address          @relation(fields: [addressId], references: [addressId])
-  placements   Placement[]
-  listings     PlacementListings[]
+model Provider {
+  providerId Int                 @id @default(autoincrement())
+  name       String?
+  addressId  String              @unique
+  address    Address             @relation(fields: [addressId], references: [addressId])
+  placements Placement[]
+  listings   PlacementListings[]
 
+  ProviderStaff ProviderStaff[]
 }
-
 
 model Product {
-  id                 Int    @id @default(autoincrement())
+  id                 Int     @id @default(autoincrement())
   productName        String?
   productDescription String?
   tasks              Tasks?
 }
 
 model Contacts {
-  id                 Int    @id @default(autoincrement())
-  uid                String
-  address_line1      String
-  address_line2      String
+  id            Int    @id @default(autoincrement())
+  uid           String
+  address_line1 String
+  address_line2 String
 }
 
 model Cohort {
-  cohortId            Int       @id @default(autoincrement())
+  cohortId            Int                @id @default(autoincrement())
   cohortName          String?
   continousPlacements String?
   submissionStartDate DateTime?
@@ -100,20 +100,23 @@ model Cohort {
   placementStartDate  DateTime?
   placementEndDate    DateTime?
   students            Student[]
+  InstituteStudent    InstituteStudent[]
 }
 
 model Tasks {
-  taskId           Int            @id @default(autoincrement())
-  createdDate      DateTime?
-  completedDate    DateTime?
-  productId        Int            @unique
-  instituteStaffId String
-  instituteStaff   InstituteStaff @relation(fields: [instituteStaffId], references: [id])
-  product          Product        @relation(fields: [productId], references: [id])
+  taskId             Int               @id @default(autoincrement())
+  createdDate        DateTime?
+  completedDate      DateTime?
+  productId          Int               @unique
+  instituteStaffId   String
+  instituteStaff     InstituteStaff    @relation(fields: [instituteStaffId], references: [id])
+  product            Product           @relation(fields: [productId], references: [id])
+  InstituteStudent   InstituteStudent? @relation(fields: [instituteStudentId], references: [id])
+  instituteStudentId String?
 }
 
 model Placement {
-  placementId        String  @unique              
+  placementId        String            @unique
   placementName      String?
   startDate          DateTime?
   endDate            DateTime?
@@ -121,7 +124,7 @@ model Placement {
   providerId         Int
   placementListingId Int
   listing            PlacementListings @relation(fields: [placementListingId], references: [placementListingId])
-  provider           Providers          @relation(fields: [providerId], references: [providerId])
+  provider           Provider          @relation(fields: [providerId], references: [providerId])
 }
 
 model PlacementListings {
@@ -130,11 +133,11 @@ model PlacementListings {
   privacy              String?
   providerId           Int
   placements           Placement[]
-  provider             Providers    @relation(fields: [providerId], references: [providerId])
+  provider             Provider    @relation(fields: [providerId], references: [providerId])
 }
 
 model Address {
-  addressId    String        @id @unique
+  addressId    String     @id @unique
   addressLine1 String?
   addressLine2 String?
   geoHash      String?
@@ -142,5 +145,5 @@ model Address {
   Locality     String?
   PostCode     String?
   institute    Institute?
-  provider     Providers?
+  provider     Provider?
 }

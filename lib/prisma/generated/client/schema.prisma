@@ -13,311 +13,287 @@ datasource db {
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
+
 model Addresses {
-    addressId       Int              @id @default(autoincrement())
-    name            String
-    stage           String
-    address_line1   String
-    address_line2   String
-    contactForename String
-    contactSurname  String
-    country         String
-    email           String
-    geoHash         String
-    locality        String
-    oId             Int
-    product         String
-    phone           String
-    postal_code     String
-}
-
-model Blogs {
-    blogId       Int              @id @default(autoincrement())
-    author      String
-    category    String
-    summary     String
-    tags        String
-    title       String
-    uploaded    String
-    body        Json
-}
-model BugReports {
-    bugReportId     Int              @id @default(autoincrement())
-    bug             String
-    date            DateTime
-    description     String
-    severity        String
-    status          String
-    uid             String
-}
-
-model BusinessInterest {
-    businessInterestId  Int              @id @default(autoincrement())
-    email               String
-    forename            String
-    surname             String
-    sector              String?
-    subsector           String?
+  addressId         String              @id @unique
+  name              String
+  stage             String?
+  address_line1     String?
+  address_line2     String?
+  contactForename   String?
+  contactSurname    String?
+  country           String?
+  email             String?
+  geoHash           String?
+  locality          String?
+  phone             String?
+  postal_code       String?
+  instituteId       String?
+  providerId        String?
+  institute         Institutes?         @relation(fields: [instituteId], references: [instituteId])
+  provider          Providers?          @relation(fields: [providerId], references: [providerId])
+  Contacts          Contacts[]
+  PlacementListings PlacementListings[]
+  Placements        Placements[]
 }
 
 model Cohorts {
-    cohortId            Int              @id @default(autoincrement())
-    designatedStaff     String           @unique
-    oId                 Int           @unique
-    product             String
-    stage               String
-    placementType       String
-    name                String
-    startPlacements     String
-    endPlacements       String
-    startSubmission     String
-    endSubmission       String
-    includedFiles       String[]
-    includedForms       String[]
-    workflow            String
+  cohortId          String              @id @unique
+  designatedStaff   String              @unique
+  stage             String
+  placementType     String
+  name              String
+  startPlacements   String
+  endPlacements     String
+  startSubmission   String
+  endSubmission     String
+  includedFiles     String[]
+  includedForms     String[]
+  workflow          String
+  instituteId       String
+  institute         Institutes          @relation(fields: [instituteId], references: [instituteId])
+  InstituteStudents InstituteStudents[]
 }
 
 model Contacts {
-    contactId    Int              @id @default(autoincrement())
-    address_line1   String
-    address_line2   String
-    contactForename String
-    contactSurname  String
-    country         String
-    created         String
-    locality        String
-    name            String
-    providerEmail   String
-    providerPhone   String
-    postal_code     String
-    uid             String
+  contactId              String            @id @unique
+  contactForename        String
+  contactSurname         String
+  created                String
+  name                   String
+  providerPhone          String
+  InstituteStudentUserId String
+  addressId              String
+  studentUserId          String
+  InstitutestudentUser   InstituteStudents @relation(fields: [InstituteStudentUserId], references: [instituteStudentId])
+  address                Addresses         @relation(fields: [addressId], references: [addressId])
+  studentUser            StudentUsers      @relation(fields: [studentUserId], references: [studentUserId])
 }
 
-model Downtime {
-    downtimeId  Int              @id @default(autoincrement())
-    active      Boolean
-    body        String
-    products    String[]
-    title       String
-}
-
-model FeatureRequests {
-    featureRequestId    Int              @id @default(autoincrement())
-    date                DateTime
-    description         String
-    feature             String
-    impact              String
-    uid                 String
-}
-
-model Feedback {
-    feedbackId  Int              @id @default(autoincrement())
-    created     DateTime
-    msg         String
-    title       String
-    uid         String
-}
-
-model Forms {
-    formId          Int              @id @default(autoincrement())
-    form            Json
-    oId             Int
-    product         String
-    updated         String
+model InstituteForms {
+  formId      String     @id @unique
+  form        Json
+  updated     String
+  instituteId String
+  institute   Institutes @relation(fields: [instituteId], references: [instituteId])
 }
 
 model Institutes {
-    instituteId             Int              @id @default(autoincrement())
-    address_line1           String
-    address_line2           String
-    admin                   String
-    country                 String
-    externalProviderUploads Boolean
-    geoHash                 String
-    locality                String
-    name                    String
-    postal_code             String
-    referral                String?
-    status                  String
-    studentsFields          String[]
-    staff                   Int
-    staffActive             Int
-    students                Int
-    studentsActive          Int
-    staffFields             String[]
-    staffGuidance           Json
-    studentsGuidance        Json
-    verifiedProviders       String[]
-}
-
-model Jobs {
-    jobId       Int              @id @default(autoincrement())
-    started     String
-    updated     String?
-    finished    String?
-    title       String
-    description String
-    status      String
-    logs        Json
-    outputMsg   String?
-    viewedBy    String[]
-    oId         Int
-    product     String
+  instituteId             String                       @id @unique
+  admin                   String
+  externalProviderUploads Boolean
+  name                    String
+  referral                String?
+  status                  String
+  studentsFields          String[]
+  staff                   Int
+  staffActive             Int
+  students                Int
+  studentsActive          Int
+  staffFields             String[]
+  staffGuidance           Json
+  studentsGuidance        Json
+  verifiedProviders       String[]
+  Addresses               Addresses[]
+  Cohorts                 Cohorts[]
+  Forms                   InstituteForms[]
+  InstituteStaff          InstituteStaff[]
+  StaffUserGroups         InstituteStaffUserGroups[]
+  StudentUserGroups       InstituteStudentUserGroups[]
+  InstituteStudents       InstituteStudents[]
+  Placements              Placements[]
 }
 
 model Logs {
-    logId       Int              @id @default(autoincrement())
-    oId         Int
-    provider    Json
-    students    Json
-    staff       Json
-    uid         String
+  logId       String     @id @unique
+  provider    Json
+  students    Json
+  staff       Json
+  uid         String
+  placementId String
+  placement   Placements @relation(fields: [placementId], references: [placementId])
 }
 
 model PlacementListings {
-    placementListingId      Int         @id @default(autoincrement())
-    addressId               String      @unique
-    contactForename         String
-    contactSurname          String
-    created                 DateTime
-    mapConsent              Boolean
-    mapConsentDate          String
-    providerEmail           String
-    providerId              String      @unique
-    providerPhone           String
-    savedBy                 Json
-    questions               Json
-    title                   String
-    uploadedBy              String
+  placementListingId String    @id @unique
+  addressId          String
+  contactForename    String
+  contactSurname     String
+  created            DateTime
+  mapConsent         Boolean
+  mapConsentDate     String
+  providerEmail      String
+  providerId         String
+  providerPhone      String
+  savedBy            Json
+  questions          Json
+  title              String
+  uploadedBy         String
+  address            Addresses @relation(fields: [addressId], references: [addressId])
+  provider           Providers @relation(fields: [providerId], references: [providerId])
 }
 
 model Placements {
-    placementId     Int              @id @default(autoincrement())
-    activeDates     String[]
-    address_line1   String
-    address_line2   String
-    cohortId        Int
-    contactForename String
-    contactSurname  String
-    country         String
-    created         String
-    draft           Boolean
-    endDate         String
-    flags           String[]
-    geoHash         String
-    inProgress      Boolean
-    leadTimes       String[]
-    locality        String
-    name            String
-    oId             Int?
-    parentEmailed   DateTime?
-    parentExpiry    String?
-    parentKey       String?
-    postal_code     String
-    product         String?
-    providerEmail   String?
-    providerEmailed DateTime?
-    providerExpiry  String?
-    providerKey     String?
-    providerName    String?
-    providerPhone   String
-    nextStatus      Int?
-    status          Int
-    startDate       String
-    title           String
-    uid             String
-    forms           Json
-    questions       Json
-    uploadedBy      String
-    userGroup       Int?
+  placementId        String                     @id @unique
+  activeDates        String[]
+  cohortId           String
+  contactForename    String
+  contactSurname     String
+  created            String
+  draft              Boolean
+  endDate            String
+  flags              String[]
+  geoHash            String
+  inProgress         Boolean
+  leadTimes          String[]
+  name               String
+  parentEmailed      DateTime?
+  parentExpiry       String?
+  parentKey          String?
+  product            String?
+  providerEmail      String?
+  providerEmailed    DateTime?
+  providerExpiry     String?
+  providerKey        String?
+  providerName       String?
+  providerPhone      String
+  nextStatus         Int?
+  status             Int
+  startDate          String
+  title              String
+  forms              Json
+  questions          Json
+  uploadedBy         String
+  addressId          String
+  instituteId        String
+  instituteStudentId String
+  providerId         String
+  studentId          String
+  userGroupId        String
+  Logs               Logs[]
+  address            Addresses                  @relation(fields: [addressId], references: [addressId])
+  institute          Institutes                 @relation(fields: [instituteId], references: [instituteId])
+  instituteStudent   InstituteStudents          @relation(fields: [instituteStudentId], references: [instituteStudentId])
+  provider           Providers                  @relation(fields: [providerId], references: [providerId])
+  student            StudentUsers               @relation(fields: [studentId], references: [studentUserId])
+  userGroup          InstituteStudentUserGroups @relation(fields: [userGroupId], references: [userGroupId])
 }
 
 model Providers {
-    providerId          Int              @id @default(autoincrement())
-    contactForename     String
-    contactSurname      String
-    defAddress          Int
-    email               String
-    mapConsent          Boolean
-    insurance           Boolean
-    mapConsentDate      String
-    name                String
-    phone               String
-    rememberConsent     Boolean
-    rememberConsentDate String
-    savedBy             Json
-    sector              String
-    subsector           String
-    uploadedBy          String
-    website             String
+  providerId          String               @id @unique
+  contactForename     String
+  contactSurname      String
+  defAddress          String
+  email               String
+  mapConsent          Boolean
+  insurance           Boolean
+  mapConsentDate      String
+  name                String
+  phone               String
+  rememberConsent     Boolean
+  rememberConsentDate String
+  savedBy             Json
+  sector              String
+  subsector           String
+  uploadedBy          String
+  website             String
+  Addresses           Addresses[]
+  PlacementListings   PlacementListings[]
+  Placements          Placements[]
+  ProviderStaff       ProviderStaff[]
+  ProviderUserGroups  ProviderUserGroups[]
 }
 
-model Referrals {
-    referralId      Int              @id @default(autoincrement())
-    expiry          DateTime
-    name            String
-    product         String
-    signUps         Int
-    volume          Int
+model InstituteStudentUserGroups {
+  userGroupId       String              @id @unique
+  default           Boolean
+  name              String
+  updated           String
+  instituteId       String
+  institute         Institutes          @relation(fields: [instituteId], references: [instituteId])
+  InstituteStudents InstituteStudents[]
+  Placements        Placements[]
 }
 
-model UserGroups {
-    userGroupId     Int              @id @default(autoincrement())
-    default         Boolean
-    name            String
-    oId             Int
-    product         String
-    template        String
-    updated         String
+model InstituteStaffUserGroups {
+  userGroupId    String           @id @unique
+  default        Boolean
+  name           String
+  updated        String
+  instituteId    String
+  InstituteStaff InstituteStaff[]
+  institute      Institutes       @relation(fields: [instituteId], references: [instituteId])
+}
+
+model ProviderUserGroups {
+  userGroupId   String          @id @unique
+  default       Boolean
+  name          String
+  template      String
+  updated       String
+  providerId    String
+  ProviderStaff ProviderStaff[]
+  provider      Providers       @relation(fields: [providerId], references: [providerId])
 }
 
 model StudentUsers {
-    studentUserId   String              @unique
-    status          String
-    analytics       Json
-    created         String
-    details         Json
-    email           String
-    referral        String
-    units           String
-    userType        String
+  studentUserId String       @unique
+  status        String
+  analytics     Json
+  created       String
+  details       Json
+  email         String
+  referral      String
+  units         String
+  userType      String
+  Contacts      Contacts[]
+  Placements    Placements[]
 }
 
 model InstituteStaff {
-    instituteStaffId    String              @unique
-    created             String
-    details             Json
-    email               String
-    oId                 String
-    status              String
-    userGroup           String
-    userType            String
+  instituteStaffId String                   @unique
+  created          String
+  details          Json
+  email            String
+  oId              String
+  status           String
+  userType         String
+  instituteId      String
+  userGroupId      String
+  institute        Institutes               @relation(fields: [instituteId], references: [instituteId])
+  userGroup        InstituteStaffUserGroups @relation(fields: [userGroupId], references: [userGroupId])
 }
 
 model InstituteStudents {
-    instituteStudentId  String              @unique
-    activated           String
-    created             String
-    cohortId            Int
-    details             Json
-    email               String
-    flags               String[]
-    oId                 Int
-    resetExpiry         DateTime
-    status              String
-    userGroup           Int
-    userType            String
+  instituteStudentId String                     @unique
+  activated          String
+  created            String
+  cohortId           String
+  details            Json
+  email              String
+  flags              String[]
+  oId                String
+  resetExpiry        DateTime
+  status             String
+  userType           String
+  instituteId        String
+  userGroupId        String
+  Contacts           Contacts[]
+  cohort             Cohorts                    @relation(fields: [cohortId], references: [cohortId])
+  institute          Institutes                 @relation(fields: [instituteId], references: [instituteId])
+  userGroup          InstituteStudentUserGroups @relation(fields: [userGroupId], references: [userGroupId])
+  Placements         Placements[]
 }
 
 model ProviderStaff {
-    providerStaffId     String              @unique
-    created             String
-    details             Json
-    cohortId            Int
-    email               String
-    notes               Json
-    oId                 String
-    status              String
-    userGroup           String
-    userType            String
+  providerStaffId String             @unique
+  created         String
+  details         Json
+  email           String
+  notes           Json
+  status          String
+  providerId      String
+  userGroupId     String
+  provider        Providers          @relation(fields: [providerId], references: [providerId])
+  userGroup       ProviderUserGroups @relation(fields: [userGroupId], references: [userGroupId])
 }
