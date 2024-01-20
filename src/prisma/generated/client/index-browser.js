@@ -109,6 +109,8 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 
 exports.Prisma.AddressesScalarFieldEnum = {
   addressId: 'addressId',
+  name: 'name',
+  stage: 'stage',
   address_line1: 'address_line1',
   address_line2: 'address_line2',
   contactForename: 'contactForename',

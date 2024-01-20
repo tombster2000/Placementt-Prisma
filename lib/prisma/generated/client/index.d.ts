@@ -2602,6 +2602,8 @@ export namespace Prisma {
 
   export type AddressesMinAggregateOutputType = {
     addressId: number | null
+    name: string | null
+    stage: string | null
     address_line1: string | null
     address_line2: string | null
     contactForename: string | null
@@ -2618,6 +2620,8 @@ export namespace Prisma {
 
   export type AddressesMaxAggregateOutputType = {
     addressId: number | null
+    name: string | null
+    stage: string | null
     address_line1: string | null
     address_line2: string | null
     contactForename: string | null
@@ -2634,6 +2638,8 @@ export namespace Prisma {
 
   export type AddressesCountAggregateOutputType = {
     addressId: number
+    name: number
+    stage: number
     address_line1: number
     address_line2: number
     contactForename: number
@@ -2662,6 +2668,8 @@ export namespace Prisma {
 
   export type AddressesMinAggregateInputType = {
     addressId?: true
+    name?: true
+    stage?: true
     address_line1?: true
     address_line2?: true
     contactForename?: true
@@ -2678,6 +2686,8 @@ export namespace Prisma {
 
   export type AddressesMaxAggregateInputType = {
     addressId?: true
+    name?: true
+    stage?: true
     address_line1?: true
     address_line2?: true
     contactForename?: true
@@ -2694,6 +2704,8 @@ export namespace Prisma {
 
   export type AddressesCountAggregateInputType = {
     addressId?: true
+    name?: true
+    stage?: true
     address_line1?: true
     address_line2?: true
     contactForename?: true
@@ -2797,6 +2809,8 @@ export namespace Prisma {
 
   export type AddressesGroupByOutputType = {
     addressId: number
+    name: string
+    stage: string
     address_line1: string
     address_line2: string
     contactForename: string
@@ -2832,6 +2846,8 @@ export namespace Prisma {
 
   export type AddressesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     addressId?: boolean
+    name?: boolean
+    stage?: boolean
     address_line1?: boolean
     address_line2?: boolean
     contactForename?: boolean
@@ -2848,6 +2864,8 @@ export namespace Prisma {
 
   export type AddressesSelectScalar = {
     addressId?: boolean
+    name?: boolean
+    stage?: boolean
     address_line1?: boolean
     address_line2?: boolean
     contactForename?: boolean
@@ -2868,6 +2886,8 @@ export namespace Prisma {
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       addressId: number
+      name: string
+      stage: string
       address_line1: string
       address_line2: string
       contactForename: string
@@ -3275,6 +3295,8 @@ export namespace Prisma {
    */ 
   interface AddressesFieldRefs {
     readonly addressId: FieldRef<"Addresses", 'Int'>
+    readonly name: FieldRef<"Addresses", 'String'>
+    readonly stage: FieldRef<"Addresses", 'String'>
     readonly address_line1: FieldRef<"Addresses", 'String'>
     readonly address_line2: FieldRef<"Addresses", 'String'>
     readonly contactForename: FieldRef<"Addresses", 'String'>
@@ -23826,6 +23848,8 @@ export namespace Prisma {
 
   export const AddressesScalarFieldEnum: {
     addressId: 'addressId',
+    name: 'name',
+    stage: 'stage',
     address_line1: 'address_line1',
     address_line2: 'address_line2',
     contactForename: 'contactForename',
@@ -24321,6 +24345,8 @@ export namespace Prisma {
     OR?: AddressesWhereInput[]
     NOT?: AddressesWhereInput | AddressesWhereInput[]
     addressId?: IntFilter<"Addresses"> | number
+    name?: StringFilter<"Addresses"> | string
+    stage?: StringFilter<"Addresses"> | string
     address_line1?: StringFilter<"Addresses"> | string
     address_line2?: StringFilter<"Addresses"> | string
     contactForename?: StringFilter<"Addresses"> | string
@@ -24337,6 +24363,8 @@ export namespace Prisma {
 
   export type AddressesOrderByWithRelationInput = {
     addressId?: SortOrder
+    name?: SortOrder
+    stage?: SortOrder
     address_line1?: SortOrder
     address_line2?: SortOrder
     contactForename?: SortOrder
@@ -24356,6 +24384,8 @@ export namespace Prisma {
     AND?: AddressesWhereInput | AddressesWhereInput[]
     OR?: AddressesWhereInput[]
     NOT?: AddressesWhereInput | AddressesWhereInput[]
+    name?: StringFilter<"Addresses"> | string
+    stage?: StringFilter<"Addresses"> | string
     address_line1?: StringFilter<"Addresses"> | string
     address_line2?: StringFilter<"Addresses"> | string
     contactForename?: StringFilter<"Addresses"> | string
@@ -24372,6 +24402,8 @@ export namespace Prisma {
 
   export type AddressesOrderByWithAggregationInput = {
     addressId?: SortOrder
+    name?: SortOrder
+    stage?: SortOrder
     address_line1?: SortOrder
     address_line2?: SortOrder
     contactForename?: SortOrder
@@ -24396,6 +24428,8 @@ export namespace Prisma {
     OR?: AddressesScalarWhereWithAggregatesInput[]
     NOT?: AddressesScalarWhereWithAggregatesInput | AddressesScalarWhereWithAggregatesInput[]
     addressId?: IntWithAggregatesFilter<"Addresses"> | number
+    name?: StringWithAggregatesFilter<"Addresses"> | string
+    stage?: StringWithAggregatesFilter<"Addresses"> | string
     address_line1?: StringWithAggregatesFilter<"Addresses"> | string
     address_line2?: StringWithAggregatesFilter<"Addresses"> | string
     contactForename?: StringWithAggregatesFilter<"Addresses"> | string
@@ -26161,6 +26195,8 @@ export namespace Prisma {
   }
 
   export type AddressesCreateInput = {
+    name: string
+    stage: string
     address_line1: string
     address_line2: string
     contactForename: string
@@ -26177,6 +26213,8 @@ export namespace Prisma {
 
   export type AddressesUncheckedCreateInput = {
     addressId?: number
+    name: string
+    stage: string
     address_line1: string
     address_line2: string
     contactForename: string
@@ -26192,6 +26230,8 @@ export namespace Prisma {
   }
 
   export type AddressesUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    stage?: StringFieldUpdateOperationsInput | string
     address_line1?: StringFieldUpdateOperationsInput | string
     address_line2?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
@@ -26208,6 +26248,8 @@ export namespace Prisma {
 
   export type AddressesUncheckedUpdateInput = {
     addressId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    stage?: StringFieldUpdateOperationsInput | string
     address_line1?: StringFieldUpdateOperationsInput | string
     address_line2?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
@@ -26224,6 +26266,8 @@ export namespace Prisma {
 
   export type AddressesCreateManyInput = {
     addressId?: number
+    name: string
+    stage: string
     address_line1: string
     address_line2: string
     contactForename: string
@@ -26239,6 +26283,8 @@ export namespace Prisma {
   }
 
   export type AddressesUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    stage?: StringFieldUpdateOperationsInput | string
     address_line1?: StringFieldUpdateOperationsInput | string
     address_line2?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
@@ -26255,6 +26301,8 @@ export namespace Prisma {
 
   export type AddressesUncheckedUpdateManyInput = {
     addressId?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    stage?: StringFieldUpdateOperationsInput | string
     address_line1?: StringFieldUpdateOperationsInput | string
     address_line2?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
@@ -28290,6 +28338,8 @@ export namespace Prisma {
 
   export type AddressesCountOrderByAggregateInput = {
     addressId?: SortOrder
+    name?: SortOrder
+    stage?: SortOrder
     address_line1?: SortOrder
     address_line2?: SortOrder
     contactForename?: SortOrder
@@ -28311,6 +28361,8 @@ export namespace Prisma {
 
   export type AddressesMaxOrderByAggregateInput = {
     addressId?: SortOrder
+    name?: SortOrder
+    stage?: SortOrder
     address_line1?: SortOrder
     address_line2?: SortOrder
     contactForename?: SortOrder
@@ -28327,6 +28379,8 @@ export namespace Prisma {
 
   export type AddressesMinOrderByAggregateInput = {
     addressId?: SortOrder
+    name?: SortOrder
+    stage?: SortOrder
     address_line1?: SortOrder
     address_line2?: SortOrder
     contactForename?: SortOrder
