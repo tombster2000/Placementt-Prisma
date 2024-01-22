@@ -111,8 +111,8 @@ exports.Prisma.AddressesScalarFieldEnum = {
   addressId: 'addressId',
   name: 'name',
   stage: 'stage',
-  address_line1: 'address_line1',
-  address_line2: 'address_line2',
+  addressLine1: 'addressLine1',
+  addressLine2: 'addressLine2',
   contactForename: 'contactForename',
   contactSurname: 'contactSurname',
   country: 'country',
@@ -139,6 +139,14 @@ exports.Prisma.CohortsScalarFieldEnum = {
   includedForms: 'includedForms',
   workflow: 'workflow',
   instituteId: 'instituteId'
+};
+
+exports.Prisma.ProviderCohortsScalarFieldEnum = {
+  cohortId: 'cohortId',
+  stage: 'stage',
+  name: 'name',
+  addressId: 'addressId',
+  providerId: 'providerId'
 };
 
 exports.Prisma.ContactsScalarFieldEnum = {
@@ -247,7 +255,6 @@ exports.Prisma.ProvidersScalarFieldEnum = {
   providerId: 'providerId',
   contactForename: 'contactForename',
   contactSurname: 'contactSurname',
-  defAddress: 'defAddress',
   email: 'email',
   mapConsent: 'mapConsent',
   insurance: 'insurance',
@@ -258,9 +265,12 @@ exports.Prisma.ProvidersScalarFieldEnum = {
   rememberConsentDate: 'rememberConsentDate',
   savedBy: 'savedBy',
   sector: 'sector',
+  referral: 'referral',
   subsector: 'subsector',
   uploadedBy: 'uploadedBy',
-  website: 'website'
+  website: 'website',
+  activationCode: 'activationCode',
+  status: 'status'
 };
 
 exports.Prisma.InstituteStudentUserGroupsScalarFieldEnum = {
@@ -283,7 +293,6 @@ exports.Prisma.ProviderUserGroupsScalarFieldEnum = {
   userGroupId: 'userGroupId',
   default: 'default',
   name: 'name',
-  template: 'template',
   updated: 'updated',
   providerId: 'providerId'
 };
@@ -348,6 +357,11 @@ exports.Prisma.JsonNullValueInput = {
   JsonNull: Prisma.JsonNull
 };
 
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
@@ -368,6 +382,7 @@ exports.Prisma.JsonNullValueFilter = {
 exports.Prisma.ModelName = {
   Addresses: 'Addresses',
   Cohorts: 'Cohorts',
+  ProviderCohorts: 'ProviderCohorts',
   Contacts: 'Contacts',
   InstituteForms: 'InstituteForms',
   Institutes: 'Institutes',

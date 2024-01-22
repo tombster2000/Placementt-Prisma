@@ -24,6 +24,11 @@ export type Addresses = $Result.DefaultSelection<Prisma.$AddressesPayload>
  */
 export type Cohorts = $Result.DefaultSelection<Prisma.$CohortsPayload>
 /**
+ * Model ProviderCohorts
+ * 
+ */
+export type ProviderCohorts = $Result.DefaultSelection<Prisma.$ProviderCohortsPayload>
+/**
  * Model Contacts
  * 
  */
@@ -235,6 +240,16 @@ export class PrismaClient<
     * ```
     */
   get cohorts(): Prisma.CohortsDelegate<ExtArgs>;
+
+  /**
+   * `prisma.providerCohorts`: Exposes CRUD operations for the **ProviderCohorts** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ProviderCohorts
+    * const providerCohorts = await prisma.providerCohorts.findMany()
+    * ```
+    */
+  get providerCohorts(): Prisma.ProviderCohortsDelegate<ExtArgs>;
 
   /**
    * `prisma.contacts`: Exposes CRUD operations for the **Contacts** model.
@@ -847,6 +862,7 @@ export namespace Prisma {
   export const ModelName: {
     Addresses: 'Addresses',
     Cohorts: 'Cohorts',
+    ProviderCohorts: 'ProviderCohorts',
     Contacts: 'Contacts',
     InstituteForms: 'InstituteForms',
     Institutes: 'Institutes',
@@ -877,7 +893,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'addresses' | 'cohorts' | 'contacts' | 'instituteForms' | 'institutes' | 'logs' | 'placementListings' | 'placements' | 'providers' | 'instituteStudentUserGroups' | 'instituteStaffUserGroups' | 'providerUserGroups' | 'studentUsers' | 'instituteStaff' | 'instituteStudents' | 'providerStaff'
+      modelProps: 'addresses' | 'cohorts' | 'providerCohorts' | 'contacts' | 'instituteForms' | 'institutes' | 'logs' | 'placementListings' | 'placements' | 'providers' | 'instituteStudentUserGroups' | 'instituteStaffUserGroups' | 'providerUserGroups' | 'studentUsers' | 'instituteStaff' | 'instituteStudents' | 'providerStaff'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -1010,6 +1026,72 @@ export namespace Prisma {
           count: {
             args: Prisma.CohortsCountArgs<ExtArgs>,
             result: $Utils.Optional<CohortsCountAggregateOutputType> | number
+          }
+        }
+      }
+      ProviderCohorts: {
+        payload: Prisma.$ProviderCohortsPayload<ExtArgs>
+        fields: Prisma.ProviderCohortsFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ProviderCohortsFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ProviderCohortsPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ProviderCohortsFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ProviderCohortsPayload>
+          }
+          findFirst: {
+            args: Prisma.ProviderCohortsFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ProviderCohortsPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ProviderCohortsFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ProviderCohortsPayload>
+          }
+          findMany: {
+            args: Prisma.ProviderCohortsFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ProviderCohortsPayload>[]
+          }
+          create: {
+            args: Prisma.ProviderCohortsCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ProviderCohortsPayload>
+          }
+          createMany: {
+            args: Prisma.ProviderCohortsCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.ProviderCohortsDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ProviderCohortsPayload>
+          }
+          update: {
+            args: Prisma.ProviderCohortsUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ProviderCohortsPayload>
+          }
+          deleteMany: {
+            args: Prisma.ProviderCohortsDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ProviderCohortsUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.ProviderCohortsUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$ProviderCohortsPayload>
+          }
+          aggregate: {
+            args: Prisma.ProviderCohortsAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregateProviderCohorts>
+          }
+          groupBy: {
+            args: Prisma.ProviderCohortsGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<ProviderCohortsGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ProviderCohortsCountArgs<ExtArgs>,
+            result: $Utils.Optional<ProviderCohortsCountAggregateOutputType> | number
           }
         }
       }
@@ -2089,12 +2171,14 @@ export namespace Prisma {
     Contacts: number
     PlacementListings: number
     Placements: number
+    ProviderCohorts: number
   }
 
   export type AddressesCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Contacts?: boolean | AddressesCountOutputTypeCountContactsArgs
     PlacementListings?: boolean | AddressesCountOutputTypeCountPlacementListingsArgs
     Placements?: boolean | AddressesCountOutputTypeCountPlacementsArgs
+    ProviderCohorts?: boolean | AddressesCountOutputTypeCountProviderCohortsArgs
   }
 
   // Custom InputTypes
@@ -2131,6 +2215,14 @@ export namespace Prisma {
    */
   export type AddressesCountOutputTypeCountPlacementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PlacementsWhereInput
+  }
+
+
+  /**
+   * AddressesCountOutputType without action
+   */
+  export type AddressesCountOutputTypeCountProviderCohortsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProviderCohortsWhereInput
   }
 
 
@@ -2317,6 +2409,7 @@ export namespace Prisma {
     Placements: number
     ProviderStaff: number
     ProviderUserGroups: number
+    ProviderCohorts: number
   }
 
   export type ProvidersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2325,6 +2418,7 @@ export namespace Prisma {
     Placements?: boolean | ProvidersCountOutputTypeCountPlacementsArgs
     ProviderStaff?: boolean | ProvidersCountOutputTypeCountProviderStaffArgs
     ProviderUserGroups?: boolean | ProvidersCountOutputTypeCountProviderUserGroupsArgs
+    ProviderCohorts?: boolean | ProvidersCountOutputTypeCountProviderCohortsArgs
   }
 
   // Custom InputTypes
@@ -2377,6 +2471,14 @@ export namespace Prisma {
    */
   export type ProvidersCountOutputTypeCountProviderUserGroupsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProviderUserGroupsWhereInput
+  }
+
+
+  /**
+   * ProvidersCountOutputType without action
+   */
+  export type ProvidersCountOutputTypeCountProviderCohortsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProviderCohortsWhereInput
   }
 
 
@@ -2599,8 +2701,8 @@ export namespace Prisma {
     addressId: string | null
     name: string | null
     stage: string | null
-    address_line1: string | null
-    address_line2: string | null
+    addressLine1: string | null
+    addressLine2: string | null
     contactForename: string | null
     contactSurname: string | null
     country: string | null
@@ -2617,8 +2719,8 @@ export namespace Prisma {
     addressId: string | null
     name: string | null
     stage: string | null
-    address_line1: string | null
-    address_line2: string | null
+    addressLine1: string | null
+    addressLine2: string | null
     contactForename: string | null
     contactSurname: string | null
     country: string | null
@@ -2635,8 +2737,8 @@ export namespace Prisma {
     addressId: number
     name: number
     stage: number
-    address_line1: number
-    address_line2: number
+    addressLine1: number
+    addressLine2: number
     contactForename: number
     contactSurname: number
     country: number
@@ -2655,8 +2757,8 @@ export namespace Prisma {
     addressId?: true
     name?: true
     stage?: true
-    address_line1?: true
-    address_line2?: true
+    addressLine1?: true
+    addressLine2?: true
     contactForename?: true
     contactSurname?: true
     country?: true
@@ -2673,8 +2775,8 @@ export namespace Prisma {
     addressId?: true
     name?: true
     stage?: true
-    address_line1?: true
-    address_line2?: true
+    addressLine1?: true
+    addressLine2?: true
     contactForename?: true
     contactSurname?: true
     country?: true
@@ -2691,8 +2793,8 @@ export namespace Prisma {
     addressId?: true
     name?: true
     stage?: true
-    address_line1?: true
-    address_line2?: true
+    addressLine1?: true
+    addressLine2?: true
     contactForename?: true
     contactSurname?: true
     country?: true
@@ -2782,8 +2884,8 @@ export namespace Prisma {
     addressId: string
     name: string
     stage: string | null
-    address_line1: string | null
-    address_line2: string | null
+    addressLine1: string | null
+    addressLine2: string | null
     contactForename: string | null
     contactSurname: string | null
     country: string | null
@@ -2817,8 +2919,8 @@ export namespace Prisma {
     addressId?: boolean
     name?: boolean
     stage?: boolean
-    address_line1?: boolean
-    address_line2?: boolean
+    addressLine1?: boolean
+    addressLine2?: boolean
     contactForename?: boolean
     contactSurname?: boolean
     country?: boolean
@@ -2834,6 +2936,7 @@ export namespace Prisma {
     Contacts?: boolean | Addresses$ContactsArgs<ExtArgs>
     PlacementListings?: boolean | Addresses$PlacementListingsArgs<ExtArgs>
     Placements?: boolean | Addresses$PlacementsArgs<ExtArgs>
+    ProviderCohorts?: boolean | Addresses$ProviderCohortsArgs<ExtArgs>
     _count?: boolean | AddressesCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["addresses"]>
 
@@ -2841,8 +2944,8 @@ export namespace Prisma {
     addressId?: boolean
     name?: boolean
     stage?: boolean
-    address_line1?: boolean
-    address_line2?: boolean
+    addressLine1?: boolean
+    addressLine2?: boolean
     contactForename?: boolean
     contactSurname?: boolean
     country?: boolean
@@ -2861,6 +2964,7 @@ export namespace Prisma {
     Contacts?: boolean | Addresses$ContactsArgs<ExtArgs>
     PlacementListings?: boolean | Addresses$PlacementListingsArgs<ExtArgs>
     Placements?: boolean | Addresses$PlacementsArgs<ExtArgs>
+    ProviderCohorts?: boolean | Addresses$ProviderCohortsArgs<ExtArgs>
     _count?: boolean | AddressesCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2873,13 +2977,14 @@ export namespace Prisma {
       Contacts: Prisma.$ContactsPayload<ExtArgs>[]
       PlacementListings: Prisma.$PlacementListingsPayload<ExtArgs>[]
       Placements: Prisma.$PlacementsPayload<ExtArgs>[]
+      ProviderCohorts: Prisma.$ProviderCohortsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       addressId: string
       name: string
       stage: string | null
-      address_line1: string | null
-      address_line2: string | null
+      addressLine1: string | null
+      addressLine2: string | null
       contactForename: string | null
       contactSurname: string | null
       country: string | null
@@ -3265,6 +3370,8 @@ export namespace Prisma {
 
     Placements<T extends Addresses$PlacementsArgs<ExtArgs> = {}>(args?: Subset<T, Addresses$PlacementsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlacementsPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    ProviderCohorts<T extends Addresses$ProviderCohortsArgs<ExtArgs> = {}>(args?: Subset<T, Addresses$ProviderCohortsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProviderCohortsPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3296,8 +3403,8 @@ export namespace Prisma {
     readonly addressId: FieldRef<"Addresses", 'String'>
     readonly name: FieldRef<"Addresses", 'String'>
     readonly stage: FieldRef<"Addresses", 'String'>
-    readonly address_line1: FieldRef<"Addresses", 'String'>
-    readonly address_line2: FieldRef<"Addresses", 'String'>
+    readonly addressLine1: FieldRef<"Addresses", 'String'>
+    readonly addressLine2: FieldRef<"Addresses", 'String'>
     readonly contactForename: FieldRef<"Addresses", 'String'>
     readonly contactSurname: FieldRef<"Addresses", 'String'>
     readonly country: FieldRef<"Addresses", 'String'>
@@ -3711,6 +3818,27 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PlacementsScalarFieldEnum | PlacementsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Addresses.ProviderCohorts
+   */
+  export type Addresses$ProviderCohortsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderCohorts
+     */
+    select?: ProviderCohortsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ProviderCohortsInclude<ExtArgs> | null
+    where?: ProviderCohortsWhereInput
+    orderBy?: ProviderCohortsOrderByWithRelationInput | ProviderCohortsOrderByWithRelationInput[]
+    cursor?: ProviderCohortsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProviderCohortsScalarFieldEnum | ProviderCohortsScalarFieldEnum[]
   }
 
 
@@ -4752,6 +4880,929 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well.
      */
     include?: CohortsInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model ProviderCohorts
+   */
+
+  export type AggregateProviderCohorts = {
+    _count: ProviderCohortsCountAggregateOutputType | null
+    _min: ProviderCohortsMinAggregateOutputType | null
+    _max: ProviderCohortsMaxAggregateOutputType | null
+  }
+
+  export type ProviderCohortsMinAggregateOutputType = {
+    cohortId: string | null
+    stage: string | null
+    name: string | null
+    addressId: string | null
+    providerId: string | null
+  }
+
+  export type ProviderCohortsMaxAggregateOutputType = {
+    cohortId: string | null
+    stage: string | null
+    name: string | null
+    addressId: string | null
+    providerId: string | null
+  }
+
+  export type ProviderCohortsCountAggregateOutputType = {
+    cohortId: number
+    stage: number
+    name: number
+    addressId: number
+    providerId: number
+    _all: number
+  }
+
+
+  export type ProviderCohortsMinAggregateInputType = {
+    cohortId?: true
+    stage?: true
+    name?: true
+    addressId?: true
+    providerId?: true
+  }
+
+  export type ProviderCohortsMaxAggregateInputType = {
+    cohortId?: true
+    stage?: true
+    name?: true
+    addressId?: true
+    providerId?: true
+  }
+
+  export type ProviderCohortsCountAggregateInputType = {
+    cohortId?: true
+    stage?: true
+    name?: true
+    addressId?: true
+    providerId?: true
+    _all?: true
+  }
+
+  export type ProviderCohortsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProviderCohorts to aggregate.
+     */
+    where?: ProviderCohortsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProviderCohorts to fetch.
+     */
+    orderBy?: ProviderCohortsOrderByWithRelationInput | ProviderCohortsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ProviderCohortsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProviderCohorts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProviderCohorts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ProviderCohorts
+    **/
+    _count?: true | ProviderCohortsCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ProviderCohortsMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ProviderCohortsMaxAggregateInputType
+  }
+
+  export type GetProviderCohortsAggregateType<T extends ProviderCohortsAggregateArgs> = {
+        [P in keyof T & keyof AggregateProviderCohorts]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProviderCohorts[P]>
+      : GetScalarType<T[P], AggregateProviderCohorts[P]>
+  }
+
+
+
+
+  export type ProviderCohortsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ProviderCohortsWhereInput
+    orderBy?: ProviderCohortsOrderByWithAggregationInput | ProviderCohortsOrderByWithAggregationInput[]
+    by: ProviderCohortsScalarFieldEnum[] | ProviderCohortsScalarFieldEnum
+    having?: ProviderCohortsScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ProviderCohortsCountAggregateInputType | true
+    _min?: ProviderCohortsMinAggregateInputType
+    _max?: ProviderCohortsMaxAggregateInputType
+  }
+
+  export type ProviderCohortsGroupByOutputType = {
+    cohortId: string
+    stage: string
+    name: string
+    addressId: string
+    providerId: string
+    _count: ProviderCohortsCountAggregateOutputType | null
+    _min: ProviderCohortsMinAggregateOutputType | null
+    _max: ProviderCohortsMaxAggregateOutputType | null
+  }
+
+  type GetProviderCohortsGroupByPayload<T extends ProviderCohortsGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ProviderCohortsGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ProviderCohortsGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ProviderCohortsGroupByOutputType[P]>
+            : GetScalarType<T[P], ProviderCohortsGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ProviderCohortsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    cohortId?: boolean
+    stage?: boolean
+    name?: boolean
+    addressId?: boolean
+    providerId?: boolean
+    address?: boolean | AddressesDefaultArgs<ExtArgs>
+    provider?: boolean | ProvidersDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["providerCohorts"]>
+
+  export type ProviderCohortsSelectScalar = {
+    cohortId?: boolean
+    stage?: boolean
+    name?: boolean
+    addressId?: boolean
+    providerId?: boolean
+  }
+
+  export type ProviderCohortsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    address?: boolean | AddressesDefaultArgs<ExtArgs>
+    provider?: boolean | ProvidersDefaultArgs<ExtArgs>
+  }
+
+
+  export type $ProviderCohortsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ProviderCohorts"
+    objects: {
+      address: Prisma.$AddressesPayload<ExtArgs>
+      provider: Prisma.$ProvidersPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      cohortId: string
+      stage: string
+      name: string
+      addressId: string
+      providerId: string
+    }, ExtArgs["result"]["providerCohorts"]>
+    composites: {}
+  }
+
+
+  type ProviderCohortsGetPayload<S extends boolean | null | undefined | ProviderCohortsDefaultArgs> = $Result.GetResult<Prisma.$ProviderCohortsPayload, S>
+
+  type ProviderCohortsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<ProviderCohortsFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ProviderCohortsCountAggregateInputType | true
+    }
+
+  export interface ProviderCohortsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ProviderCohorts'], meta: { name: 'ProviderCohorts' } }
+    /**
+     * Find zero or one ProviderCohorts that matches the filter.
+     * @param {ProviderCohortsFindUniqueArgs} args - Arguments to find a ProviderCohorts
+     * @example
+     * // Get one ProviderCohorts
+     * const providerCohorts = await prisma.providerCohorts.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends ProviderCohortsFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, ProviderCohortsFindUniqueArgs<ExtArgs>>
+    ): Prisma__ProviderCohortsClient<$Result.GetResult<Prisma.$ProviderCohortsPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one ProviderCohorts that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {ProviderCohortsFindUniqueOrThrowArgs} args - Arguments to find a ProviderCohorts
+     * @example
+     * // Get one ProviderCohorts
+     * const providerCohorts = await prisma.providerCohorts.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends ProviderCohortsFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ProviderCohortsFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__ProviderCohortsClient<$Result.GetResult<Prisma.$ProviderCohortsPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first ProviderCohorts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderCohortsFindFirstArgs} args - Arguments to find a ProviderCohorts
+     * @example
+     * // Get one ProviderCohorts
+     * const providerCohorts = await prisma.providerCohorts.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends ProviderCohortsFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, ProviderCohortsFindFirstArgs<ExtArgs>>
+    ): Prisma__ProviderCohortsClient<$Result.GetResult<Prisma.$ProviderCohortsPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first ProviderCohorts that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderCohortsFindFirstOrThrowArgs} args - Arguments to find a ProviderCohorts
+     * @example
+     * // Get one ProviderCohorts
+     * const providerCohorts = await prisma.providerCohorts.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends ProviderCohortsFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, ProviderCohortsFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__ProviderCohortsClient<$Result.GetResult<Prisma.$ProviderCohortsPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more ProviderCohorts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderCohortsFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ProviderCohorts
+     * const providerCohorts = await prisma.providerCohorts.findMany()
+     * 
+     * // Get first 10 ProviderCohorts
+     * const providerCohorts = await prisma.providerCohorts.findMany({ take: 10 })
+     * 
+     * // Only select the `cohortId`
+     * const providerCohortsWithCohortIdOnly = await prisma.providerCohorts.findMany({ select: { cohortId: true } })
+     * 
+    **/
+    findMany<T extends ProviderCohortsFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ProviderCohortsFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProviderCohortsPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a ProviderCohorts.
+     * @param {ProviderCohortsCreateArgs} args - Arguments to create a ProviderCohorts.
+     * @example
+     * // Create one ProviderCohorts
+     * const ProviderCohorts = await prisma.providerCohorts.create({
+     *   data: {
+     *     // ... data to create a ProviderCohorts
+     *   }
+     * })
+     * 
+    **/
+    create<T extends ProviderCohortsCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, ProviderCohortsCreateArgs<ExtArgs>>
+    ): Prisma__ProviderCohortsClient<$Result.GetResult<Prisma.$ProviderCohortsPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many ProviderCohorts.
+     *     @param {ProviderCohortsCreateManyArgs} args - Arguments to create many ProviderCohorts.
+     *     @example
+     *     // Create many ProviderCohorts
+     *     const providerCohorts = await prisma.providerCohorts.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends ProviderCohortsCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ProviderCohortsCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a ProviderCohorts.
+     * @param {ProviderCohortsDeleteArgs} args - Arguments to delete one ProviderCohorts.
+     * @example
+     * // Delete one ProviderCohorts
+     * const ProviderCohorts = await prisma.providerCohorts.delete({
+     *   where: {
+     *     // ... filter to delete one ProviderCohorts
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends ProviderCohortsDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, ProviderCohortsDeleteArgs<ExtArgs>>
+    ): Prisma__ProviderCohortsClient<$Result.GetResult<Prisma.$ProviderCohortsPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one ProviderCohorts.
+     * @param {ProviderCohortsUpdateArgs} args - Arguments to update one ProviderCohorts.
+     * @example
+     * // Update one ProviderCohorts
+     * const providerCohorts = await prisma.providerCohorts.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends ProviderCohortsUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, ProviderCohortsUpdateArgs<ExtArgs>>
+    ): Prisma__ProviderCohortsClient<$Result.GetResult<Prisma.$ProviderCohortsPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more ProviderCohorts.
+     * @param {ProviderCohortsDeleteManyArgs} args - Arguments to filter ProviderCohorts to delete.
+     * @example
+     * // Delete a few ProviderCohorts
+     * const { count } = await prisma.providerCohorts.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends ProviderCohortsDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, ProviderCohortsDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ProviderCohorts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderCohortsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ProviderCohorts
+     * const providerCohorts = await prisma.providerCohorts.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends ProviderCohortsUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, ProviderCohortsUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one ProviderCohorts.
+     * @param {ProviderCohortsUpsertArgs} args - Arguments to update or create a ProviderCohorts.
+     * @example
+     * // Update or create a ProviderCohorts
+     * const providerCohorts = await prisma.providerCohorts.upsert({
+     *   create: {
+     *     // ... data to create a ProviderCohorts
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ProviderCohorts we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends ProviderCohortsUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, ProviderCohortsUpsertArgs<ExtArgs>>
+    ): Prisma__ProviderCohortsClient<$Result.GetResult<Prisma.$ProviderCohortsPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of ProviderCohorts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderCohortsCountArgs} args - Arguments to filter ProviderCohorts to count.
+     * @example
+     * // Count the number of ProviderCohorts
+     * const count = await prisma.providerCohorts.count({
+     *   where: {
+     *     // ... the filter for the ProviderCohorts we want to count
+     *   }
+     * })
+    **/
+    count<T extends ProviderCohortsCountArgs>(
+      args?: Subset<T, ProviderCohortsCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ProviderCohortsCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ProviderCohorts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderCohortsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ProviderCohortsAggregateArgs>(args: Subset<T, ProviderCohortsAggregateArgs>): Prisma.PrismaPromise<GetProviderCohortsAggregateType<T>>
+
+    /**
+     * Group by ProviderCohorts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ProviderCohortsGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ProviderCohortsGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ProviderCohortsGroupByArgs['orderBy'] }
+        : { orderBy?: ProviderCohortsGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ProviderCohortsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProviderCohortsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ProviderCohorts model
+   */
+  readonly fields: ProviderCohortsFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ProviderCohorts.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ProviderCohortsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    address<T extends AddressesDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AddressesDefaultArgs<ExtArgs>>): Prisma__AddressesClient<$Result.GetResult<Prisma.$AddressesPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    provider<T extends ProvidersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProvidersDefaultArgs<ExtArgs>>): Prisma__ProvidersClient<$Result.GetResult<Prisma.$ProvidersPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the ProviderCohorts model
+   */ 
+  interface ProviderCohortsFieldRefs {
+    readonly cohortId: FieldRef<"ProviderCohorts", 'String'>
+    readonly stage: FieldRef<"ProviderCohorts", 'String'>
+    readonly name: FieldRef<"ProviderCohorts", 'String'>
+    readonly addressId: FieldRef<"ProviderCohorts", 'String'>
+    readonly providerId: FieldRef<"ProviderCohorts", 'String'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * ProviderCohorts findUnique
+   */
+  export type ProviderCohortsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderCohorts
+     */
+    select?: ProviderCohortsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ProviderCohortsInclude<ExtArgs> | null
+    /**
+     * Filter, which ProviderCohorts to fetch.
+     */
+    where: ProviderCohortsWhereUniqueInput
+  }
+
+
+  /**
+   * ProviderCohorts findUniqueOrThrow
+   */
+  export type ProviderCohortsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderCohorts
+     */
+    select?: ProviderCohortsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ProviderCohortsInclude<ExtArgs> | null
+    /**
+     * Filter, which ProviderCohorts to fetch.
+     */
+    where: ProviderCohortsWhereUniqueInput
+  }
+
+
+  /**
+   * ProviderCohorts findFirst
+   */
+  export type ProviderCohortsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderCohorts
+     */
+    select?: ProviderCohortsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ProviderCohortsInclude<ExtArgs> | null
+    /**
+     * Filter, which ProviderCohorts to fetch.
+     */
+    where?: ProviderCohortsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProviderCohorts to fetch.
+     */
+    orderBy?: ProviderCohortsOrderByWithRelationInput | ProviderCohortsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProviderCohorts.
+     */
+    cursor?: ProviderCohortsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProviderCohorts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProviderCohorts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProviderCohorts.
+     */
+    distinct?: ProviderCohortsScalarFieldEnum | ProviderCohortsScalarFieldEnum[]
+  }
+
+
+  /**
+   * ProviderCohorts findFirstOrThrow
+   */
+  export type ProviderCohortsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderCohorts
+     */
+    select?: ProviderCohortsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ProviderCohortsInclude<ExtArgs> | null
+    /**
+     * Filter, which ProviderCohorts to fetch.
+     */
+    where?: ProviderCohortsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProviderCohorts to fetch.
+     */
+    orderBy?: ProviderCohortsOrderByWithRelationInput | ProviderCohortsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ProviderCohorts.
+     */
+    cursor?: ProviderCohortsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProviderCohorts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProviderCohorts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ProviderCohorts.
+     */
+    distinct?: ProviderCohortsScalarFieldEnum | ProviderCohortsScalarFieldEnum[]
+  }
+
+
+  /**
+   * ProviderCohorts findMany
+   */
+  export type ProviderCohortsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderCohorts
+     */
+    select?: ProviderCohortsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ProviderCohortsInclude<ExtArgs> | null
+    /**
+     * Filter, which ProviderCohorts to fetch.
+     */
+    where?: ProviderCohortsWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ProviderCohorts to fetch.
+     */
+    orderBy?: ProviderCohortsOrderByWithRelationInput | ProviderCohortsOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ProviderCohorts.
+     */
+    cursor?: ProviderCohortsWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ProviderCohorts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ProviderCohorts.
+     */
+    skip?: number
+    distinct?: ProviderCohortsScalarFieldEnum | ProviderCohortsScalarFieldEnum[]
+  }
+
+
+  /**
+   * ProviderCohorts create
+   */
+  export type ProviderCohortsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderCohorts
+     */
+    select?: ProviderCohortsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ProviderCohortsInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ProviderCohorts.
+     */
+    data: XOR<ProviderCohortsCreateInput, ProviderCohortsUncheckedCreateInput>
+  }
+
+
+  /**
+   * ProviderCohorts createMany
+   */
+  export type ProviderCohortsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ProviderCohorts.
+     */
+    data: ProviderCohortsCreateManyInput | ProviderCohortsCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * ProviderCohorts update
+   */
+  export type ProviderCohortsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderCohorts
+     */
+    select?: ProviderCohortsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ProviderCohortsInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ProviderCohorts.
+     */
+    data: XOR<ProviderCohortsUpdateInput, ProviderCohortsUncheckedUpdateInput>
+    /**
+     * Choose, which ProviderCohorts to update.
+     */
+    where: ProviderCohortsWhereUniqueInput
+  }
+
+
+  /**
+   * ProviderCohorts updateMany
+   */
+  export type ProviderCohortsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ProviderCohorts.
+     */
+    data: XOR<ProviderCohortsUpdateManyMutationInput, ProviderCohortsUncheckedUpdateManyInput>
+    /**
+     * Filter which ProviderCohorts to update
+     */
+    where?: ProviderCohortsWhereInput
+  }
+
+
+  /**
+   * ProviderCohorts upsert
+   */
+  export type ProviderCohortsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderCohorts
+     */
+    select?: ProviderCohortsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ProviderCohortsInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ProviderCohorts to update in case it exists.
+     */
+    where: ProviderCohortsWhereUniqueInput
+    /**
+     * In case the ProviderCohorts found by the `where` argument doesn't exist, create a new ProviderCohorts with this data.
+     */
+    create: XOR<ProviderCohortsCreateInput, ProviderCohortsUncheckedCreateInput>
+    /**
+     * In case the ProviderCohorts was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ProviderCohortsUpdateInput, ProviderCohortsUncheckedUpdateInput>
+  }
+
+
+  /**
+   * ProviderCohorts delete
+   */
+  export type ProviderCohortsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderCohorts
+     */
+    select?: ProviderCohortsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ProviderCohortsInclude<ExtArgs> | null
+    /**
+     * Filter which ProviderCohorts to delete.
+     */
+    where: ProviderCohortsWhereUniqueInput
+  }
+
+
+  /**
+   * ProviderCohorts deleteMany
+   */
+  export type ProviderCohortsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ProviderCohorts to delete
+     */
+    where?: ProviderCohortsWhereInput
+  }
+
+
+  /**
+   * ProviderCohorts without action
+   */
+  export type ProviderCohortsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderCohorts
+     */
+    select?: ProviderCohortsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ProviderCohortsInclude<ExtArgs> | null
   }
 
 
@@ -11157,15 +12208,24 @@ export namespace Prisma {
 
   export type AggregateProviders = {
     _count: ProvidersCountAggregateOutputType | null
+    _avg: ProvidersAvgAggregateOutputType | null
+    _sum: ProvidersSumAggregateOutputType | null
     _min: ProvidersMinAggregateOutputType | null
     _max: ProvidersMaxAggregateOutputType | null
+  }
+
+  export type ProvidersAvgAggregateOutputType = {
+    activationCode: number | null
+  }
+
+  export type ProvidersSumAggregateOutputType = {
+    activationCode: number | null
   }
 
   export type ProvidersMinAggregateOutputType = {
     providerId: string | null
     contactForename: string | null
     contactSurname: string | null
-    defAddress: string | null
     email: string | null
     mapConsent: boolean | null
     insurance: boolean | null
@@ -11175,16 +12235,18 @@ export namespace Prisma {
     rememberConsent: boolean | null
     rememberConsentDate: string | null
     sector: string | null
+    referral: string | null
     subsector: string | null
     uploadedBy: string | null
     website: string | null
+    activationCode: number | null
+    status: string | null
   }
 
   export type ProvidersMaxAggregateOutputType = {
     providerId: string | null
     contactForename: string | null
     contactSurname: string | null
-    defAddress: string | null
     email: string | null
     mapConsent: boolean | null
     insurance: boolean | null
@@ -11194,16 +12256,18 @@ export namespace Prisma {
     rememberConsent: boolean | null
     rememberConsentDate: string | null
     sector: string | null
+    referral: string | null
     subsector: string | null
     uploadedBy: string | null
     website: string | null
+    activationCode: number | null
+    status: string | null
   }
 
   export type ProvidersCountAggregateOutputType = {
     providerId: number
     contactForename: number
     contactSurname: number
-    defAddress: number
     email: number
     mapConsent: number
     insurance: number
@@ -11214,18 +12278,28 @@ export namespace Prisma {
     rememberConsentDate: number
     savedBy: number
     sector: number
+    referral: number
     subsector: number
     uploadedBy: number
     website: number
+    activationCode: number
+    status: number
     _all: number
   }
 
+
+  export type ProvidersAvgAggregateInputType = {
+    activationCode?: true
+  }
+
+  export type ProvidersSumAggregateInputType = {
+    activationCode?: true
+  }
 
   export type ProvidersMinAggregateInputType = {
     providerId?: true
     contactForename?: true
     contactSurname?: true
-    defAddress?: true
     email?: true
     mapConsent?: true
     insurance?: true
@@ -11235,16 +12309,18 @@ export namespace Prisma {
     rememberConsent?: true
     rememberConsentDate?: true
     sector?: true
+    referral?: true
     subsector?: true
     uploadedBy?: true
     website?: true
+    activationCode?: true
+    status?: true
   }
 
   export type ProvidersMaxAggregateInputType = {
     providerId?: true
     contactForename?: true
     contactSurname?: true
-    defAddress?: true
     email?: true
     mapConsent?: true
     insurance?: true
@@ -11254,16 +12330,18 @@ export namespace Prisma {
     rememberConsent?: true
     rememberConsentDate?: true
     sector?: true
+    referral?: true
     subsector?: true
     uploadedBy?: true
     website?: true
+    activationCode?: true
+    status?: true
   }
 
   export type ProvidersCountAggregateInputType = {
     providerId?: true
     contactForename?: true
     contactSurname?: true
-    defAddress?: true
     email?: true
     mapConsent?: true
     insurance?: true
@@ -11274,9 +12352,12 @@ export namespace Prisma {
     rememberConsentDate?: true
     savedBy?: true
     sector?: true
+    referral?: true
     subsector?: true
     uploadedBy?: true
     website?: true
+    activationCode?: true
+    status?: true
     _all?: true
   }
 
@@ -11318,6 +12399,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ProvidersAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProvidersSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ProvidersMinAggregateInputType
@@ -11348,6 +12441,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ProvidersCountAggregateInputType | true
+    _avg?: ProvidersAvgAggregateInputType
+    _sum?: ProvidersSumAggregateInputType
     _min?: ProvidersMinAggregateInputType
     _max?: ProvidersMaxAggregateInputType
   }
@@ -11356,21 +12451,25 @@ export namespace Prisma {
     providerId: string
     contactForename: string
     contactSurname: string
-    defAddress: string
     email: string
-    mapConsent: boolean
-    insurance: boolean
-    mapConsentDate: string
+    mapConsent: boolean | null
+    insurance: boolean | null
+    mapConsentDate: string | null
     name: string
     phone: string
-    rememberConsent: boolean
-    rememberConsentDate: string
-    savedBy: JsonValue
+    rememberConsent: boolean | null
+    rememberConsentDate: string | null
+    savedBy: JsonValue | null
     sector: string
+    referral: string | null
     subsector: string
     uploadedBy: string
-    website: string
+    website: string | null
+    activationCode: number
+    status: string
     _count: ProvidersCountAggregateOutputType | null
+    _avg: ProvidersAvgAggregateOutputType | null
+    _sum: ProvidersSumAggregateOutputType | null
     _min: ProvidersMinAggregateOutputType | null
     _max: ProvidersMaxAggregateOutputType | null
   }
@@ -11393,7 +12492,6 @@ export namespace Prisma {
     providerId?: boolean
     contactForename?: boolean
     contactSurname?: boolean
-    defAddress?: boolean
     email?: boolean
     mapConsent?: boolean
     insurance?: boolean
@@ -11404,14 +12502,18 @@ export namespace Prisma {
     rememberConsentDate?: boolean
     savedBy?: boolean
     sector?: boolean
+    referral?: boolean
     subsector?: boolean
     uploadedBy?: boolean
     website?: boolean
+    activationCode?: boolean
+    status?: boolean
     Addresses?: boolean | Providers$AddressesArgs<ExtArgs>
     PlacementListings?: boolean | Providers$PlacementListingsArgs<ExtArgs>
     Placements?: boolean | Providers$PlacementsArgs<ExtArgs>
     ProviderStaff?: boolean | Providers$ProviderStaffArgs<ExtArgs>
     ProviderUserGroups?: boolean | Providers$ProviderUserGroupsArgs<ExtArgs>
+    ProviderCohorts?: boolean | Providers$ProviderCohortsArgs<ExtArgs>
     _count?: boolean | ProvidersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["providers"]>
 
@@ -11419,7 +12521,6 @@ export namespace Prisma {
     providerId?: boolean
     contactForename?: boolean
     contactSurname?: boolean
-    defAddress?: boolean
     email?: boolean
     mapConsent?: boolean
     insurance?: boolean
@@ -11430,9 +12531,12 @@ export namespace Prisma {
     rememberConsentDate?: boolean
     savedBy?: boolean
     sector?: boolean
+    referral?: boolean
     subsector?: boolean
     uploadedBy?: boolean
     website?: boolean
+    activationCode?: boolean
+    status?: boolean
   }
 
   export type ProvidersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11441,6 +12545,7 @@ export namespace Prisma {
     Placements?: boolean | Providers$PlacementsArgs<ExtArgs>
     ProviderStaff?: boolean | Providers$ProviderStaffArgs<ExtArgs>
     ProviderUserGroups?: boolean | Providers$ProviderUserGroupsArgs<ExtArgs>
+    ProviderCohorts?: boolean | Providers$ProviderCohortsArgs<ExtArgs>
     _count?: boolean | ProvidersCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -11453,25 +12558,28 @@ export namespace Prisma {
       Placements: Prisma.$PlacementsPayload<ExtArgs>[]
       ProviderStaff: Prisma.$ProviderStaffPayload<ExtArgs>[]
       ProviderUserGroups: Prisma.$ProviderUserGroupsPayload<ExtArgs>[]
+      ProviderCohorts: Prisma.$ProviderCohortsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       providerId: string
       contactForename: string
       contactSurname: string
-      defAddress: string
       email: string
-      mapConsent: boolean
-      insurance: boolean
-      mapConsentDate: string
+      mapConsent: boolean | null
+      insurance: boolean | null
+      mapConsentDate: string | null
       name: string
       phone: string
-      rememberConsent: boolean
-      rememberConsentDate: string
-      savedBy: Prisma.JsonValue
+      rememberConsent: boolean | null
+      rememberConsentDate: string | null
+      savedBy: Prisma.JsonValue | null
       sector: string
+      referral: string | null
       subsector: string
       uploadedBy: string
-      website: string
+      website: string | null
+      activationCode: number
+      status: string
     }, ExtArgs["result"]["providers"]>
     composites: {}
   }
@@ -11847,6 +12955,8 @@ export namespace Prisma {
 
     ProviderUserGroups<T extends Providers$ProviderUserGroupsArgs<ExtArgs> = {}>(args?: Subset<T, Providers$ProviderUserGroupsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProviderUserGroupsPayload<ExtArgs>, T, 'findMany'> | Null>;
 
+    ProviderCohorts<T extends Providers$ProviderCohortsArgs<ExtArgs> = {}>(args?: Subset<T, Providers$ProviderCohortsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProviderCohortsPayload<ExtArgs>, T, 'findMany'> | Null>;
+
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11878,7 +12988,6 @@ export namespace Prisma {
     readonly providerId: FieldRef<"Providers", 'String'>
     readonly contactForename: FieldRef<"Providers", 'String'>
     readonly contactSurname: FieldRef<"Providers", 'String'>
-    readonly defAddress: FieldRef<"Providers", 'String'>
     readonly email: FieldRef<"Providers", 'String'>
     readonly mapConsent: FieldRef<"Providers", 'Boolean'>
     readonly insurance: FieldRef<"Providers", 'Boolean'>
@@ -11889,9 +12998,12 @@ export namespace Prisma {
     readonly rememberConsentDate: FieldRef<"Providers", 'String'>
     readonly savedBy: FieldRef<"Providers", 'Json'>
     readonly sector: FieldRef<"Providers", 'String'>
+    readonly referral: FieldRef<"Providers", 'String'>
     readonly subsector: FieldRef<"Providers", 'String'>
     readonly uploadedBy: FieldRef<"Providers", 'String'>
     readonly website: FieldRef<"Providers", 'String'>
+    readonly activationCode: FieldRef<"Providers", 'Int'>
+    readonly status: FieldRef<"Providers", 'String'>
   }
     
 
@@ -12305,6 +13417,27 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProviderUserGroupsScalarFieldEnum | ProviderUserGroupsScalarFieldEnum[]
+  }
+
+
+  /**
+   * Providers.ProviderCohorts
+   */
+  export type Providers$ProviderCohortsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProviderCohorts
+     */
+    select?: ProviderCohortsSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: ProviderCohortsInclude<ExtArgs> | null
+    where?: ProviderCohortsWhereInput
+    orderBy?: ProviderCohortsOrderByWithRelationInput | ProviderCohortsOrderByWithRelationInput[]
+    cursor?: ProviderCohortsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProviderCohortsScalarFieldEnum | ProviderCohortsScalarFieldEnum[]
   }
 
 
@@ -14256,7 +15389,6 @@ export namespace Prisma {
     userGroupId: string | null
     default: boolean | null
     name: string | null
-    template: string | null
     updated: string | null
     providerId: string | null
   }
@@ -14265,7 +15397,6 @@ export namespace Prisma {
     userGroupId: string | null
     default: boolean | null
     name: string | null
-    template: string | null
     updated: string | null
     providerId: string | null
   }
@@ -14274,7 +15405,6 @@ export namespace Prisma {
     userGroupId: number
     default: number
     name: number
-    template: number
     updated: number
     providerId: number
     _all: number
@@ -14285,7 +15415,6 @@ export namespace Prisma {
     userGroupId?: true
     default?: true
     name?: true
-    template?: true
     updated?: true
     providerId?: true
   }
@@ -14294,7 +15423,6 @@ export namespace Prisma {
     userGroupId?: true
     default?: true
     name?: true
-    template?: true
     updated?: true
     providerId?: true
   }
@@ -14303,7 +15431,6 @@ export namespace Prisma {
     userGroupId?: true
     default?: true
     name?: true
-    template?: true
     updated?: true
     providerId?: true
     _all?: true
@@ -14385,7 +15512,6 @@ export namespace Prisma {
     userGroupId: string
     default: boolean
     name: string
-    template: string
     updated: string
     providerId: string
     _count: ProviderUserGroupsCountAggregateOutputType | null
@@ -14411,7 +15537,6 @@ export namespace Prisma {
     userGroupId?: boolean
     default?: boolean
     name?: boolean
-    template?: boolean
     updated?: boolean
     providerId?: boolean
     ProviderStaff?: boolean | ProviderUserGroups$ProviderStaffArgs<ExtArgs>
@@ -14423,7 +15548,6 @@ export namespace Prisma {
     userGroupId?: boolean
     default?: boolean
     name?: boolean
-    template?: boolean
     updated?: boolean
     providerId?: boolean
   }
@@ -14445,7 +15569,6 @@ export namespace Prisma {
       userGroupId: string
       default: boolean
       name: string
-      template: string
       updated: string
       providerId: string
     }, ExtArgs["result"]["providerUserGroups"]>
@@ -14848,7 +15971,6 @@ export namespace Prisma {
     readonly userGroupId: FieldRef<"ProviderUserGroups", 'String'>
     readonly default: FieldRef<"ProviderUserGroups", 'Boolean'>
     readonly name: FieldRef<"ProviderUserGroups", 'String'>
-    readonly template: FieldRef<"ProviderUserGroups", 'String'>
     readonly updated: FieldRef<"ProviderUserGroups", 'String'>
     readonly providerId: FieldRef<"ProviderUserGroups", 'String'>
   }
@@ -18375,7 +19497,7 @@ export namespace Prisma {
     created: string
     details: JsonValue
     email: string
-    notes: JsonValue
+    notes: JsonValue | null
     status: string
     providerId: string
     userGroupId: string
@@ -18439,7 +19561,7 @@ export namespace Prisma {
       created: string
       details: Prisma.JsonValue
       email: string
-      notes: Prisma.JsonValue
+      notes: Prisma.JsonValue | null
       status: string
       providerId: string
       userGroupId: string
@@ -19193,8 +20315,8 @@ export namespace Prisma {
     addressId: 'addressId',
     name: 'name',
     stage: 'stage',
-    address_line1: 'address_line1',
-    address_line2: 'address_line2',
+    addressLine1: 'addressLine1',
+    addressLine2: 'addressLine2',
     contactForename: 'contactForename',
     contactSurname: 'contactSurname',
     country: 'country',
@@ -19227,6 +20349,17 @@ export namespace Prisma {
   };
 
   export type CohortsScalarFieldEnum = (typeof CohortsScalarFieldEnum)[keyof typeof CohortsScalarFieldEnum]
+
+
+  export const ProviderCohortsScalarFieldEnum: {
+    cohortId: 'cohortId',
+    stage: 'stage',
+    name: 'name',
+    addressId: 'addressId',
+    providerId: 'providerId'
+  };
+
+  export type ProviderCohortsScalarFieldEnum = (typeof ProviderCohortsScalarFieldEnum)[keyof typeof ProviderCohortsScalarFieldEnum]
 
 
   export const ContactsScalarFieldEnum: {
@@ -19353,7 +20486,6 @@ export namespace Prisma {
     providerId: 'providerId',
     contactForename: 'contactForename',
     contactSurname: 'contactSurname',
-    defAddress: 'defAddress',
     email: 'email',
     mapConsent: 'mapConsent',
     insurance: 'insurance',
@@ -19364,9 +20496,12 @@ export namespace Prisma {
     rememberConsentDate: 'rememberConsentDate',
     savedBy: 'savedBy',
     sector: 'sector',
+    referral: 'referral',
     subsector: 'subsector',
     uploadedBy: 'uploadedBy',
-    website: 'website'
+    website: 'website',
+    activationCode: 'activationCode',
+    status: 'status'
   };
 
   export type ProvidersScalarFieldEnum = (typeof ProvidersScalarFieldEnum)[keyof typeof ProvidersScalarFieldEnum]
@@ -19398,7 +20533,6 @@ export namespace Prisma {
     userGroupId: 'userGroupId',
     default: 'default',
     name: 'name',
-    template: 'template',
     updated: 'updated',
     providerId: 'providerId'
   };
@@ -19482,6 +20616,14 @@ export namespace Prisma {
   };
 
   export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
   export const QueryMode: {
@@ -19594,8 +20736,8 @@ export namespace Prisma {
     addressId?: StringFilter<"Addresses"> | string
     name?: StringFilter<"Addresses"> | string
     stage?: StringNullableFilter<"Addresses"> | string | null
-    address_line1?: StringNullableFilter<"Addresses"> | string | null
-    address_line2?: StringNullableFilter<"Addresses"> | string | null
+    addressLine1?: StringNullableFilter<"Addresses"> | string | null
+    addressLine2?: StringNullableFilter<"Addresses"> | string | null
     contactForename?: StringNullableFilter<"Addresses"> | string | null
     contactSurname?: StringNullableFilter<"Addresses"> | string | null
     country?: StringNullableFilter<"Addresses"> | string | null
@@ -19611,14 +20753,15 @@ export namespace Prisma {
     Contacts?: ContactsListRelationFilter
     PlacementListings?: PlacementListingsListRelationFilter
     Placements?: PlacementsListRelationFilter
+    ProviderCohorts?: ProviderCohortsListRelationFilter
   }
 
   export type AddressesOrderByWithRelationInput = {
     addressId?: SortOrder
     name?: SortOrder
     stage?: SortOrderInput | SortOrder
-    address_line1?: SortOrderInput | SortOrder
-    address_line2?: SortOrderInput | SortOrder
+    addressLine1?: SortOrderInput | SortOrder
+    addressLine2?: SortOrderInput | SortOrder
     contactForename?: SortOrderInput | SortOrder
     contactSurname?: SortOrderInput | SortOrder
     country?: SortOrderInput | SortOrder
@@ -19634,6 +20777,7 @@ export namespace Prisma {
     Contacts?: ContactsOrderByRelationAggregateInput
     PlacementListings?: PlacementListingsOrderByRelationAggregateInput
     Placements?: PlacementsOrderByRelationAggregateInput
+    ProviderCohorts?: ProviderCohortsOrderByRelationAggregateInput
   }
 
   export type AddressesWhereUniqueInput = Prisma.AtLeast<{
@@ -19643,8 +20787,8 @@ export namespace Prisma {
     NOT?: AddressesWhereInput | AddressesWhereInput[]
     name?: StringFilter<"Addresses"> | string
     stage?: StringNullableFilter<"Addresses"> | string | null
-    address_line1?: StringNullableFilter<"Addresses"> | string | null
-    address_line2?: StringNullableFilter<"Addresses"> | string | null
+    addressLine1?: StringNullableFilter<"Addresses"> | string | null
+    addressLine2?: StringNullableFilter<"Addresses"> | string | null
     contactForename?: StringNullableFilter<"Addresses"> | string | null
     contactSurname?: StringNullableFilter<"Addresses"> | string | null
     country?: StringNullableFilter<"Addresses"> | string | null
@@ -19660,14 +20804,15 @@ export namespace Prisma {
     Contacts?: ContactsListRelationFilter
     PlacementListings?: PlacementListingsListRelationFilter
     Placements?: PlacementsListRelationFilter
+    ProviderCohorts?: ProviderCohortsListRelationFilter
   }, "addressId" | "addressId">
 
   export type AddressesOrderByWithAggregationInput = {
     addressId?: SortOrder
     name?: SortOrder
     stage?: SortOrderInput | SortOrder
-    address_line1?: SortOrderInput | SortOrder
-    address_line2?: SortOrderInput | SortOrder
+    addressLine1?: SortOrderInput | SortOrder
+    addressLine2?: SortOrderInput | SortOrder
     contactForename?: SortOrderInput | SortOrder
     contactSurname?: SortOrderInput | SortOrder
     country?: SortOrderInput | SortOrder
@@ -19690,8 +20835,8 @@ export namespace Prisma {
     addressId?: StringWithAggregatesFilter<"Addresses"> | string
     name?: StringWithAggregatesFilter<"Addresses"> | string
     stage?: StringNullableWithAggregatesFilter<"Addresses"> | string | null
-    address_line1?: StringNullableWithAggregatesFilter<"Addresses"> | string | null
-    address_line2?: StringNullableWithAggregatesFilter<"Addresses"> | string | null
+    addressLine1?: StringNullableWithAggregatesFilter<"Addresses"> | string | null
+    addressLine2?: StringNullableWithAggregatesFilter<"Addresses"> | string | null
     contactForename?: StringNullableWithAggregatesFilter<"Addresses"> | string | null
     contactSurname?: StringNullableWithAggregatesFilter<"Addresses"> | string | null
     country?: StringNullableWithAggregatesFilter<"Addresses"> | string | null
@@ -19745,10 +20890,10 @@ export namespace Prisma {
 
   export type CohortsWhereUniqueInput = Prisma.AtLeast<{
     cohortId?: string
-    designatedStaff?: string
     AND?: CohortsWhereInput | CohortsWhereInput[]
     OR?: CohortsWhereInput[]
     NOT?: CohortsWhereInput | CohortsWhereInput[]
+    designatedStaff?: StringFilter<"Cohorts"> | string
     stage?: StringFilter<"Cohorts"> | string
     placementType?: StringFilter<"Cohorts"> | string
     name?: StringFilter<"Cohorts"> | string
@@ -19762,7 +20907,7 @@ export namespace Prisma {
     instituteId?: StringFilter<"Cohorts"> | string
     institute?: XOR<InstitutesRelationFilter, InstitutesWhereInput>
     InstituteStudents?: InstituteStudentsListRelationFilter
-  }, "cohortId" | "cohortId" | "designatedStaff">
+  }, "cohortId" | "cohortId">
 
   export type CohortsOrderByWithAggregationInput = {
     cohortId?: SortOrder
@@ -19800,6 +20945,64 @@ export namespace Prisma {
     includedForms?: StringNullableListFilter<"Cohorts">
     workflow?: StringWithAggregatesFilter<"Cohorts"> | string
     instituteId?: StringWithAggregatesFilter<"Cohorts"> | string
+  }
+
+  export type ProviderCohortsWhereInput = {
+    AND?: ProviderCohortsWhereInput | ProviderCohortsWhereInput[]
+    OR?: ProviderCohortsWhereInput[]
+    NOT?: ProviderCohortsWhereInput | ProviderCohortsWhereInput[]
+    cohortId?: StringFilter<"ProviderCohorts"> | string
+    stage?: StringFilter<"ProviderCohorts"> | string
+    name?: StringFilter<"ProviderCohorts"> | string
+    addressId?: StringFilter<"ProviderCohorts"> | string
+    providerId?: StringFilter<"ProviderCohorts"> | string
+    address?: XOR<AddressesRelationFilter, AddressesWhereInput>
+    provider?: XOR<ProvidersRelationFilter, ProvidersWhereInput>
+  }
+
+  export type ProviderCohortsOrderByWithRelationInput = {
+    cohortId?: SortOrder
+    stage?: SortOrder
+    name?: SortOrder
+    addressId?: SortOrder
+    providerId?: SortOrder
+    address?: AddressesOrderByWithRelationInput
+    provider?: ProvidersOrderByWithRelationInput
+  }
+
+  export type ProviderCohortsWhereUniqueInput = Prisma.AtLeast<{
+    cohortId?: string
+    AND?: ProviderCohortsWhereInput | ProviderCohortsWhereInput[]
+    OR?: ProviderCohortsWhereInput[]
+    NOT?: ProviderCohortsWhereInput | ProviderCohortsWhereInput[]
+    stage?: StringFilter<"ProviderCohorts"> | string
+    name?: StringFilter<"ProviderCohorts"> | string
+    addressId?: StringFilter<"ProviderCohorts"> | string
+    providerId?: StringFilter<"ProviderCohorts"> | string
+    address?: XOR<AddressesRelationFilter, AddressesWhereInput>
+    provider?: XOR<ProvidersRelationFilter, ProvidersWhereInput>
+  }, "cohortId" | "cohortId">
+
+  export type ProviderCohortsOrderByWithAggregationInput = {
+    cohortId?: SortOrder
+    stage?: SortOrder
+    name?: SortOrder
+    addressId?: SortOrder
+    providerId?: SortOrder
+    _count?: ProviderCohortsCountOrderByAggregateInput
+    _max?: ProviderCohortsMaxOrderByAggregateInput
+    _min?: ProviderCohortsMinOrderByAggregateInput
+  }
+
+  export type ProviderCohortsScalarWhereWithAggregatesInput = {
+    AND?: ProviderCohortsScalarWhereWithAggregatesInput | ProviderCohortsScalarWhereWithAggregatesInput[]
+    OR?: ProviderCohortsScalarWhereWithAggregatesInput[]
+    NOT?: ProviderCohortsScalarWhereWithAggregatesInput | ProviderCohortsScalarWhereWithAggregatesInput[]
+    cohortId?: StringWithAggregatesFilter<"ProviderCohorts"> | string
+    stage?: StringWithAggregatesFilter<"ProviderCohorts"> | string
+    name?: StringWithAggregatesFilter<"ProviderCohorts"> | string
+    addressId?: StringWithAggregatesFilter<"ProviderCohorts"> | string
+    providerId?: StringWithAggregatesFilter<"ProviderCohorts"> | string
   }
 
   export type ContactsWhereInput = {
@@ -20461,50 +21664,56 @@ export namespace Prisma {
     providerId?: StringFilter<"Providers"> | string
     contactForename?: StringFilter<"Providers"> | string
     contactSurname?: StringFilter<"Providers"> | string
-    defAddress?: StringFilter<"Providers"> | string
     email?: StringFilter<"Providers"> | string
-    mapConsent?: BoolFilter<"Providers"> | boolean
-    insurance?: BoolFilter<"Providers"> | boolean
-    mapConsentDate?: StringFilter<"Providers"> | string
+    mapConsent?: BoolNullableFilter<"Providers"> | boolean | null
+    insurance?: BoolNullableFilter<"Providers"> | boolean | null
+    mapConsentDate?: StringNullableFilter<"Providers"> | string | null
     name?: StringFilter<"Providers"> | string
     phone?: StringFilter<"Providers"> | string
-    rememberConsent?: BoolFilter<"Providers"> | boolean
-    rememberConsentDate?: StringFilter<"Providers"> | string
-    savedBy?: JsonFilter<"Providers">
+    rememberConsent?: BoolNullableFilter<"Providers"> | boolean | null
+    rememberConsentDate?: StringNullableFilter<"Providers"> | string | null
+    savedBy?: JsonNullableFilter<"Providers">
     sector?: StringFilter<"Providers"> | string
+    referral?: StringNullableFilter<"Providers"> | string | null
     subsector?: StringFilter<"Providers"> | string
     uploadedBy?: StringFilter<"Providers"> | string
-    website?: StringFilter<"Providers"> | string
+    website?: StringNullableFilter<"Providers"> | string | null
+    activationCode?: IntFilter<"Providers"> | number
+    status?: StringFilter<"Providers"> | string
     Addresses?: AddressesListRelationFilter
     PlacementListings?: PlacementListingsListRelationFilter
     Placements?: PlacementsListRelationFilter
     ProviderStaff?: ProviderStaffListRelationFilter
     ProviderUserGroups?: ProviderUserGroupsListRelationFilter
+    ProviderCohorts?: ProviderCohortsListRelationFilter
   }
 
   export type ProvidersOrderByWithRelationInput = {
     providerId?: SortOrder
     contactForename?: SortOrder
     contactSurname?: SortOrder
-    defAddress?: SortOrder
     email?: SortOrder
-    mapConsent?: SortOrder
-    insurance?: SortOrder
-    mapConsentDate?: SortOrder
+    mapConsent?: SortOrderInput | SortOrder
+    insurance?: SortOrderInput | SortOrder
+    mapConsentDate?: SortOrderInput | SortOrder
     name?: SortOrder
     phone?: SortOrder
-    rememberConsent?: SortOrder
-    rememberConsentDate?: SortOrder
-    savedBy?: SortOrder
+    rememberConsent?: SortOrderInput | SortOrder
+    rememberConsentDate?: SortOrderInput | SortOrder
+    savedBy?: SortOrderInput | SortOrder
     sector?: SortOrder
+    referral?: SortOrderInput | SortOrder
     subsector?: SortOrder
     uploadedBy?: SortOrder
-    website?: SortOrder
+    website?: SortOrderInput | SortOrder
+    activationCode?: SortOrder
+    status?: SortOrder
     Addresses?: AddressesOrderByRelationAggregateInput
     PlacementListings?: PlacementListingsOrderByRelationAggregateInput
     Placements?: PlacementsOrderByRelationAggregateInput
     ProviderStaff?: ProviderStaffOrderByRelationAggregateInput
     ProviderUserGroups?: ProviderUserGroupsOrderByRelationAggregateInput
+    ProviderCohorts?: ProviderCohortsOrderByRelationAggregateInput
   }
 
   export type ProvidersWhereUniqueInput = Prisma.AtLeast<{
@@ -20514,48 +21723,55 @@ export namespace Prisma {
     NOT?: ProvidersWhereInput | ProvidersWhereInput[]
     contactForename?: StringFilter<"Providers"> | string
     contactSurname?: StringFilter<"Providers"> | string
-    defAddress?: StringFilter<"Providers"> | string
     email?: StringFilter<"Providers"> | string
-    mapConsent?: BoolFilter<"Providers"> | boolean
-    insurance?: BoolFilter<"Providers"> | boolean
-    mapConsentDate?: StringFilter<"Providers"> | string
+    mapConsent?: BoolNullableFilter<"Providers"> | boolean | null
+    insurance?: BoolNullableFilter<"Providers"> | boolean | null
+    mapConsentDate?: StringNullableFilter<"Providers"> | string | null
     name?: StringFilter<"Providers"> | string
     phone?: StringFilter<"Providers"> | string
-    rememberConsent?: BoolFilter<"Providers"> | boolean
-    rememberConsentDate?: StringFilter<"Providers"> | string
-    savedBy?: JsonFilter<"Providers">
+    rememberConsent?: BoolNullableFilter<"Providers"> | boolean | null
+    rememberConsentDate?: StringNullableFilter<"Providers"> | string | null
+    savedBy?: JsonNullableFilter<"Providers">
     sector?: StringFilter<"Providers"> | string
+    referral?: StringNullableFilter<"Providers"> | string | null
     subsector?: StringFilter<"Providers"> | string
     uploadedBy?: StringFilter<"Providers"> | string
-    website?: StringFilter<"Providers"> | string
+    website?: StringNullableFilter<"Providers"> | string | null
+    activationCode?: IntFilter<"Providers"> | number
+    status?: StringFilter<"Providers"> | string
     Addresses?: AddressesListRelationFilter
     PlacementListings?: PlacementListingsListRelationFilter
     Placements?: PlacementsListRelationFilter
     ProviderStaff?: ProviderStaffListRelationFilter
     ProviderUserGroups?: ProviderUserGroupsListRelationFilter
+    ProviderCohorts?: ProviderCohortsListRelationFilter
   }, "providerId" | "providerId">
 
   export type ProvidersOrderByWithAggregationInput = {
     providerId?: SortOrder
     contactForename?: SortOrder
     contactSurname?: SortOrder
-    defAddress?: SortOrder
     email?: SortOrder
-    mapConsent?: SortOrder
-    insurance?: SortOrder
-    mapConsentDate?: SortOrder
+    mapConsent?: SortOrderInput | SortOrder
+    insurance?: SortOrderInput | SortOrder
+    mapConsentDate?: SortOrderInput | SortOrder
     name?: SortOrder
     phone?: SortOrder
-    rememberConsent?: SortOrder
-    rememberConsentDate?: SortOrder
-    savedBy?: SortOrder
+    rememberConsent?: SortOrderInput | SortOrder
+    rememberConsentDate?: SortOrderInput | SortOrder
+    savedBy?: SortOrderInput | SortOrder
     sector?: SortOrder
+    referral?: SortOrderInput | SortOrder
     subsector?: SortOrder
     uploadedBy?: SortOrder
-    website?: SortOrder
+    website?: SortOrderInput | SortOrder
+    activationCode?: SortOrder
+    status?: SortOrder
     _count?: ProvidersCountOrderByAggregateInput
+    _avg?: ProvidersAvgOrderByAggregateInput
     _max?: ProvidersMaxOrderByAggregateInput
     _min?: ProvidersMinOrderByAggregateInput
+    _sum?: ProvidersSumOrderByAggregateInput
   }
 
   export type ProvidersScalarWhereWithAggregatesInput = {
@@ -20565,20 +21781,22 @@ export namespace Prisma {
     providerId?: StringWithAggregatesFilter<"Providers"> | string
     contactForename?: StringWithAggregatesFilter<"Providers"> | string
     contactSurname?: StringWithAggregatesFilter<"Providers"> | string
-    defAddress?: StringWithAggregatesFilter<"Providers"> | string
     email?: StringWithAggregatesFilter<"Providers"> | string
-    mapConsent?: BoolWithAggregatesFilter<"Providers"> | boolean
-    insurance?: BoolWithAggregatesFilter<"Providers"> | boolean
-    mapConsentDate?: StringWithAggregatesFilter<"Providers"> | string
+    mapConsent?: BoolNullableWithAggregatesFilter<"Providers"> | boolean | null
+    insurance?: BoolNullableWithAggregatesFilter<"Providers"> | boolean | null
+    mapConsentDate?: StringNullableWithAggregatesFilter<"Providers"> | string | null
     name?: StringWithAggregatesFilter<"Providers"> | string
     phone?: StringWithAggregatesFilter<"Providers"> | string
-    rememberConsent?: BoolWithAggregatesFilter<"Providers"> | boolean
-    rememberConsentDate?: StringWithAggregatesFilter<"Providers"> | string
-    savedBy?: JsonWithAggregatesFilter<"Providers">
+    rememberConsent?: BoolNullableWithAggregatesFilter<"Providers"> | boolean | null
+    rememberConsentDate?: StringNullableWithAggregatesFilter<"Providers"> | string | null
+    savedBy?: JsonNullableWithAggregatesFilter<"Providers">
     sector?: StringWithAggregatesFilter<"Providers"> | string
+    referral?: StringNullableWithAggregatesFilter<"Providers"> | string | null
     subsector?: StringWithAggregatesFilter<"Providers"> | string
     uploadedBy?: StringWithAggregatesFilter<"Providers"> | string
-    website?: StringWithAggregatesFilter<"Providers"> | string
+    website?: StringNullableWithAggregatesFilter<"Providers"> | string | null
+    activationCode?: IntWithAggregatesFilter<"Providers"> | number
+    status?: StringWithAggregatesFilter<"Providers"> | string
   }
 
   export type InstituteStudentUserGroupsWhereInput = {
@@ -20707,7 +21925,6 @@ export namespace Prisma {
     userGroupId?: StringFilter<"ProviderUserGroups"> | string
     default?: BoolFilter<"ProviderUserGroups"> | boolean
     name?: StringFilter<"ProviderUserGroups"> | string
-    template?: StringFilter<"ProviderUserGroups"> | string
     updated?: StringFilter<"ProviderUserGroups"> | string
     providerId?: StringFilter<"ProviderUserGroups"> | string
     ProviderStaff?: ProviderStaffListRelationFilter
@@ -20718,7 +21935,6 @@ export namespace Prisma {
     userGroupId?: SortOrder
     default?: SortOrder
     name?: SortOrder
-    template?: SortOrder
     updated?: SortOrder
     providerId?: SortOrder
     ProviderStaff?: ProviderStaffOrderByRelationAggregateInput
@@ -20732,7 +21948,6 @@ export namespace Prisma {
     NOT?: ProviderUserGroupsWhereInput | ProviderUserGroupsWhereInput[]
     default?: BoolFilter<"ProviderUserGroups"> | boolean
     name?: StringFilter<"ProviderUserGroups"> | string
-    template?: StringFilter<"ProviderUserGroups"> | string
     updated?: StringFilter<"ProviderUserGroups"> | string
     providerId?: StringFilter<"ProviderUserGroups"> | string
     ProviderStaff?: ProviderStaffListRelationFilter
@@ -20743,7 +21958,6 @@ export namespace Prisma {
     userGroupId?: SortOrder
     default?: SortOrder
     name?: SortOrder
-    template?: SortOrder
     updated?: SortOrder
     providerId?: SortOrder
     _count?: ProviderUserGroupsCountOrderByAggregateInput
@@ -20758,7 +21972,6 @@ export namespace Prisma {
     userGroupId?: StringWithAggregatesFilter<"ProviderUserGroups"> | string
     default?: BoolWithAggregatesFilter<"ProviderUserGroups"> | boolean
     name?: StringWithAggregatesFilter<"ProviderUserGroups"> | string
-    template?: StringWithAggregatesFilter<"ProviderUserGroups"> | string
     updated?: StringWithAggregatesFilter<"ProviderUserGroups"> | string
     providerId?: StringWithAggregatesFilter<"ProviderUserGroups"> | string
   }
@@ -21034,7 +22247,7 @@ export namespace Prisma {
     created?: StringFilter<"ProviderStaff"> | string
     details?: JsonFilter<"ProviderStaff">
     email?: StringFilter<"ProviderStaff"> | string
-    notes?: JsonFilter<"ProviderStaff">
+    notes?: JsonNullableFilter<"ProviderStaff">
     status?: StringFilter<"ProviderStaff"> | string
     providerId?: StringFilter<"ProviderStaff"> | string
     userGroupId?: StringFilter<"ProviderStaff"> | string
@@ -21047,7 +22260,7 @@ export namespace Prisma {
     created?: SortOrder
     details?: SortOrder
     email?: SortOrder
-    notes?: SortOrder
+    notes?: SortOrderInput | SortOrder
     status?: SortOrder
     providerId?: SortOrder
     userGroupId?: SortOrder
@@ -21063,7 +22276,7 @@ export namespace Prisma {
     created?: StringFilter<"ProviderStaff"> | string
     details?: JsonFilter<"ProviderStaff">
     email?: StringFilter<"ProviderStaff"> | string
-    notes?: JsonFilter<"ProviderStaff">
+    notes?: JsonNullableFilter<"ProviderStaff">
     status?: StringFilter<"ProviderStaff"> | string
     providerId?: StringFilter<"ProviderStaff"> | string
     userGroupId?: StringFilter<"ProviderStaff"> | string
@@ -21076,7 +22289,7 @@ export namespace Prisma {
     created?: SortOrder
     details?: SortOrder
     email?: SortOrder
-    notes?: SortOrder
+    notes?: SortOrderInput | SortOrder
     status?: SortOrder
     providerId?: SortOrder
     userGroupId?: SortOrder
@@ -21093,7 +22306,7 @@ export namespace Prisma {
     created?: StringWithAggregatesFilter<"ProviderStaff"> | string
     details?: JsonWithAggregatesFilter<"ProviderStaff">
     email?: StringWithAggregatesFilter<"ProviderStaff"> | string
-    notes?: JsonWithAggregatesFilter<"ProviderStaff">
+    notes?: JsonNullableWithAggregatesFilter<"ProviderStaff">
     status?: StringWithAggregatesFilter<"ProviderStaff"> | string
     providerId?: StringWithAggregatesFilter<"ProviderStaff"> | string
     userGroupId?: StringWithAggregatesFilter<"ProviderStaff"> | string
@@ -21103,8 +22316,8 @@ export namespace Prisma {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -21118,14 +22331,15 @@ export namespace Prisma {
     Contacts?: ContactsCreateNestedManyWithoutAddressInput
     PlacementListings?: PlacementListingsCreateNestedManyWithoutAddressInput
     Placements?: PlacementsCreateNestedManyWithoutAddressInput
+    ProviderCohorts?: ProviderCohortsCreateNestedManyWithoutAddressInput
   }
 
   export type AddressesUncheckedCreateInput = {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -21139,14 +22353,15 @@ export namespace Prisma {
     Contacts?: ContactsUncheckedCreateNestedManyWithoutAddressInput
     PlacementListings?: PlacementListingsUncheckedCreateNestedManyWithoutAddressInput
     Placements?: PlacementsUncheckedCreateNestedManyWithoutAddressInput
+    ProviderCohorts?: ProviderCohortsUncheckedCreateNestedManyWithoutAddressInput
   }
 
   export type AddressesUpdateInput = {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21160,14 +22375,15 @@ export namespace Prisma {
     Contacts?: ContactsUpdateManyWithoutAddressNestedInput
     PlacementListings?: PlacementListingsUpdateManyWithoutAddressNestedInput
     Placements?: PlacementsUpdateManyWithoutAddressNestedInput
+    ProviderCohorts?: ProviderCohortsUpdateManyWithoutAddressNestedInput
   }
 
   export type AddressesUncheckedUpdateInput = {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21181,14 +22397,15 @@ export namespace Prisma {
     Contacts?: ContactsUncheckedUpdateManyWithoutAddressNestedInput
     PlacementListings?: PlacementListingsUncheckedUpdateManyWithoutAddressNestedInput
     Placements?: PlacementsUncheckedUpdateManyWithoutAddressNestedInput
+    ProviderCohorts?: ProviderCohortsUncheckedUpdateManyWithoutAddressNestedInput
   }
 
   export type AddressesCreateManyInput = {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -21205,8 +22422,8 @@ export namespace Prisma {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21221,8 +22438,8 @@ export namespace Prisma {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -21348,6 +22565,60 @@ export namespace Prisma {
     includedForms?: CohortsUpdateincludedFormsInput | string[]
     workflow?: StringFieldUpdateOperationsInput | string
     instituteId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProviderCohortsCreateInput = {
+    cohortId: string
+    stage: string
+    name: string
+    address: AddressesCreateNestedOneWithoutProviderCohortsInput
+    provider: ProvidersCreateNestedOneWithoutProviderCohortsInput
+  }
+
+  export type ProviderCohortsUncheckedCreateInput = {
+    cohortId: string
+    stage: string
+    name: string
+    addressId: string
+    providerId: string
+  }
+
+  export type ProviderCohortsUpdateInput = {
+    cohortId?: StringFieldUpdateOperationsInput | string
+    stage?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    address?: AddressesUpdateOneRequiredWithoutProviderCohortsNestedInput
+    provider?: ProvidersUpdateOneRequiredWithoutProviderCohortsNestedInput
+  }
+
+  export type ProviderCohortsUncheckedUpdateInput = {
+    cohortId?: StringFieldUpdateOperationsInput | string
+    stage?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    addressId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProviderCohortsCreateManyInput = {
+    cohortId: string
+    stage: string
+    name: string
+    addressId: string
+    providerId: string
+  }
+
+  export type ProviderCohortsUpdateManyMutationInput = {
+    cohortId?: StringFieldUpdateOperationsInput | string
+    stage?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProviderCohortsUncheckedUpdateManyInput = {
+    cohortId?: StringFieldUpdateOperationsInput | string
+    stage?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    addressId?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ContactsCreateInput = {
@@ -22091,160 +23362,178 @@ export namespace Prisma {
     providerId: string
     contactForename: string
     contactSurname: string
-    defAddress: string
     email: string
-    mapConsent: boolean
-    insurance: boolean
-    mapConsentDate: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
     name: string
     phone: string
-    rememberConsent: boolean
-    rememberConsentDate: string
-    savedBy: JsonNullValueInput | InputJsonValue
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector: string
+    referral?: string | null
     subsector: string
     uploadedBy: string
-    website: string
+    website?: string | null
+    activationCode?: number
+    status: string
     Addresses?: AddressesCreateNestedManyWithoutProviderInput
     PlacementListings?: PlacementListingsCreateNestedManyWithoutProviderInput
     Placements?: PlacementsCreateNestedManyWithoutProviderInput
     ProviderStaff?: ProviderStaffCreateNestedManyWithoutProviderInput
     ProviderUserGroups?: ProviderUserGroupsCreateNestedManyWithoutProviderInput
+    ProviderCohorts?: ProviderCohortsCreateNestedManyWithoutProviderInput
   }
 
   export type ProvidersUncheckedCreateInput = {
     providerId: string
     contactForename: string
     contactSurname: string
-    defAddress: string
     email: string
-    mapConsent: boolean
-    insurance: boolean
-    mapConsentDate: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
     name: string
     phone: string
-    rememberConsent: boolean
-    rememberConsentDate: string
-    savedBy: JsonNullValueInput | InputJsonValue
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector: string
+    referral?: string | null
     subsector: string
     uploadedBy: string
-    website: string
+    website?: string | null
+    activationCode?: number
+    status: string
     Addresses?: AddressesUncheckedCreateNestedManyWithoutProviderInput
     PlacementListings?: PlacementListingsUncheckedCreateNestedManyWithoutProviderInput
     Placements?: PlacementsUncheckedCreateNestedManyWithoutProviderInput
     ProviderStaff?: ProviderStaffUncheckedCreateNestedManyWithoutProviderInput
     ProviderUserGroups?: ProviderUserGroupsUncheckedCreateNestedManyWithoutProviderInput
+    ProviderCohorts?: ProviderCohortsUncheckedCreateNestedManyWithoutProviderInput
   }
 
   export type ProvidersUpdateInput = {
     providerId?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
     contactSurname?: StringFieldUpdateOperationsInput | string
-    defAddress?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    mapConsent?: BoolFieldUpdateOperationsInput | boolean
-    insurance?: BoolFieldUpdateOperationsInput | boolean
-    mapConsentDate?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    rememberConsent?: BoolFieldUpdateOperationsInput | boolean
-    rememberConsentDate?: StringFieldUpdateOperationsInput | string
-    savedBy?: JsonNullValueInput | InputJsonValue
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
     subsector?: StringFieldUpdateOperationsInput | string
     uploadedBy?: StringFieldUpdateOperationsInput | string
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     Addresses?: AddressesUpdateManyWithoutProviderNestedInput
     PlacementListings?: PlacementListingsUpdateManyWithoutProviderNestedInput
     Placements?: PlacementsUpdateManyWithoutProviderNestedInput
     ProviderStaff?: ProviderStaffUpdateManyWithoutProviderNestedInput
     ProviderUserGroups?: ProviderUserGroupsUpdateManyWithoutProviderNestedInput
+    ProviderCohorts?: ProviderCohortsUpdateManyWithoutProviderNestedInput
   }
 
   export type ProvidersUncheckedUpdateInput = {
     providerId?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
     contactSurname?: StringFieldUpdateOperationsInput | string
-    defAddress?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    mapConsent?: BoolFieldUpdateOperationsInput | boolean
-    insurance?: BoolFieldUpdateOperationsInput | boolean
-    mapConsentDate?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    rememberConsent?: BoolFieldUpdateOperationsInput | boolean
-    rememberConsentDate?: StringFieldUpdateOperationsInput | string
-    savedBy?: JsonNullValueInput | InputJsonValue
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
     subsector?: StringFieldUpdateOperationsInput | string
     uploadedBy?: StringFieldUpdateOperationsInput | string
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     Addresses?: AddressesUncheckedUpdateManyWithoutProviderNestedInput
     PlacementListings?: PlacementListingsUncheckedUpdateManyWithoutProviderNestedInput
     Placements?: PlacementsUncheckedUpdateManyWithoutProviderNestedInput
     ProviderStaff?: ProviderStaffUncheckedUpdateManyWithoutProviderNestedInput
     ProviderUserGroups?: ProviderUserGroupsUncheckedUpdateManyWithoutProviderNestedInput
+    ProviderCohorts?: ProviderCohortsUncheckedUpdateManyWithoutProviderNestedInput
   }
 
   export type ProvidersCreateManyInput = {
     providerId: string
     contactForename: string
     contactSurname: string
-    defAddress: string
     email: string
-    mapConsent: boolean
-    insurance: boolean
-    mapConsentDate: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
     name: string
     phone: string
-    rememberConsent: boolean
-    rememberConsentDate: string
-    savedBy: JsonNullValueInput | InputJsonValue
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector: string
+    referral?: string | null
     subsector: string
     uploadedBy: string
-    website: string
+    website?: string | null
+    activationCode?: number
+    status: string
   }
 
   export type ProvidersUpdateManyMutationInput = {
     providerId?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
     contactSurname?: StringFieldUpdateOperationsInput | string
-    defAddress?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    mapConsent?: BoolFieldUpdateOperationsInput | boolean
-    insurance?: BoolFieldUpdateOperationsInput | boolean
-    mapConsentDate?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    rememberConsent?: BoolFieldUpdateOperationsInput | boolean
-    rememberConsentDate?: StringFieldUpdateOperationsInput | string
-    savedBy?: JsonNullValueInput | InputJsonValue
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
     subsector?: StringFieldUpdateOperationsInput | string
     uploadedBy?: StringFieldUpdateOperationsInput | string
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProvidersUncheckedUpdateManyInput = {
     providerId?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
     contactSurname?: StringFieldUpdateOperationsInput | string
-    defAddress?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    mapConsent?: BoolFieldUpdateOperationsInput | boolean
-    insurance?: BoolFieldUpdateOperationsInput | boolean
-    mapConsentDate?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    rememberConsent?: BoolFieldUpdateOperationsInput | boolean
-    rememberConsentDate?: StringFieldUpdateOperationsInput | string
-    savedBy?: JsonNullValueInput | InputJsonValue
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
     subsector?: StringFieldUpdateOperationsInput | string
     uploadedBy?: StringFieldUpdateOperationsInput | string
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type InstituteStudentUserGroupsCreateInput = {
@@ -22373,7 +23662,6 @@ export namespace Prisma {
     userGroupId: string
     default: boolean
     name: string
-    template: string
     updated: string
     ProviderStaff?: ProviderStaffCreateNestedManyWithoutUserGroupInput
     provider: ProvidersCreateNestedOneWithoutProviderUserGroupsInput
@@ -22383,7 +23671,6 @@ export namespace Prisma {
     userGroupId: string
     default: boolean
     name: string
-    template: string
     updated: string
     providerId: string
     ProviderStaff?: ProviderStaffUncheckedCreateNestedManyWithoutUserGroupInput
@@ -22393,7 +23680,6 @@ export namespace Prisma {
     userGroupId?: StringFieldUpdateOperationsInput | string
     default?: BoolFieldUpdateOperationsInput | boolean
     name?: StringFieldUpdateOperationsInput | string
-    template?: StringFieldUpdateOperationsInput | string
     updated?: StringFieldUpdateOperationsInput | string
     ProviderStaff?: ProviderStaffUpdateManyWithoutUserGroupNestedInput
     provider?: ProvidersUpdateOneRequiredWithoutProviderUserGroupsNestedInput
@@ -22403,7 +23689,6 @@ export namespace Prisma {
     userGroupId?: StringFieldUpdateOperationsInput | string
     default?: BoolFieldUpdateOperationsInput | boolean
     name?: StringFieldUpdateOperationsInput | string
-    template?: StringFieldUpdateOperationsInput | string
     updated?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string
     ProviderStaff?: ProviderStaffUncheckedUpdateManyWithoutUserGroupNestedInput
@@ -22413,7 +23698,6 @@ export namespace Prisma {
     userGroupId: string
     default: boolean
     name: string
-    template: string
     updated: string
     providerId: string
   }
@@ -22422,7 +23706,6 @@ export namespace Prisma {
     userGroupId?: StringFieldUpdateOperationsInput | string
     default?: BoolFieldUpdateOperationsInput | boolean
     name?: StringFieldUpdateOperationsInput | string
-    template?: StringFieldUpdateOperationsInput | string
     updated?: StringFieldUpdateOperationsInput | string
   }
 
@@ -22430,7 +23713,6 @@ export namespace Prisma {
     userGroupId?: StringFieldUpdateOperationsInput | string
     default?: BoolFieldUpdateOperationsInput | boolean
     name?: StringFieldUpdateOperationsInput | string
-    template?: StringFieldUpdateOperationsInput | string
     updated?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string
   }
@@ -22731,7 +24013,7 @@ export namespace Prisma {
     created: string
     details: JsonNullValueInput | InputJsonValue
     email: string
-    notes: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status: string
     provider: ProvidersCreateNestedOneWithoutProviderStaffInput
     userGroup: ProviderUserGroupsCreateNestedOneWithoutProviderStaffInput
@@ -22742,7 +24024,7 @@ export namespace Prisma {
     created: string
     details: JsonNullValueInput | InputJsonValue
     email: string
-    notes: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status: string
     providerId: string
     userGroupId: string
@@ -22753,7 +24035,7 @@ export namespace Prisma {
     created?: StringFieldUpdateOperationsInput | string
     details?: JsonNullValueInput | InputJsonValue
     email?: StringFieldUpdateOperationsInput | string
-    notes?: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status?: StringFieldUpdateOperationsInput | string
     provider?: ProvidersUpdateOneRequiredWithoutProviderStaffNestedInput
     userGroup?: ProviderUserGroupsUpdateOneRequiredWithoutProviderStaffNestedInput
@@ -22764,7 +24046,7 @@ export namespace Prisma {
     created?: StringFieldUpdateOperationsInput | string
     details?: JsonNullValueInput | InputJsonValue
     email?: StringFieldUpdateOperationsInput | string
-    notes?: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string
     userGroupId?: StringFieldUpdateOperationsInput | string
@@ -22775,7 +24057,7 @@ export namespace Prisma {
     created: string
     details: JsonNullValueInput | InputJsonValue
     email: string
-    notes: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status: string
     providerId: string
     userGroupId: string
@@ -22786,7 +24068,7 @@ export namespace Prisma {
     created?: StringFieldUpdateOperationsInput | string
     details?: JsonNullValueInput | InputJsonValue
     email?: StringFieldUpdateOperationsInput | string
-    notes?: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status?: StringFieldUpdateOperationsInput | string
   }
 
@@ -22795,7 +24077,7 @@ export namespace Prisma {
     created?: StringFieldUpdateOperationsInput | string
     details?: JsonNullValueInput | InputJsonValue
     email?: StringFieldUpdateOperationsInput | string
-    notes?: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string
     userGroupId?: StringFieldUpdateOperationsInput | string
@@ -22859,6 +24141,12 @@ export namespace Prisma {
     none?: PlacementsWhereInput
   }
 
+  export type ProviderCohortsListRelationFilter = {
+    every?: ProviderCohortsWhereInput
+    some?: ProviderCohortsWhereInput
+    none?: ProviderCohortsWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -22876,12 +24164,16 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type ProviderCohortsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type AddressesCountOrderByAggregateInput = {
     addressId?: SortOrder
     name?: SortOrder
     stage?: SortOrder
-    address_line1?: SortOrder
-    address_line2?: SortOrder
+    addressLine1?: SortOrder
+    addressLine2?: SortOrder
     contactForename?: SortOrder
     contactSurname?: SortOrder
     country?: SortOrder
@@ -22898,8 +24190,8 @@ export namespace Prisma {
     addressId?: SortOrder
     name?: SortOrder
     stage?: SortOrder
-    address_line1?: SortOrder
-    address_line2?: SortOrder
+    addressLine1?: SortOrder
+    addressLine2?: SortOrder
     contactForename?: SortOrder
     contactSurname?: SortOrder
     country?: SortOrder
@@ -22916,8 +24208,8 @@ export namespace Prisma {
     addressId?: SortOrder
     name?: SortOrder
     stage?: SortOrder
-    address_line1?: SortOrder
-    address_line2?: SortOrder
+    addressLine1?: SortOrder
+    addressLine2?: SortOrder
     contactForename?: SortOrder
     contactSurname?: SortOrder
     country?: SortOrder
@@ -23033,14 +24325,43 @@ export namespace Prisma {
     instituteId?: SortOrder
   }
 
-  export type InstituteStudentsRelationFilter = {
-    is?: InstituteStudentsWhereInput
-    isNot?: InstituteStudentsWhereInput
-  }
-
   export type AddressesRelationFilter = {
     is?: AddressesWhereInput
     isNot?: AddressesWhereInput
+  }
+
+  export type ProvidersRelationFilter = {
+    is?: ProvidersWhereInput
+    isNot?: ProvidersWhereInput
+  }
+
+  export type ProviderCohortsCountOrderByAggregateInput = {
+    cohortId?: SortOrder
+    stage?: SortOrder
+    name?: SortOrder
+    addressId?: SortOrder
+    providerId?: SortOrder
+  }
+
+  export type ProviderCohortsMaxOrderByAggregateInput = {
+    cohortId?: SortOrder
+    stage?: SortOrder
+    name?: SortOrder
+    addressId?: SortOrder
+    providerId?: SortOrder
+  }
+
+  export type ProviderCohortsMinOrderByAggregateInput = {
+    cohortId?: SortOrder
+    stage?: SortOrder
+    name?: SortOrder
+    addressId?: SortOrder
+    providerId?: SortOrder
+  }
+
+  export type InstituteStudentsRelationFilter = {
+    is?: InstituteStudentsWhereInput
+    isNot?: InstituteStudentsWhereInput
   }
 
   export type StudentUsersRelationFilter = {
@@ -23345,11 +24666,6 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type ProvidersRelationFilter = {
-    is?: ProvidersWhereInput
-    isNot?: ProvidersWhereInput
-  }
-
   export type PlacementListingsCountOrderByAggregateInput = {
     placementListingId?: SortOrder
     addressId?: SortOrder
@@ -23595,6 +24911,33 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type BoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+  export type JsonNullableFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
   export type ProviderStaffListRelationFilter = {
     every?: ProviderStaffWhereInput
     some?: ProviderStaffWhereInput
@@ -23619,7 +24962,6 @@ export namespace Prisma {
     providerId?: SortOrder
     contactForename?: SortOrder
     contactSurname?: SortOrder
-    defAddress?: SortOrder
     email?: SortOrder
     mapConsent?: SortOrder
     insurance?: SortOrder
@@ -23630,16 +24972,22 @@ export namespace Prisma {
     rememberConsentDate?: SortOrder
     savedBy?: SortOrder
     sector?: SortOrder
+    referral?: SortOrder
     subsector?: SortOrder
     uploadedBy?: SortOrder
     website?: SortOrder
+    activationCode?: SortOrder
+    status?: SortOrder
+  }
+
+  export type ProvidersAvgOrderByAggregateInput = {
+    activationCode?: SortOrder
   }
 
   export type ProvidersMaxOrderByAggregateInput = {
     providerId?: SortOrder
     contactForename?: SortOrder
     contactSurname?: SortOrder
-    defAddress?: SortOrder
     email?: SortOrder
     mapConsent?: SortOrder
     insurance?: SortOrder
@@ -23649,16 +24997,18 @@ export namespace Prisma {
     rememberConsent?: SortOrder
     rememberConsentDate?: SortOrder
     sector?: SortOrder
+    referral?: SortOrder
     subsector?: SortOrder
     uploadedBy?: SortOrder
     website?: SortOrder
+    activationCode?: SortOrder
+    status?: SortOrder
   }
 
   export type ProvidersMinOrderByAggregateInput = {
     providerId?: SortOrder
     contactForename?: SortOrder
     contactSurname?: SortOrder
-    defAddress?: SortOrder
     email?: SortOrder
     mapConsent?: SortOrder
     insurance?: SortOrder
@@ -23668,9 +25018,49 @@ export namespace Prisma {
     rememberConsent?: SortOrder
     rememberConsentDate?: SortOrder
     sector?: SortOrder
+    referral?: SortOrder
     subsector?: SortOrder
     uploadedBy?: SortOrder
     website?: SortOrder
+    activationCode?: SortOrder
+    status?: SortOrder
+  }
+
+  export type ProvidersSumOrderByAggregateInput = {
+    activationCode?: SortOrder
+  }
+
+  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type InstituteStudentUserGroupsCountOrderByAggregateInput = {
@@ -23725,7 +25115,6 @@ export namespace Prisma {
     userGroupId?: SortOrder
     default?: SortOrder
     name?: SortOrder
-    template?: SortOrder
     updated?: SortOrder
     providerId?: SortOrder
   }
@@ -23734,7 +25123,6 @@ export namespace Prisma {
     userGroupId?: SortOrder
     default?: SortOrder
     name?: SortOrder
-    template?: SortOrder
     updated?: SortOrder
     providerId?: SortOrder
   }
@@ -23743,7 +25131,6 @@ export namespace Prisma {
     userGroupId?: SortOrder
     default?: SortOrder
     name?: SortOrder
-    template?: SortOrder
     updated?: SortOrder
     providerId?: SortOrder
   }
@@ -23935,6 +25322,13 @@ export namespace Prisma {
     connect?: PlacementsWhereUniqueInput | PlacementsWhereUniqueInput[]
   }
 
+  export type ProviderCohortsCreateNestedManyWithoutAddressInput = {
+    create?: XOR<ProviderCohortsCreateWithoutAddressInput, ProviderCohortsUncheckedCreateWithoutAddressInput> | ProviderCohortsCreateWithoutAddressInput[] | ProviderCohortsUncheckedCreateWithoutAddressInput[]
+    connectOrCreate?: ProviderCohortsCreateOrConnectWithoutAddressInput | ProviderCohortsCreateOrConnectWithoutAddressInput[]
+    createMany?: ProviderCohortsCreateManyAddressInputEnvelope
+    connect?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+  }
+
   export type ContactsUncheckedCreateNestedManyWithoutAddressInput = {
     create?: XOR<ContactsCreateWithoutAddressInput, ContactsUncheckedCreateWithoutAddressInput> | ContactsCreateWithoutAddressInput[] | ContactsUncheckedCreateWithoutAddressInput[]
     connectOrCreate?: ContactsCreateOrConnectWithoutAddressInput | ContactsCreateOrConnectWithoutAddressInput[]
@@ -23954,6 +25348,13 @@ export namespace Prisma {
     connectOrCreate?: PlacementsCreateOrConnectWithoutAddressInput | PlacementsCreateOrConnectWithoutAddressInput[]
     createMany?: PlacementsCreateManyAddressInputEnvelope
     connect?: PlacementsWhereUniqueInput | PlacementsWhereUniqueInput[]
+  }
+
+  export type ProviderCohortsUncheckedCreateNestedManyWithoutAddressInput = {
+    create?: XOR<ProviderCohortsCreateWithoutAddressInput, ProviderCohortsUncheckedCreateWithoutAddressInput> | ProviderCohortsCreateWithoutAddressInput[] | ProviderCohortsUncheckedCreateWithoutAddressInput[]
+    connectOrCreate?: ProviderCohortsCreateOrConnectWithoutAddressInput | ProviderCohortsCreateOrConnectWithoutAddressInput[]
+    createMany?: ProviderCohortsCreateManyAddressInputEnvelope
+    connect?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -24026,6 +25427,20 @@ export namespace Prisma {
     deleteMany?: PlacementsScalarWhereInput | PlacementsScalarWhereInput[]
   }
 
+  export type ProviderCohortsUpdateManyWithoutAddressNestedInput = {
+    create?: XOR<ProviderCohortsCreateWithoutAddressInput, ProviderCohortsUncheckedCreateWithoutAddressInput> | ProviderCohortsCreateWithoutAddressInput[] | ProviderCohortsUncheckedCreateWithoutAddressInput[]
+    connectOrCreate?: ProviderCohortsCreateOrConnectWithoutAddressInput | ProviderCohortsCreateOrConnectWithoutAddressInput[]
+    upsert?: ProviderCohortsUpsertWithWhereUniqueWithoutAddressInput | ProviderCohortsUpsertWithWhereUniqueWithoutAddressInput[]
+    createMany?: ProviderCohortsCreateManyAddressInputEnvelope
+    set?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    disconnect?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    delete?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    connect?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    update?: ProviderCohortsUpdateWithWhereUniqueWithoutAddressInput | ProviderCohortsUpdateWithWhereUniqueWithoutAddressInput[]
+    updateMany?: ProviderCohortsUpdateManyWithWhereWithoutAddressInput | ProviderCohortsUpdateManyWithWhereWithoutAddressInput[]
+    deleteMany?: ProviderCohortsScalarWhereInput | ProviderCohortsScalarWhereInput[]
+  }
+
   export type ContactsUncheckedUpdateManyWithoutAddressNestedInput = {
     create?: XOR<ContactsCreateWithoutAddressInput, ContactsUncheckedCreateWithoutAddressInput> | ContactsCreateWithoutAddressInput[] | ContactsUncheckedCreateWithoutAddressInput[]
     connectOrCreate?: ContactsCreateOrConnectWithoutAddressInput | ContactsCreateOrConnectWithoutAddressInput[]
@@ -24066,6 +25481,20 @@ export namespace Prisma {
     update?: PlacementsUpdateWithWhereUniqueWithoutAddressInput | PlacementsUpdateWithWhereUniqueWithoutAddressInput[]
     updateMany?: PlacementsUpdateManyWithWhereWithoutAddressInput | PlacementsUpdateManyWithWhereWithoutAddressInput[]
     deleteMany?: PlacementsScalarWhereInput | PlacementsScalarWhereInput[]
+  }
+
+  export type ProviderCohortsUncheckedUpdateManyWithoutAddressNestedInput = {
+    create?: XOR<ProviderCohortsCreateWithoutAddressInput, ProviderCohortsUncheckedCreateWithoutAddressInput> | ProviderCohortsCreateWithoutAddressInput[] | ProviderCohortsUncheckedCreateWithoutAddressInput[]
+    connectOrCreate?: ProviderCohortsCreateOrConnectWithoutAddressInput | ProviderCohortsCreateOrConnectWithoutAddressInput[]
+    upsert?: ProviderCohortsUpsertWithWhereUniqueWithoutAddressInput | ProviderCohortsUpsertWithWhereUniqueWithoutAddressInput[]
+    createMany?: ProviderCohortsCreateManyAddressInputEnvelope
+    set?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    disconnect?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    delete?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    connect?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    update?: ProviderCohortsUpdateWithWhereUniqueWithoutAddressInput | ProviderCohortsUpdateWithWhereUniqueWithoutAddressInput[]
+    updateMany?: ProviderCohortsUpdateManyWithWhereWithoutAddressInput | ProviderCohortsUpdateManyWithWhereWithoutAddressInput[]
+    deleteMany?: ProviderCohortsScalarWhereInput | ProviderCohortsScalarWhereInput[]
   }
 
   export type CohortsCreateincludedFilesInput = {
@@ -24140,6 +25569,34 @@ export namespace Prisma {
     update?: InstituteStudentsUpdateWithWhereUniqueWithoutCohortInput | InstituteStudentsUpdateWithWhereUniqueWithoutCohortInput[]
     updateMany?: InstituteStudentsUpdateManyWithWhereWithoutCohortInput | InstituteStudentsUpdateManyWithWhereWithoutCohortInput[]
     deleteMany?: InstituteStudentsScalarWhereInput | InstituteStudentsScalarWhereInput[]
+  }
+
+  export type AddressesCreateNestedOneWithoutProviderCohortsInput = {
+    create?: XOR<AddressesCreateWithoutProviderCohortsInput, AddressesUncheckedCreateWithoutProviderCohortsInput>
+    connectOrCreate?: AddressesCreateOrConnectWithoutProviderCohortsInput
+    connect?: AddressesWhereUniqueInput
+  }
+
+  export type ProvidersCreateNestedOneWithoutProviderCohortsInput = {
+    create?: XOR<ProvidersCreateWithoutProviderCohortsInput, ProvidersUncheckedCreateWithoutProviderCohortsInput>
+    connectOrCreate?: ProvidersCreateOrConnectWithoutProviderCohortsInput
+    connect?: ProvidersWhereUniqueInput
+  }
+
+  export type AddressesUpdateOneRequiredWithoutProviderCohortsNestedInput = {
+    create?: XOR<AddressesCreateWithoutProviderCohortsInput, AddressesUncheckedCreateWithoutProviderCohortsInput>
+    connectOrCreate?: AddressesCreateOrConnectWithoutProviderCohortsInput
+    upsert?: AddressesUpsertWithoutProviderCohortsInput
+    connect?: AddressesWhereUniqueInput
+    update?: XOR<XOR<AddressesUpdateToOneWithWhereWithoutProviderCohortsInput, AddressesUpdateWithoutProviderCohortsInput>, AddressesUncheckedUpdateWithoutProviderCohortsInput>
+  }
+
+  export type ProvidersUpdateOneRequiredWithoutProviderCohortsNestedInput = {
+    create?: XOR<ProvidersCreateWithoutProviderCohortsInput, ProvidersUncheckedCreateWithoutProviderCohortsInput>
+    connectOrCreate?: ProvidersCreateOrConnectWithoutProviderCohortsInput
+    upsert?: ProvidersUpsertWithoutProviderCohortsInput
+    connect?: ProvidersWhereUniqueInput
+    update?: XOR<XOR<ProvidersUpdateToOneWithWhereWithoutProviderCohortsInput, ProvidersUpdateWithoutProviderCohortsInput>, ProvidersUncheckedUpdateWithoutProviderCohortsInput>
   }
 
   export type InstituteStudentsCreateNestedOneWithoutContactsInput = {
@@ -24819,6 +26276,13 @@ export namespace Prisma {
     connect?: ProviderUserGroupsWhereUniqueInput | ProviderUserGroupsWhereUniqueInput[]
   }
 
+  export type ProviderCohortsCreateNestedManyWithoutProviderInput = {
+    create?: XOR<ProviderCohortsCreateWithoutProviderInput, ProviderCohortsUncheckedCreateWithoutProviderInput> | ProviderCohortsCreateWithoutProviderInput[] | ProviderCohortsUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: ProviderCohortsCreateOrConnectWithoutProviderInput | ProviderCohortsCreateOrConnectWithoutProviderInput[]
+    createMany?: ProviderCohortsCreateManyProviderInputEnvelope
+    connect?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+  }
+
   export type AddressesUncheckedCreateNestedManyWithoutProviderInput = {
     create?: XOR<AddressesCreateWithoutProviderInput, AddressesUncheckedCreateWithoutProviderInput> | AddressesCreateWithoutProviderInput[] | AddressesUncheckedCreateWithoutProviderInput[]
     connectOrCreate?: AddressesCreateOrConnectWithoutProviderInput | AddressesCreateOrConnectWithoutProviderInput[]
@@ -24852,6 +26316,17 @@ export namespace Prisma {
     connectOrCreate?: ProviderUserGroupsCreateOrConnectWithoutProviderInput | ProviderUserGroupsCreateOrConnectWithoutProviderInput[]
     createMany?: ProviderUserGroupsCreateManyProviderInputEnvelope
     connect?: ProviderUserGroupsWhereUniqueInput | ProviderUserGroupsWhereUniqueInput[]
+  }
+
+  export type ProviderCohortsUncheckedCreateNestedManyWithoutProviderInput = {
+    create?: XOR<ProviderCohortsCreateWithoutProviderInput, ProviderCohortsUncheckedCreateWithoutProviderInput> | ProviderCohortsCreateWithoutProviderInput[] | ProviderCohortsUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: ProviderCohortsCreateOrConnectWithoutProviderInput | ProviderCohortsCreateOrConnectWithoutProviderInput[]
+    createMany?: ProviderCohortsCreateManyProviderInputEnvelope
+    connect?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+  }
+
+  export type NullableBoolFieldUpdateOperationsInput = {
+    set?: boolean | null
   }
 
   export type AddressesUpdateManyWithoutProviderNestedInput = {
@@ -24924,6 +26399,20 @@ export namespace Prisma {
     deleteMany?: ProviderUserGroupsScalarWhereInput | ProviderUserGroupsScalarWhereInput[]
   }
 
+  export type ProviderCohortsUpdateManyWithoutProviderNestedInput = {
+    create?: XOR<ProviderCohortsCreateWithoutProviderInput, ProviderCohortsUncheckedCreateWithoutProviderInput> | ProviderCohortsCreateWithoutProviderInput[] | ProviderCohortsUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: ProviderCohortsCreateOrConnectWithoutProviderInput | ProviderCohortsCreateOrConnectWithoutProviderInput[]
+    upsert?: ProviderCohortsUpsertWithWhereUniqueWithoutProviderInput | ProviderCohortsUpsertWithWhereUniqueWithoutProviderInput[]
+    createMany?: ProviderCohortsCreateManyProviderInputEnvelope
+    set?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    disconnect?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    delete?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    connect?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    update?: ProviderCohortsUpdateWithWhereUniqueWithoutProviderInput | ProviderCohortsUpdateWithWhereUniqueWithoutProviderInput[]
+    updateMany?: ProviderCohortsUpdateManyWithWhereWithoutProviderInput | ProviderCohortsUpdateManyWithWhereWithoutProviderInput[]
+    deleteMany?: ProviderCohortsScalarWhereInput | ProviderCohortsScalarWhereInput[]
+  }
+
   export type AddressesUncheckedUpdateManyWithoutProviderNestedInput = {
     create?: XOR<AddressesCreateWithoutProviderInput, AddressesUncheckedCreateWithoutProviderInput> | AddressesCreateWithoutProviderInput[] | AddressesUncheckedCreateWithoutProviderInput[]
     connectOrCreate?: AddressesCreateOrConnectWithoutProviderInput | AddressesCreateOrConnectWithoutProviderInput[]
@@ -24992,6 +26481,20 @@ export namespace Prisma {
     update?: ProviderUserGroupsUpdateWithWhereUniqueWithoutProviderInput | ProviderUserGroupsUpdateWithWhereUniqueWithoutProviderInput[]
     updateMany?: ProviderUserGroupsUpdateManyWithWhereWithoutProviderInput | ProviderUserGroupsUpdateManyWithWhereWithoutProviderInput[]
     deleteMany?: ProviderUserGroupsScalarWhereInput | ProviderUserGroupsScalarWhereInput[]
+  }
+
+  export type ProviderCohortsUncheckedUpdateManyWithoutProviderNestedInput = {
+    create?: XOR<ProviderCohortsCreateWithoutProviderInput, ProviderCohortsUncheckedCreateWithoutProviderInput> | ProviderCohortsCreateWithoutProviderInput[] | ProviderCohortsUncheckedCreateWithoutProviderInput[]
+    connectOrCreate?: ProviderCohortsCreateOrConnectWithoutProviderInput | ProviderCohortsCreateOrConnectWithoutProviderInput[]
+    upsert?: ProviderCohortsUpsertWithWhereUniqueWithoutProviderInput | ProviderCohortsUpsertWithWhereUniqueWithoutProviderInput[]
+    createMany?: ProviderCohortsCreateManyProviderInputEnvelope
+    set?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    disconnect?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    delete?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    connect?: ProviderCohortsWhereUniqueInput | ProviderCohortsWhereUniqueInput[]
+    update?: ProviderCohortsUpdateWithWhereUniqueWithoutProviderInput | ProviderCohortsUpdateWithWhereUniqueWithoutProviderInput[]
+    updateMany?: ProviderCohortsUpdateManyWithWhereWithoutProviderInput | ProviderCohortsUpdateManyWithWhereWithoutProviderInput[]
+    deleteMany?: ProviderCohortsScalarWhereInput | ProviderCohortsScalarWhereInput[]
   }
 
   export type InstitutesCreateNestedOneWithoutStudentUserGroupsInput = {
@@ -25702,6 +27205,41 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolNullableFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  }
+
+  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
+    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedBoolNullableFilter<$PrismaModel>
+    _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> = 
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
   export type InstitutesCreateWithoutAddressesInput = {
     instituteId: string
     admin: string
@@ -25761,48 +27299,54 @@ export namespace Prisma {
     providerId: string
     contactForename: string
     contactSurname: string
-    defAddress: string
     email: string
-    mapConsent: boolean
-    insurance: boolean
-    mapConsentDate: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
     name: string
     phone: string
-    rememberConsent: boolean
-    rememberConsentDate: string
-    savedBy: JsonNullValueInput | InputJsonValue
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector: string
+    referral?: string | null
     subsector: string
     uploadedBy: string
-    website: string
+    website?: string | null
+    activationCode?: number
+    status: string
     PlacementListings?: PlacementListingsCreateNestedManyWithoutProviderInput
     Placements?: PlacementsCreateNestedManyWithoutProviderInput
     ProviderStaff?: ProviderStaffCreateNestedManyWithoutProviderInput
     ProviderUserGroups?: ProviderUserGroupsCreateNestedManyWithoutProviderInput
+    ProviderCohorts?: ProviderCohortsCreateNestedManyWithoutProviderInput
   }
 
   export type ProvidersUncheckedCreateWithoutAddressesInput = {
     providerId: string
     contactForename: string
     contactSurname: string
-    defAddress: string
     email: string
-    mapConsent: boolean
-    insurance: boolean
-    mapConsentDate: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
     name: string
     phone: string
-    rememberConsent: boolean
-    rememberConsentDate: string
-    savedBy: JsonNullValueInput | InputJsonValue
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector: string
+    referral?: string | null
     subsector: string
     uploadedBy: string
-    website: string
+    website?: string | null
+    activationCode?: number
+    status: string
     PlacementListings?: PlacementListingsUncheckedCreateNestedManyWithoutProviderInput
     Placements?: PlacementsUncheckedCreateNestedManyWithoutProviderInput
     ProviderStaff?: ProviderStaffUncheckedCreateNestedManyWithoutProviderInput
     ProviderUserGroups?: ProviderUserGroupsUncheckedCreateNestedManyWithoutProviderInput
+    ProviderCohorts?: ProviderCohortsUncheckedCreateNestedManyWithoutProviderInput
   }
 
   export type ProvidersCreateOrConnectWithoutAddressesInput = {
@@ -25972,6 +27516,30 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ProviderCohortsCreateWithoutAddressInput = {
+    cohortId: string
+    stage: string
+    name: string
+    provider: ProvidersCreateNestedOneWithoutProviderCohortsInput
+  }
+
+  export type ProviderCohortsUncheckedCreateWithoutAddressInput = {
+    cohortId: string
+    stage: string
+    name: string
+    providerId: string
+  }
+
+  export type ProviderCohortsCreateOrConnectWithoutAddressInput = {
+    where: ProviderCohortsWhereUniqueInput
+    create: XOR<ProviderCohortsCreateWithoutAddressInput, ProviderCohortsUncheckedCreateWithoutAddressInput>
+  }
+
+  export type ProviderCohortsCreateManyAddressInputEnvelope = {
+    data: ProviderCohortsCreateManyAddressInput | ProviderCohortsCreateManyAddressInput[]
+    skipDuplicates?: boolean
+  }
+
   export type InstitutesUpsertWithoutAddressesInput = {
     update: XOR<InstitutesUpdateWithoutAddressesInput, InstitutesUncheckedUpdateWithoutAddressesInput>
     create: XOR<InstitutesCreateWithoutAddressesInput, InstitutesUncheckedCreateWithoutAddressesInput>
@@ -26048,48 +27616,54 @@ export namespace Prisma {
     providerId?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
     contactSurname?: StringFieldUpdateOperationsInput | string
-    defAddress?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    mapConsent?: BoolFieldUpdateOperationsInput | boolean
-    insurance?: BoolFieldUpdateOperationsInput | boolean
-    mapConsentDate?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    rememberConsent?: BoolFieldUpdateOperationsInput | boolean
-    rememberConsentDate?: StringFieldUpdateOperationsInput | string
-    savedBy?: JsonNullValueInput | InputJsonValue
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
     subsector?: StringFieldUpdateOperationsInput | string
     uploadedBy?: StringFieldUpdateOperationsInput | string
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     PlacementListings?: PlacementListingsUpdateManyWithoutProviderNestedInput
     Placements?: PlacementsUpdateManyWithoutProviderNestedInput
     ProviderStaff?: ProviderStaffUpdateManyWithoutProviderNestedInput
     ProviderUserGroups?: ProviderUserGroupsUpdateManyWithoutProviderNestedInput
+    ProviderCohorts?: ProviderCohortsUpdateManyWithoutProviderNestedInput
   }
 
   export type ProvidersUncheckedUpdateWithoutAddressesInput = {
     providerId?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
     contactSurname?: StringFieldUpdateOperationsInput | string
-    defAddress?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    mapConsent?: BoolFieldUpdateOperationsInput | boolean
-    insurance?: BoolFieldUpdateOperationsInput | boolean
-    mapConsentDate?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    rememberConsent?: BoolFieldUpdateOperationsInput | boolean
-    rememberConsentDate?: StringFieldUpdateOperationsInput | string
-    savedBy?: JsonNullValueInput | InputJsonValue
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
     subsector?: StringFieldUpdateOperationsInput | string
     uploadedBy?: StringFieldUpdateOperationsInput | string
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     PlacementListings?: PlacementListingsUncheckedUpdateManyWithoutProviderNestedInput
     Placements?: PlacementsUncheckedUpdateManyWithoutProviderNestedInput
     ProviderStaff?: ProviderStaffUncheckedUpdateManyWithoutProviderNestedInput
     ProviderUserGroups?: ProviderUserGroupsUncheckedUpdateManyWithoutProviderNestedInput
+    ProviderCohorts?: ProviderCohortsUncheckedUpdateManyWithoutProviderNestedInput
   }
 
   export type ContactsUpsertWithWhereUniqueWithoutAddressInput = {
@@ -26215,6 +27789,33 @@ export namespace Prisma {
     providerId?: StringFilter<"Placements"> | string
     studentId?: StringFilter<"Placements"> | string
     userGroupId?: StringFilter<"Placements"> | string
+  }
+
+  export type ProviderCohortsUpsertWithWhereUniqueWithoutAddressInput = {
+    where: ProviderCohortsWhereUniqueInput
+    update: XOR<ProviderCohortsUpdateWithoutAddressInput, ProviderCohortsUncheckedUpdateWithoutAddressInput>
+    create: XOR<ProviderCohortsCreateWithoutAddressInput, ProviderCohortsUncheckedCreateWithoutAddressInput>
+  }
+
+  export type ProviderCohortsUpdateWithWhereUniqueWithoutAddressInput = {
+    where: ProviderCohortsWhereUniqueInput
+    data: XOR<ProviderCohortsUpdateWithoutAddressInput, ProviderCohortsUncheckedUpdateWithoutAddressInput>
+  }
+
+  export type ProviderCohortsUpdateManyWithWhereWithoutAddressInput = {
+    where: ProviderCohortsScalarWhereInput
+    data: XOR<ProviderCohortsUpdateManyMutationInput, ProviderCohortsUncheckedUpdateManyWithoutAddressInput>
+  }
+
+  export type ProviderCohortsScalarWhereInput = {
+    AND?: ProviderCohortsScalarWhereInput | ProviderCohortsScalarWhereInput[]
+    OR?: ProviderCohortsScalarWhereInput[]
+    NOT?: ProviderCohortsScalarWhereInput | ProviderCohortsScalarWhereInput[]
+    cohortId?: StringFilter<"ProviderCohorts"> | string
+    stage?: StringFilter<"ProviderCohorts"> | string
+    name?: StringFilter<"ProviderCohorts"> | string
+    addressId?: StringFilter<"ProviderCohorts"> | string
+    providerId?: StringFilter<"ProviderCohorts"> | string
   }
 
   export type InstitutesCreateWithoutCohortsInput = {
@@ -26412,6 +28013,230 @@ export namespace Prisma {
     userGroupId?: StringFilter<"InstituteStudents"> | string
   }
 
+  export type AddressesCreateWithoutProviderCohortsInput = {
+    addressId: string
+    name: string
+    stage?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
+    contactForename?: string | null
+    contactSurname?: string | null
+    country?: string | null
+    email?: string | null
+    geoHash?: string | null
+    locality?: string | null
+    phone?: string | null
+    postal_code?: string | null
+    institute?: InstitutesCreateNestedOneWithoutAddressesInput
+    provider?: ProvidersCreateNestedOneWithoutAddressesInput
+    Contacts?: ContactsCreateNestedManyWithoutAddressInput
+    PlacementListings?: PlacementListingsCreateNestedManyWithoutAddressInput
+    Placements?: PlacementsCreateNestedManyWithoutAddressInput
+  }
+
+  export type AddressesUncheckedCreateWithoutProviderCohortsInput = {
+    addressId: string
+    name: string
+    stage?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
+    contactForename?: string | null
+    contactSurname?: string | null
+    country?: string | null
+    email?: string | null
+    geoHash?: string | null
+    locality?: string | null
+    phone?: string | null
+    postal_code?: string | null
+    instituteId?: string | null
+    providerId?: string | null
+    Contacts?: ContactsUncheckedCreateNestedManyWithoutAddressInput
+    PlacementListings?: PlacementListingsUncheckedCreateNestedManyWithoutAddressInput
+    Placements?: PlacementsUncheckedCreateNestedManyWithoutAddressInput
+  }
+
+  export type AddressesCreateOrConnectWithoutProviderCohortsInput = {
+    where: AddressesWhereUniqueInput
+    create: XOR<AddressesCreateWithoutProviderCohortsInput, AddressesUncheckedCreateWithoutProviderCohortsInput>
+  }
+
+  export type ProvidersCreateWithoutProviderCohortsInput = {
+    providerId: string
+    contactForename: string
+    contactSurname: string
+    email: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
+    name: string
+    phone: string
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
+    sector: string
+    referral?: string | null
+    subsector: string
+    uploadedBy: string
+    website?: string | null
+    activationCode?: number
+    status: string
+    Addresses?: AddressesCreateNestedManyWithoutProviderInput
+    PlacementListings?: PlacementListingsCreateNestedManyWithoutProviderInput
+    Placements?: PlacementsCreateNestedManyWithoutProviderInput
+    ProviderStaff?: ProviderStaffCreateNestedManyWithoutProviderInput
+    ProviderUserGroups?: ProviderUserGroupsCreateNestedManyWithoutProviderInput
+  }
+
+  export type ProvidersUncheckedCreateWithoutProviderCohortsInput = {
+    providerId: string
+    contactForename: string
+    contactSurname: string
+    email: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
+    name: string
+    phone: string
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
+    sector: string
+    referral?: string | null
+    subsector: string
+    uploadedBy: string
+    website?: string | null
+    activationCode?: number
+    status: string
+    Addresses?: AddressesUncheckedCreateNestedManyWithoutProviderInput
+    PlacementListings?: PlacementListingsUncheckedCreateNestedManyWithoutProviderInput
+    Placements?: PlacementsUncheckedCreateNestedManyWithoutProviderInput
+    ProviderStaff?: ProviderStaffUncheckedCreateNestedManyWithoutProviderInput
+    ProviderUserGroups?: ProviderUserGroupsUncheckedCreateNestedManyWithoutProviderInput
+  }
+
+  export type ProvidersCreateOrConnectWithoutProviderCohortsInput = {
+    where: ProvidersWhereUniqueInput
+    create: XOR<ProvidersCreateWithoutProviderCohortsInput, ProvidersUncheckedCreateWithoutProviderCohortsInput>
+  }
+
+  export type AddressesUpsertWithoutProviderCohortsInput = {
+    update: XOR<AddressesUpdateWithoutProviderCohortsInput, AddressesUncheckedUpdateWithoutProviderCohortsInput>
+    create: XOR<AddressesCreateWithoutProviderCohortsInput, AddressesUncheckedCreateWithoutProviderCohortsInput>
+    where?: AddressesWhereInput
+  }
+
+  export type AddressesUpdateToOneWithWhereWithoutProviderCohortsInput = {
+    where?: AddressesWhereInput
+    data: XOR<AddressesUpdateWithoutProviderCohortsInput, AddressesUncheckedUpdateWithoutProviderCohortsInput>
+  }
+
+  export type AddressesUpdateWithoutProviderCohortsInput = {
+    addressId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    stage?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
+    contactForename?: NullableStringFieldUpdateOperationsInput | string | null
+    contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
+    locality?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    institute?: InstitutesUpdateOneWithoutAddressesNestedInput
+    provider?: ProvidersUpdateOneWithoutAddressesNestedInput
+    Contacts?: ContactsUpdateManyWithoutAddressNestedInput
+    PlacementListings?: PlacementListingsUpdateManyWithoutAddressNestedInput
+    Placements?: PlacementsUpdateManyWithoutAddressNestedInput
+  }
+
+  export type AddressesUncheckedUpdateWithoutProviderCohortsInput = {
+    addressId?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    stage?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
+    contactForename?: NullableStringFieldUpdateOperationsInput | string | null
+    contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
+    country?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
+    locality?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    postal_code?: NullableStringFieldUpdateOperationsInput | string | null
+    instituteId?: NullableStringFieldUpdateOperationsInput | string | null
+    providerId?: NullableStringFieldUpdateOperationsInput | string | null
+    Contacts?: ContactsUncheckedUpdateManyWithoutAddressNestedInput
+    PlacementListings?: PlacementListingsUncheckedUpdateManyWithoutAddressNestedInput
+    Placements?: PlacementsUncheckedUpdateManyWithoutAddressNestedInput
+  }
+
+  export type ProvidersUpsertWithoutProviderCohortsInput = {
+    update: XOR<ProvidersUpdateWithoutProviderCohortsInput, ProvidersUncheckedUpdateWithoutProviderCohortsInput>
+    create: XOR<ProvidersCreateWithoutProviderCohortsInput, ProvidersUncheckedCreateWithoutProviderCohortsInput>
+    where?: ProvidersWhereInput
+  }
+
+  export type ProvidersUpdateToOneWithWhereWithoutProviderCohortsInput = {
+    where?: ProvidersWhereInput
+    data: XOR<ProvidersUpdateWithoutProviderCohortsInput, ProvidersUncheckedUpdateWithoutProviderCohortsInput>
+  }
+
+  export type ProvidersUpdateWithoutProviderCohortsInput = {
+    providerId?: StringFieldUpdateOperationsInput | string
+    contactForename?: StringFieldUpdateOperationsInput | string
+    contactSurname?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
+    sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
+    subsector?: StringFieldUpdateOperationsInput | string
+    uploadedBy?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    Addresses?: AddressesUpdateManyWithoutProviderNestedInput
+    PlacementListings?: PlacementListingsUpdateManyWithoutProviderNestedInput
+    Placements?: PlacementsUpdateManyWithoutProviderNestedInput
+    ProviderStaff?: ProviderStaffUpdateManyWithoutProviderNestedInput
+    ProviderUserGroups?: ProviderUserGroupsUpdateManyWithoutProviderNestedInput
+  }
+
+  export type ProvidersUncheckedUpdateWithoutProviderCohortsInput = {
+    providerId?: StringFieldUpdateOperationsInput | string
+    contactForename?: StringFieldUpdateOperationsInput | string
+    contactSurname?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    name?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
+    sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
+    subsector?: StringFieldUpdateOperationsInput | string
+    uploadedBy?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    Addresses?: AddressesUncheckedUpdateManyWithoutProviderNestedInput
+    PlacementListings?: PlacementListingsUncheckedUpdateManyWithoutProviderNestedInput
+    Placements?: PlacementsUncheckedUpdateManyWithoutProviderNestedInput
+    ProviderStaff?: ProviderStaffUncheckedUpdateManyWithoutProviderNestedInput
+    ProviderUserGroups?: ProviderUserGroupsUncheckedUpdateManyWithoutProviderNestedInput
+  }
+
   export type InstituteStudentsCreateWithoutContactsInput = {
     instituteStudentId: string
     activated: string
@@ -26455,8 +28280,8 @@ export namespace Prisma {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -26469,14 +28294,15 @@ export namespace Prisma {
     provider?: ProvidersCreateNestedOneWithoutAddressesInput
     PlacementListings?: PlacementListingsCreateNestedManyWithoutAddressInput
     Placements?: PlacementsCreateNestedManyWithoutAddressInput
+    ProviderCohorts?: ProviderCohortsCreateNestedManyWithoutAddressInput
   }
 
   export type AddressesUncheckedCreateWithoutContactsInput = {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -26489,6 +28315,7 @@ export namespace Prisma {
     providerId?: string | null
     PlacementListings?: PlacementListingsUncheckedCreateNestedManyWithoutAddressInput
     Placements?: PlacementsUncheckedCreateNestedManyWithoutAddressInput
+    ProviderCohorts?: ProviderCohortsUncheckedCreateNestedManyWithoutAddressInput
   }
 
   export type AddressesCreateOrConnectWithoutContactsInput = {
@@ -26587,8 +28414,8 @@ export namespace Prisma {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26601,14 +28428,15 @@ export namespace Prisma {
     provider?: ProvidersUpdateOneWithoutAddressesNestedInput
     PlacementListings?: PlacementListingsUpdateManyWithoutAddressNestedInput
     Placements?: PlacementsUpdateManyWithoutAddressNestedInput
+    ProviderCohorts?: ProviderCohortsUpdateManyWithoutAddressNestedInput
   }
 
   export type AddressesUncheckedUpdateWithoutContactsInput = {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26621,6 +28449,7 @@ export namespace Prisma {
     providerId?: NullableStringFieldUpdateOperationsInput | string | null
     PlacementListings?: PlacementListingsUncheckedUpdateManyWithoutAddressNestedInput
     Placements?: PlacementsUncheckedUpdateManyWithoutAddressNestedInput
+    ProviderCohorts?: ProviderCohortsUncheckedUpdateManyWithoutAddressNestedInput
   }
 
   export type StudentUsersUpsertWithoutContactsInput = {
@@ -26780,8 +28609,8 @@ export namespace Prisma {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -26794,14 +28623,15 @@ export namespace Prisma {
     Contacts?: ContactsCreateNestedManyWithoutAddressInput
     PlacementListings?: PlacementListingsCreateNestedManyWithoutAddressInput
     Placements?: PlacementsCreateNestedManyWithoutAddressInput
+    ProviderCohorts?: ProviderCohortsCreateNestedManyWithoutAddressInput
   }
 
   export type AddressesUncheckedCreateWithoutInstituteInput = {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -26814,6 +28644,7 @@ export namespace Prisma {
     Contacts?: ContactsUncheckedCreateNestedManyWithoutAddressInput
     PlacementListings?: PlacementListingsUncheckedCreateNestedManyWithoutAddressInput
     Placements?: PlacementsUncheckedCreateNestedManyWithoutAddressInput
+    ProviderCohorts?: ProviderCohortsUncheckedCreateNestedManyWithoutAddressInput
   }
 
   export type AddressesCreateOrConnectWithoutInstituteInput = {
@@ -27131,8 +28962,8 @@ export namespace Prisma {
     addressId?: StringFilter<"Addresses"> | string
     name?: StringFilter<"Addresses"> | string
     stage?: StringNullableFilter<"Addresses"> | string | null
-    address_line1?: StringNullableFilter<"Addresses"> | string | null
-    address_line2?: StringNullableFilter<"Addresses"> | string | null
+    addressLine1?: StringNullableFilter<"Addresses"> | string | null
+    addressLine2?: StringNullableFilter<"Addresses"> | string | null
     contactForename?: StringNullableFilter<"Addresses"> | string | null
     contactSurname?: StringNullableFilter<"Addresses"> | string | null
     country?: StringNullableFilter<"Addresses"> | string | null
@@ -27499,8 +29330,8 @@ export namespace Prisma {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -27513,14 +29344,15 @@ export namespace Prisma {
     provider?: ProvidersCreateNestedOneWithoutAddressesInput
     Contacts?: ContactsCreateNestedManyWithoutAddressInput
     Placements?: PlacementsCreateNestedManyWithoutAddressInput
+    ProviderCohorts?: ProviderCohortsCreateNestedManyWithoutAddressInput
   }
 
   export type AddressesUncheckedCreateWithoutPlacementListingsInput = {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -27533,6 +29365,7 @@ export namespace Prisma {
     providerId?: string | null
     Contacts?: ContactsUncheckedCreateNestedManyWithoutAddressInput
     Placements?: PlacementsUncheckedCreateNestedManyWithoutAddressInput
+    ProviderCohorts?: ProviderCohortsUncheckedCreateNestedManyWithoutAddressInput
   }
 
   export type AddressesCreateOrConnectWithoutPlacementListingsInput = {
@@ -27544,48 +29377,54 @@ export namespace Prisma {
     providerId: string
     contactForename: string
     contactSurname: string
-    defAddress: string
     email: string
-    mapConsent: boolean
-    insurance: boolean
-    mapConsentDate: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
     name: string
     phone: string
-    rememberConsent: boolean
-    rememberConsentDate: string
-    savedBy: JsonNullValueInput | InputJsonValue
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector: string
+    referral?: string | null
     subsector: string
     uploadedBy: string
-    website: string
+    website?: string | null
+    activationCode?: number
+    status: string
     Addresses?: AddressesCreateNestedManyWithoutProviderInput
     Placements?: PlacementsCreateNestedManyWithoutProviderInput
     ProviderStaff?: ProviderStaffCreateNestedManyWithoutProviderInput
     ProviderUserGroups?: ProviderUserGroupsCreateNestedManyWithoutProviderInput
+    ProviderCohorts?: ProviderCohortsCreateNestedManyWithoutProviderInput
   }
 
   export type ProvidersUncheckedCreateWithoutPlacementListingsInput = {
     providerId: string
     contactForename: string
     contactSurname: string
-    defAddress: string
     email: string
-    mapConsent: boolean
-    insurance: boolean
-    mapConsentDate: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
     name: string
     phone: string
-    rememberConsent: boolean
-    rememberConsentDate: string
-    savedBy: JsonNullValueInput | InputJsonValue
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector: string
+    referral?: string | null
     subsector: string
     uploadedBy: string
-    website: string
+    website?: string | null
+    activationCode?: number
+    status: string
     Addresses?: AddressesUncheckedCreateNestedManyWithoutProviderInput
     Placements?: PlacementsUncheckedCreateNestedManyWithoutProviderInput
     ProviderStaff?: ProviderStaffUncheckedCreateNestedManyWithoutProviderInput
     ProviderUserGroups?: ProviderUserGroupsUncheckedCreateNestedManyWithoutProviderInput
+    ProviderCohorts?: ProviderCohortsUncheckedCreateNestedManyWithoutProviderInput
   }
 
   export type ProvidersCreateOrConnectWithoutPlacementListingsInput = {
@@ -27608,8 +29447,8 @@ export namespace Prisma {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27622,14 +29461,15 @@ export namespace Prisma {
     provider?: ProvidersUpdateOneWithoutAddressesNestedInput
     Contacts?: ContactsUpdateManyWithoutAddressNestedInput
     Placements?: PlacementsUpdateManyWithoutAddressNestedInput
+    ProviderCohorts?: ProviderCohortsUpdateManyWithoutAddressNestedInput
   }
 
   export type AddressesUncheckedUpdateWithoutPlacementListingsInput = {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -27642,6 +29482,7 @@ export namespace Prisma {
     providerId?: NullableStringFieldUpdateOperationsInput | string | null
     Contacts?: ContactsUncheckedUpdateManyWithoutAddressNestedInput
     Placements?: PlacementsUncheckedUpdateManyWithoutAddressNestedInput
+    ProviderCohorts?: ProviderCohortsUncheckedUpdateManyWithoutAddressNestedInput
   }
 
   export type ProvidersUpsertWithoutPlacementListingsInput = {
@@ -27659,48 +29500,54 @@ export namespace Prisma {
     providerId?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
     contactSurname?: StringFieldUpdateOperationsInput | string
-    defAddress?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    mapConsent?: BoolFieldUpdateOperationsInput | boolean
-    insurance?: BoolFieldUpdateOperationsInput | boolean
-    mapConsentDate?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    rememberConsent?: BoolFieldUpdateOperationsInput | boolean
-    rememberConsentDate?: StringFieldUpdateOperationsInput | string
-    savedBy?: JsonNullValueInput | InputJsonValue
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
     subsector?: StringFieldUpdateOperationsInput | string
     uploadedBy?: StringFieldUpdateOperationsInput | string
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     Addresses?: AddressesUpdateManyWithoutProviderNestedInput
     Placements?: PlacementsUpdateManyWithoutProviderNestedInput
     ProviderStaff?: ProviderStaffUpdateManyWithoutProviderNestedInput
     ProviderUserGroups?: ProviderUserGroupsUpdateManyWithoutProviderNestedInput
+    ProviderCohorts?: ProviderCohortsUpdateManyWithoutProviderNestedInput
   }
 
   export type ProvidersUncheckedUpdateWithoutPlacementListingsInput = {
     providerId?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
     contactSurname?: StringFieldUpdateOperationsInput | string
-    defAddress?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    mapConsent?: BoolFieldUpdateOperationsInput | boolean
-    insurance?: BoolFieldUpdateOperationsInput | boolean
-    mapConsentDate?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    rememberConsent?: BoolFieldUpdateOperationsInput | boolean
-    rememberConsentDate?: StringFieldUpdateOperationsInput | string
-    savedBy?: JsonNullValueInput | InputJsonValue
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
     subsector?: StringFieldUpdateOperationsInput | string
     uploadedBy?: StringFieldUpdateOperationsInput | string
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     Addresses?: AddressesUncheckedUpdateManyWithoutProviderNestedInput
     Placements?: PlacementsUncheckedUpdateManyWithoutProviderNestedInput
     ProviderStaff?: ProviderStaffUncheckedUpdateManyWithoutProviderNestedInput
     ProviderUserGroups?: ProviderUserGroupsUncheckedUpdateManyWithoutProviderNestedInput
+    ProviderCohorts?: ProviderCohortsUncheckedUpdateManyWithoutProviderNestedInput
   }
 
   export type LogsCreateWithoutPlacementInput = {
@@ -27733,8 +29580,8 @@ export namespace Prisma {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -27747,14 +29594,15 @@ export namespace Prisma {
     provider?: ProvidersCreateNestedOneWithoutAddressesInput
     Contacts?: ContactsCreateNestedManyWithoutAddressInput
     PlacementListings?: PlacementListingsCreateNestedManyWithoutAddressInput
+    ProviderCohorts?: ProviderCohortsCreateNestedManyWithoutAddressInput
   }
 
   export type AddressesUncheckedCreateWithoutPlacementsInput = {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -27767,6 +29615,7 @@ export namespace Prisma {
     providerId?: string | null
     Contacts?: ContactsUncheckedCreateNestedManyWithoutAddressInput
     PlacementListings?: PlacementListingsUncheckedCreateNestedManyWithoutAddressInput
+    ProviderCohorts?: ProviderCohortsUncheckedCreateNestedManyWithoutAddressInput
   }
 
   export type AddressesCreateOrConnectWithoutPlacementsInput = {
@@ -27872,48 +29721,54 @@ export namespace Prisma {
     providerId: string
     contactForename: string
     contactSurname: string
-    defAddress: string
     email: string
-    mapConsent: boolean
-    insurance: boolean
-    mapConsentDate: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
     name: string
     phone: string
-    rememberConsent: boolean
-    rememberConsentDate: string
-    savedBy: JsonNullValueInput | InputJsonValue
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector: string
+    referral?: string | null
     subsector: string
     uploadedBy: string
-    website: string
+    website?: string | null
+    activationCode?: number
+    status: string
     Addresses?: AddressesCreateNestedManyWithoutProviderInput
     PlacementListings?: PlacementListingsCreateNestedManyWithoutProviderInput
     ProviderStaff?: ProviderStaffCreateNestedManyWithoutProviderInput
     ProviderUserGroups?: ProviderUserGroupsCreateNestedManyWithoutProviderInput
+    ProviderCohorts?: ProviderCohortsCreateNestedManyWithoutProviderInput
   }
 
   export type ProvidersUncheckedCreateWithoutPlacementsInput = {
     providerId: string
     contactForename: string
     contactSurname: string
-    defAddress: string
     email: string
-    mapConsent: boolean
-    insurance: boolean
-    mapConsentDate: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
     name: string
     phone: string
-    rememberConsent: boolean
-    rememberConsentDate: string
-    savedBy: JsonNullValueInput | InputJsonValue
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector: string
+    referral?: string | null
     subsector: string
     uploadedBy: string
-    website: string
+    website?: string | null
+    activationCode?: number
+    status: string
     Addresses?: AddressesUncheckedCreateNestedManyWithoutProviderInput
     PlacementListings?: PlacementListingsUncheckedCreateNestedManyWithoutProviderInput
     ProviderStaff?: ProviderStaffUncheckedCreateNestedManyWithoutProviderInput
     ProviderUserGroups?: ProviderUserGroupsUncheckedCreateNestedManyWithoutProviderInput
+    ProviderCohorts?: ProviderCohortsUncheckedCreateNestedManyWithoutProviderInput
   }
 
   export type ProvidersCreateOrConnectWithoutPlacementsInput = {
@@ -28018,8 +29873,8 @@ export namespace Prisma {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28032,14 +29887,15 @@ export namespace Prisma {
     provider?: ProvidersUpdateOneWithoutAddressesNestedInput
     Contacts?: ContactsUpdateManyWithoutAddressNestedInput
     PlacementListings?: PlacementListingsUpdateManyWithoutAddressNestedInput
+    ProviderCohorts?: ProviderCohortsUpdateManyWithoutAddressNestedInput
   }
 
   export type AddressesUncheckedUpdateWithoutPlacementsInput = {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -28052,6 +29908,7 @@ export namespace Prisma {
     providerId?: NullableStringFieldUpdateOperationsInput | string | null
     Contacts?: ContactsUncheckedUpdateManyWithoutAddressNestedInput
     PlacementListings?: PlacementListingsUncheckedUpdateManyWithoutAddressNestedInput
+    ProviderCohorts?: ProviderCohortsUncheckedUpdateManyWithoutAddressNestedInput
   }
 
   export type InstitutesUpsertWithoutPlacementsInput = {
@@ -28175,48 +30032,54 @@ export namespace Prisma {
     providerId?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
     contactSurname?: StringFieldUpdateOperationsInput | string
-    defAddress?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    mapConsent?: BoolFieldUpdateOperationsInput | boolean
-    insurance?: BoolFieldUpdateOperationsInput | boolean
-    mapConsentDate?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    rememberConsent?: BoolFieldUpdateOperationsInput | boolean
-    rememberConsentDate?: StringFieldUpdateOperationsInput | string
-    savedBy?: JsonNullValueInput | InputJsonValue
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
     subsector?: StringFieldUpdateOperationsInput | string
     uploadedBy?: StringFieldUpdateOperationsInput | string
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     Addresses?: AddressesUpdateManyWithoutProviderNestedInput
     PlacementListings?: PlacementListingsUpdateManyWithoutProviderNestedInput
     ProviderStaff?: ProviderStaffUpdateManyWithoutProviderNestedInput
     ProviderUserGroups?: ProviderUserGroupsUpdateManyWithoutProviderNestedInput
+    ProviderCohorts?: ProviderCohortsUpdateManyWithoutProviderNestedInput
   }
 
   export type ProvidersUncheckedUpdateWithoutPlacementsInput = {
     providerId?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
     contactSurname?: StringFieldUpdateOperationsInput | string
-    defAddress?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    mapConsent?: BoolFieldUpdateOperationsInput | boolean
-    insurance?: BoolFieldUpdateOperationsInput | boolean
-    mapConsentDate?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    rememberConsent?: BoolFieldUpdateOperationsInput | boolean
-    rememberConsentDate?: StringFieldUpdateOperationsInput | string
-    savedBy?: JsonNullValueInput | InputJsonValue
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
     subsector?: StringFieldUpdateOperationsInput | string
     uploadedBy?: StringFieldUpdateOperationsInput | string
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     Addresses?: AddressesUncheckedUpdateManyWithoutProviderNestedInput
     PlacementListings?: PlacementListingsUncheckedUpdateManyWithoutProviderNestedInput
     ProviderStaff?: ProviderStaffUncheckedUpdateManyWithoutProviderNestedInput
     ProviderUserGroups?: ProviderUserGroupsUncheckedUpdateManyWithoutProviderNestedInput
+    ProviderCohorts?: ProviderCohortsUncheckedUpdateManyWithoutProviderNestedInput
   }
 
   export type StudentUsersUpsertWithoutPlacementsInput = {
@@ -28289,8 +30152,8 @@ export namespace Prisma {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -28303,14 +30166,15 @@ export namespace Prisma {
     Contacts?: ContactsCreateNestedManyWithoutAddressInput
     PlacementListings?: PlacementListingsCreateNestedManyWithoutAddressInput
     Placements?: PlacementsCreateNestedManyWithoutAddressInput
+    ProviderCohorts?: ProviderCohortsCreateNestedManyWithoutAddressInput
   }
 
   export type AddressesUncheckedCreateWithoutProviderInput = {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -28323,6 +30187,7 @@ export namespace Prisma {
     Contacts?: ContactsUncheckedCreateNestedManyWithoutAddressInput
     PlacementListings?: PlacementListingsUncheckedCreateNestedManyWithoutAddressInput
     Placements?: PlacementsUncheckedCreateNestedManyWithoutAddressInput
+    ProviderCohorts?: ProviderCohortsUncheckedCreateNestedManyWithoutAddressInput
   }
 
   export type AddressesCreateOrConnectWithoutProviderInput = {
@@ -28470,7 +30335,7 @@ export namespace Prisma {
     created: string
     details: JsonNullValueInput | InputJsonValue
     email: string
-    notes: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status: string
     userGroup: ProviderUserGroupsCreateNestedOneWithoutProviderStaffInput
   }
@@ -28480,7 +30345,7 @@ export namespace Prisma {
     created: string
     details: JsonNullValueInput | InputJsonValue
     email: string
-    notes: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status: string
     userGroupId: string
   }
@@ -28499,7 +30364,6 @@ export namespace Prisma {
     userGroupId: string
     default: boolean
     name: string
-    template: string
     updated: string
     ProviderStaff?: ProviderStaffCreateNestedManyWithoutUserGroupInput
   }
@@ -28508,7 +30372,6 @@ export namespace Prisma {
     userGroupId: string
     default: boolean
     name: string
-    template: string
     updated: string
     ProviderStaff?: ProviderStaffUncheckedCreateNestedManyWithoutUserGroupInput
   }
@@ -28520,6 +30383,30 @@ export namespace Prisma {
 
   export type ProviderUserGroupsCreateManyProviderInputEnvelope = {
     data: ProviderUserGroupsCreateManyProviderInput | ProviderUserGroupsCreateManyProviderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ProviderCohortsCreateWithoutProviderInput = {
+    cohortId: string
+    stage: string
+    name: string
+    address: AddressesCreateNestedOneWithoutProviderCohortsInput
+  }
+
+  export type ProviderCohortsUncheckedCreateWithoutProviderInput = {
+    cohortId: string
+    stage: string
+    name: string
+    addressId: string
+  }
+
+  export type ProviderCohortsCreateOrConnectWithoutProviderInput = {
+    where: ProviderCohortsWhereUniqueInput
+    create: XOR<ProviderCohortsCreateWithoutProviderInput, ProviderCohortsUncheckedCreateWithoutProviderInput>
+  }
+
+  export type ProviderCohortsCreateManyProviderInputEnvelope = {
+    data: ProviderCohortsCreateManyProviderInput | ProviderCohortsCreateManyProviderInput[]
     skipDuplicates?: boolean
   }
 
@@ -28595,7 +30482,7 @@ export namespace Prisma {
     created?: StringFilter<"ProviderStaff"> | string
     details?: JsonFilter<"ProviderStaff">
     email?: StringFilter<"ProviderStaff"> | string
-    notes?: JsonFilter<"ProviderStaff">
+    notes?: JsonNullableFilter<"ProviderStaff">
     status?: StringFilter<"ProviderStaff"> | string
     providerId?: StringFilter<"ProviderStaff"> | string
     userGroupId?: StringFilter<"ProviderStaff"> | string
@@ -28624,9 +30511,24 @@ export namespace Prisma {
     userGroupId?: StringFilter<"ProviderUserGroups"> | string
     default?: BoolFilter<"ProviderUserGroups"> | boolean
     name?: StringFilter<"ProviderUserGroups"> | string
-    template?: StringFilter<"ProviderUserGroups"> | string
     updated?: StringFilter<"ProviderUserGroups"> | string
     providerId?: StringFilter<"ProviderUserGroups"> | string
+  }
+
+  export type ProviderCohortsUpsertWithWhereUniqueWithoutProviderInput = {
+    where: ProviderCohortsWhereUniqueInput
+    update: XOR<ProviderCohortsUpdateWithoutProviderInput, ProviderCohortsUncheckedUpdateWithoutProviderInput>
+    create: XOR<ProviderCohortsCreateWithoutProviderInput, ProviderCohortsUncheckedCreateWithoutProviderInput>
+  }
+
+  export type ProviderCohortsUpdateWithWhereUniqueWithoutProviderInput = {
+    where: ProviderCohortsWhereUniqueInput
+    data: XOR<ProviderCohortsUpdateWithoutProviderInput, ProviderCohortsUncheckedUpdateWithoutProviderInput>
+  }
+
+  export type ProviderCohortsUpdateManyWithWhereWithoutProviderInput = {
+    where: ProviderCohortsScalarWhereInput
+    data: XOR<ProviderCohortsUpdateManyMutationInput, ProviderCohortsUncheckedUpdateManyWithoutProviderInput>
   }
 
   export type InstitutesCreateWithoutStudentUserGroupsInput = {
@@ -29078,7 +30980,7 @@ export namespace Prisma {
     created: string
     details: JsonNullValueInput | InputJsonValue
     email: string
-    notes: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status: string
     provider: ProvidersCreateNestedOneWithoutProviderStaffInput
   }
@@ -29088,7 +30990,7 @@ export namespace Prisma {
     created: string
     details: JsonNullValueInput | InputJsonValue
     email: string
-    notes: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status: string
     providerId: string
   }
@@ -29107,48 +31009,54 @@ export namespace Prisma {
     providerId: string
     contactForename: string
     contactSurname: string
-    defAddress: string
     email: string
-    mapConsent: boolean
-    insurance: boolean
-    mapConsentDate: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
     name: string
     phone: string
-    rememberConsent: boolean
-    rememberConsentDate: string
-    savedBy: JsonNullValueInput | InputJsonValue
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector: string
+    referral?: string | null
     subsector: string
     uploadedBy: string
-    website: string
+    website?: string | null
+    activationCode?: number
+    status: string
     Addresses?: AddressesCreateNestedManyWithoutProviderInput
     PlacementListings?: PlacementListingsCreateNestedManyWithoutProviderInput
     Placements?: PlacementsCreateNestedManyWithoutProviderInput
     ProviderStaff?: ProviderStaffCreateNestedManyWithoutProviderInput
+    ProviderCohorts?: ProviderCohortsCreateNestedManyWithoutProviderInput
   }
 
   export type ProvidersUncheckedCreateWithoutProviderUserGroupsInput = {
     providerId: string
     contactForename: string
     contactSurname: string
-    defAddress: string
     email: string
-    mapConsent: boolean
-    insurance: boolean
-    mapConsentDate: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
     name: string
     phone: string
-    rememberConsent: boolean
-    rememberConsentDate: string
-    savedBy: JsonNullValueInput | InputJsonValue
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector: string
+    referral?: string | null
     subsector: string
     uploadedBy: string
-    website: string
+    website?: string | null
+    activationCode?: number
+    status: string
     Addresses?: AddressesUncheckedCreateNestedManyWithoutProviderInput
     PlacementListings?: PlacementListingsUncheckedCreateNestedManyWithoutProviderInput
     Placements?: PlacementsUncheckedCreateNestedManyWithoutProviderInput
     ProviderStaff?: ProviderStaffUncheckedCreateNestedManyWithoutProviderInput
+    ProviderCohorts?: ProviderCohortsUncheckedCreateNestedManyWithoutProviderInput
   }
 
   export type ProvidersCreateOrConnectWithoutProviderUserGroupsInput = {
@@ -29187,48 +31095,54 @@ export namespace Prisma {
     providerId?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
     contactSurname?: StringFieldUpdateOperationsInput | string
-    defAddress?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    mapConsent?: BoolFieldUpdateOperationsInput | boolean
-    insurance?: BoolFieldUpdateOperationsInput | boolean
-    mapConsentDate?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    rememberConsent?: BoolFieldUpdateOperationsInput | boolean
-    rememberConsentDate?: StringFieldUpdateOperationsInput | string
-    savedBy?: JsonNullValueInput | InputJsonValue
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
     subsector?: StringFieldUpdateOperationsInput | string
     uploadedBy?: StringFieldUpdateOperationsInput | string
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     Addresses?: AddressesUpdateManyWithoutProviderNestedInput
     PlacementListings?: PlacementListingsUpdateManyWithoutProviderNestedInput
     Placements?: PlacementsUpdateManyWithoutProviderNestedInput
     ProviderStaff?: ProviderStaffUpdateManyWithoutProviderNestedInput
+    ProviderCohorts?: ProviderCohortsUpdateManyWithoutProviderNestedInput
   }
 
   export type ProvidersUncheckedUpdateWithoutProviderUserGroupsInput = {
     providerId?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
     contactSurname?: StringFieldUpdateOperationsInput | string
-    defAddress?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    mapConsent?: BoolFieldUpdateOperationsInput | boolean
-    insurance?: BoolFieldUpdateOperationsInput | boolean
-    mapConsentDate?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    rememberConsent?: BoolFieldUpdateOperationsInput | boolean
-    rememberConsentDate?: StringFieldUpdateOperationsInput | string
-    savedBy?: JsonNullValueInput | InputJsonValue
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
     subsector?: StringFieldUpdateOperationsInput | string
     uploadedBy?: StringFieldUpdateOperationsInput | string
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     Addresses?: AddressesUncheckedUpdateManyWithoutProviderNestedInput
     PlacementListings?: PlacementListingsUncheckedUpdateManyWithoutProviderNestedInput
     Placements?: PlacementsUncheckedUpdateManyWithoutProviderNestedInput
     ProviderStaff?: ProviderStaffUncheckedUpdateManyWithoutProviderNestedInput
+    ProviderCohorts?: ProviderCohortsUncheckedUpdateManyWithoutProviderNestedInput
   }
 
   export type ContactsCreateWithoutStudentUserInput = {
@@ -29951,48 +31865,54 @@ export namespace Prisma {
     providerId: string
     contactForename: string
     contactSurname: string
-    defAddress: string
     email: string
-    mapConsent: boolean
-    insurance: boolean
-    mapConsentDate: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
     name: string
     phone: string
-    rememberConsent: boolean
-    rememberConsentDate: string
-    savedBy: JsonNullValueInput | InputJsonValue
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector: string
+    referral?: string | null
     subsector: string
     uploadedBy: string
-    website: string
+    website?: string | null
+    activationCode?: number
+    status: string
     Addresses?: AddressesCreateNestedManyWithoutProviderInput
     PlacementListings?: PlacementListingsCreateNestedManyWithoutProviderInput
     Placements?: PlacementsCreateNestedManyWithoutProviderInput
     ProviderUserGroups?: ProviderUserGroupsCreateNestedManyWithoutProviderInput
+    ProviderCohorts?: ProviderCohortsCreateNestedManyWithoutProviderInput
   }
 
   export type ProvidersUncheckedCreateWithoutProviderStaffInput = {
     providerId: string
     contactForename: string
     contactSurname: string
-    defAddress: string
     email: string
-    mapConsent: boolean
-    insurance: boolean
-    mapConsentDate: string
+    mapConsent?: boolean | null
+    insurance?: boolean | null
+    mapConsentDate?: string | null
     name: string
     phone: string
-    rememberConsent: boolean
-    rememberConsentDate: string
-    savedBy: JsonNullValueInput | InputJsonValue
+    rememberConsent?: boolean | null
+    rememberConsentDate?: string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector: string
+    referral?: string | null
     subsector: string
     uploadedBy: string
-    website: string
+    website?: string | null
+    activationCode?: number
+    status: string
     Addresses?: AddressesUncheckedCreateNestedManyWithoutProviderInput
     PlacementListings?: PlacementListingsUncheckedCreateNestedManyWithoutProviderInput
     Placements?: PlacementsUncheckedCreateNestedManyWithoutProviderInput
     ProviderUserGroups?: ProviderUserGroupsUncheckedCreateNestedManyWithoutProviderInput
+    ProviderCohorts?: ProviderCohortsUncheckedCreateNestedManyWithoutProviderInput
   }
 
   export type ProvidersCreateOrConnectWithoutProviderStaffInput = {
@@ -30004,7 +31924,6 @@ export namespace Prisma {
     userGroupId: string
     default: boolean
     name: string
-    template: string
     updated: string
     provider: ProvidersCreateNestedOneWithoutProviderUserGroupsInput
   }
@@ -30013,7 +31932,6 @@ export namespace Prisma {
     userGroupId: string
     default: boolean
     name: string
-    template: string
     updated: string
     providerId: string
   }
@@ -30038,48 +31956,54 @@ export namespace Prisma {
     providerId?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
     contactSurname?: StringFieldUpdateOperationsInput | string
-    defAddress?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    mapConsent?: BoolFieldUpdateOperationsInput | boolean
-    insurance?: BoolFieldUpdateOperationsInput | boolean
-    mapConsentDate?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    rememberConsent?: BoolFieldUpdateOperationsInput | boolean
-    rememberConsentDate?: StringFieldUpdateOperationsInput | string
-    savedBy?: JsonNullValueInput | InputJsonValue
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
     subsector?: StringFieldUpdateOperationsInput | string
     uploadedBy?: StringFieldUpdateOperationsInput | string
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     Addresses?: AddressesUpdateManyWithoutProviderNestedInput
     PlacementListings?: PlacementListingsUpdateManyWithoutProviderNestedInput
     Placements?: PlacementsUpdateManyWithoutProviderNestedInput
     ProviderUserGroups?: ProviderUserGroupsUpdateManyWithoutProviderNestedInput
+    ProviderCohorts?: ProviderCohortsUpdateManyWithoutProviderNestedInput
   }
 
   export type ProvidersUncheckedUpdateWithoutProviderStaffInput = {
     providerId?: StringFieldUpdateOperationsInput | string
     contactForename?: StringFieldUpdateOperationsInput | string
     contactSurname?: StringFieldUpdateOperationsInput | string
-    defAddress?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
-    mapConsent?: BoolFieldUpdateOperationsInput | boolean
-    insurance?: BoolFieldUpdateOperationsInput | boolean
-    mapConsentDate?: StringFieldUpdateOperationsInput | string
+    mapConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    insurance?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mapConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
-    rememberConsent?: BoolFieldUpdateOperationsInput | boolean
-    rememberConsentDate?: StringFieldUpdateOperationsInput | string
-    savedBy?: JsonNullValueInput | InputJsonValue
+    rememberConsent?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    rememberConsentDate?: NullableStringFieldUpdateOperationsInput | string | null
+    savedBy?: NullableJsonNullValueInput | InputJsonValue
     sector?: StringFieldUpdateOperationsInput | string
+    referral?: NullableStringFieldUpdateOperationsInput | string | null
     subsector?: StringFieldUpdateOperationsInput | string
     uploadedBy?: StringFieldUpdateOperationsInput | string
-    website?: StringFieldUpdateOperationsInput | string
+    website?: NullableStringFieldUpdateOperationsInput | string | null
+    activationCode?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
     Addresses?: AddressesUncheckedUpdateManyWithoutProviderNestedInput
     PlacementListings?: PlacementListingsUncheckedUpdateManyWithoutProviderNestedInput
     Placements?: PlacementsUncheckedUpdateManyWithoutProviderNestedInput
     ProviderUserGroups?: ProviderUserGroupsUncheckedUpdateManyWithoutProviderNestedInput
+    ProviderCohorts?: ProviderCohortsUncheckedUpdateManyWithoutProviderNestedInput
   }
 
   export type ProviderUserGroupsUpsertWithoutProviderStaffInput = {
@@ -30097,7 +32021,6 @@ export namespace Prisma {
     userGroupId?: StringFieldUpdateOperationsInput | string
     default?: BoolFieldUpdateOperationsInput | boolean
     name?: StringFieldUpdateOperationsInput | string
-    template?: StringFieldUpdateOperationsInput | string
     updated?: StringFieldUpdateOperationsInput | string
     provider?: ProvidersUpdateOneRequiredWithoutProviderUserGroupsNestedInput
   }
@@ -30106,7 +32029,6 @@ export namespace Prisma {
     userGroupId?: StringFieldUpdateOperationsInput | string
     default?: BoolFieldUpdateOperationsInput | boolean
     name?: StringFieldUpdateOperationsInput | string
-    template?: StringFieldUpdateOperationsInput | string
     updated?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string
   }
@@ -30174,6 +32096,13 @@ export namespace Prisma {
     providerId: string
     studentId: string
     userGroupId: string
+  }
+
+  export type ProviderCohortsCreateManyAddressInput = {
+    cohortId: string
+    stage: string
+    name: string
+    providerId: string
   }
 
   export type ContactsUpdateWithoutAddressInput = {
@@ -30373,6 +32302,27 @@ export namespace Prisma {
     userGroupId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type ProviderCohortsUpdateWithoutAddressInput = {
+    cohortId?: StringFieldUpdateOperationsInput | string
+    stage?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    provider?: ProvidersUpdateOneRequiredWithoutProviderCohortsNestedInput
+  }
+
+  export type ProviderCohortsUncheckedUpdateWithoutAddressInput = {
+    cohortId?: StringFieldUpdateOperationsInput | string
+    stage?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProviderCohortsUncheckedUpdateManyWithoutAddressInput = {
+    cohortId?: StringFieldUpdateOperationsInput | string
+    stage?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    providerId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type InstituteStudentsCreateManyCohortInput = {
     instituteStudentId: string
     activated: string
@@ -30441,8 +32391,8 @@ export namespace Prisma {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -30557,8 +32507,8 @@ export namespace Prisma {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30571,14 +32521,15 @@ export namespace Prisma {
     Contacts?: ContactsUpdateManyWithoutAddressNestedInput
     PlacementListings?: PlacementListingsUpdateManyWithoutAddressNestedInput
     Placements?: PlacementsUpdateManyWithoutAddressNestedInput
+    ProviderCohorts?: ProviderCohortsUpdateManyWithoutAddressNestedInput
   }
 
   export type AddressesUncheckedUpdateWithoutInstituteInput = {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30591,14 +32542,15 @@ export namespace Prisma {
     Contacts?: ContactsUncheckedUpdateManyWithoutAddressNestedInput
     PlacementListings?: PlacementListingsUncheckedUpdateManyWithoutAddressNestedInput
     Placements?: PlacementsUncheckedUpdateManyWithoutAddressNestedInput
+    ProviderCohorts?: ProviderCohortsUncheckedUpdateManyWithoutAddressNestedInput
   }
 
   export type AddressesUncheckedUpdateManyWithoutInstituteInput = {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -30957,8 +32909,8 @@ export namespace Prisma {
     addressId: string
     name: string
     stage?: string | null
-    address_line1?: string | null
-    address_line2?: string | null
+    addressLine1?: string | null
+    addressLine2?: string | null
     contactForename?: string | null
     contactSurname?: string | null
     country?: string | null
@@ -31029,7 +32981,7 @@ export namespace Prisma {
     created: string
     details: JsonNullValueInput | InputJsonValue
     email: string
-    notes: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status: string
     userGroupId: string
   }
@@ -31038,16 +32990,22 @@ export namespace Prisma {
     userGroupId: string
     default: boolean
     name: string
-    template: string
     updated: string
+  }
+
+  export type ProviderCohortsCreateManyProviderInput = {
+    cohortId: string
+    stage: string
+    name: string
+    addressId: string
   }
 
   export type AddressesUpdateWithoutProviderInput = {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -31060,14 +33018,15 @@ export namespace Prisma {
     Contacts?: ContactsUpdateManyWithoutAddressNestedInput
     PlacementListings?: PlacementListingsUpdateManyWithoutAddressNestedInput
     Placements?: PlacementsUpdateManyWithoutAddressNestedInput
+    ProviderCohorts?: ProviderCohortsUpdateManyWithoutAddressNestedInput
   }
 
   export type AddressesUncheckedUpdateWithoutProviderInput = {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -31080,14 +33039,15 @@ export namespace Prisma {
     Contacts?: ContactsUncheckedUpdateManyWithoutAddressNestedInput
     PlacementListings?: PlacementListingsUncheckedUpdateManyWithoutAddressNestedInput
     Placements?: PlacementsUncheckedUpdateManyWithoutAddressNestedInput
+    ProviderCohorts?: ProviderCohortsUncheckedUpdateManyWithoutAddressNestedInput
   }
 
   export type AddressesUncheckedUpdateManyWithoutProviderInput = {
     addressId?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     stage?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line1?: NullableStringFieldUpdateOperationsInput | string | null
-    address_line2?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine1?: NullableStringFieldUpdateOperationsInput | string | null
+    addressLine2?: NullableStringFieldUpdateOperationsInput | string | null
     contactForename?: NullableStringFieldUpdateOperationsInput | string | null
     contactSurname?: NullableStringFieldUpdateOperationsInput | string | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
@@ -31268,7 +33228,7 @@ export namespace Prisma {
     created?: StringFieldUpdateOperationsInput | string
     details?: JsonNullValueInput | InputJsonValue
     email?: StringFieldUpdateOperationsInput | string
-    notes?: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status?: StringFieldUpdateOperationsInput | string
     userGroup?: ProviderUserGroupsUpdateOneRequiredWithoutProviderStaffNestedInput
   }
@@ -31278,7 +33238,7 @@ export namespace Prisma {
     created?: StringFieldUpdateOperationsInput | string
     details?: JsonNullValueInput | InputJsonValue
     email?: StringFieldUpdateOperationsInput | string
-    notes?: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status?: StringFieldUpdateOperationsInput | string
     userGroupId?: StringFieldUpdateOperationsInput | string
   }
@@ -31288,7 +33248,7 @@ export namespace Prisma {
     created?: StringFieldUpdateOperationsInput | string
     details?: JsonNullValueInput | InputJsonValue
     email?: StringFieldUpdateOperationsInput | string
-    notes?: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status?: StringFieldUpdateOperationsInput | string
     userGroupId?: StringFieldUpdateOperationsInput | string
   }
@@ -31297,7 +33257,6 @@ export namespace Prisma {
     userGroupId?: StringFieldUpdateOperationsInput | string
     default?: BoolFieldUpdateOperationsInput | boolean
     name?: StringFieldUpdateOperationsInput | string
-    template?: StringFieldUpdateOperationsInput | string
     updated?: StringFieldUpdateOperationsInput | string
     ProviderStaff?: ProviderStaffUpdateManyWithoutUserGroupNestedInput
   }
@@ -31306,7 +33265,6 @@ export namespace Prisma {
     userGroupId?: StringFieldUpdateOperationsInput | string
     default?: BoolFieldUpdateOperationsInput | boolean
     name?: StringFieldUpdateOperationsInput | string
-    template?: StringFieldUpdateOperationsInput | string
     updated?: StringFieldUpdateOperationsInput | string
     ProviderStaff?: ProviderStaffUncheckedUpdateManyWithoutUserGroupNestedInput
   }
@@ -31315,8 +33273,28 @@ export namespace Prisma {
     userGroupId?: StringFieldUpdateOperationsInput | string
     default?: BoolFieldUpdateOperationsInput | boolean
     name?: StringFieldUpdateOperationsInput | string
-    template?: StringFieldUpdateOperationsInput | string
     updated?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProviderCohortsUpdateWithoutProviderInput = {
+    cohortId?: StringFieldUpdateOperationsInput | string
+    stage?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    address?: AddressesUpdateOneRequiredWithoutProviderCohortsNestedInput
+  }
+
+  export type ProviderCohortsUncheckedUpdateWithoutProviderInput = {
+    cohortId?: StringFieldUpdateOperationsInput | string
+    stage?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    addressId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ProviderCohortsUncheckedUpdateManyWithoutProviderInput = {
+    cohortId?: StringFieldUpdateOperationsInput | string
+    stage?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    addressId?: StringFieldUpdateOperationsInput | string
   }
 
   export type InstituteStudentsCreateManyUserGroupInput = {
@@ -31586,7 +33564,7 @@ export namespace Prisma {
     created: string
     details: JsonNullValueInput | InputJsonValue
     email: string
-    notes: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status: string
     providerId: string
   }
@@ -31596,7 +33574,7 @@ export namespace Prisma {
     created?: StringFieldUpdateOperationsInput | string
     details?: JsonNullValueInput | InputJsonValue
     email?: StringFieldUpdateOperationsInput | string
-    notes?: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status?: StringFieldUpdateOperationsInput | string
     provider?: ProvidersUpdateOneRequiredWithoutProviderStaffNestedInput
   }
@@ -31606,7 +33584,7 @@ export namespace Prisma {
     created?: StringFieldUpdateOperationsInput | string
     details?: JsonNullValueInput | InputJsonValue
     email?: StringFieldUpdateOperationsInput | string
-    notes?: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string
   }
@@ -31616,7 +33594,7 @@ export namespace Prisma {
     created?: StringFieldUpdateOperationsInput | string
     details?: JsonNullValueInput | InputJsonValue
     email?: StringFieldUpdateOperationsInput | string
-    notes?: JsonNullValueInput | InputJsonValue
+    notes?: NullableJsonNullValueInput | InputJsonValue
     status?: StringFieldUpdateOperationsInput | string
     providerId?: StringFieldUpdateOperationsInput | string
   }
@@ -32070,6 +34048,10 @@ export namespace Prisma {
      * @deprecated Use CohortsDefaultArgs instead
      */
     export type CohortsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = CohortsDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use ProviderCohortsDefaultArgs instead
+     */
+    export type ProviderCohortsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ProviderCohortsDefaultArgs<ExtArgs>
     /**
      * @deprecated Use ContactsDefaultArgs instead
      */

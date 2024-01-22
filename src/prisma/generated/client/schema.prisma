@@ -18,8 +18,8 @@ model Addresses {
   addressId         String              @id @unique
   name              String
   stage             String?
-  address_line1     String?
-  address_line2     String?
+  addressLine1     String?
+  addressLine2     String?
   contactForename   String?
   contactSurname    String?
   country           String?
@@ -35,11 +35,12 @@ model Addresses {
   Contacts          Contacts[]
   PlacementListings PlacementListings[]
   Placements        Placements[]
+  ProviderCohorts   ProviderCohorts[]
 }
 
 model Cohorts {
   cohortId          String              @id @unique
-  designatedStaff   String              @unique
+  designatedStaff   String            
   stage             String
   placementType     String
   name              String
@@ -53,6 +54,16 @@ model Cohorts {
   instituteId       String
   institute         Institutes          @relation(fields: [instituteId], references: [instituteId])
   InstituteStudents InstituteStudents[]
+}
+
+model ProviderCohorts {
+  cohortId        String    @id @unique
+  stage           String
+  name            String
+  address         Addresses @relation(fields: [addressId], references: [addressId])
+  addressId       String
+  providerId      String
+  provider        Providers @relation(fields: [providerId], references: [providerId])
 }
 
 model Contacts {
@@ -183,25 +194,28 @@ model Providers {
   providerId          String               @id @unique
   contactForename     String
   contactSurname      String
-  defAddress          String
   email               String
-  mapConsent          Boolean
-  insurance           Boolean
-  mapConsentDate      String
+  mapConsent          Boolean?
+  insurance           Boolean?
+  mapConsentDate      String?
   name                String
   phone               String
-  rememberConsent     Boolean
-  rememberConsentDate String
-  savedBy             Json
+  rememberConsent     Boolean?
+  rememberConsentDate String?
+  savedBy             Json?
   sector              String
+  referral            String?
   subsector           String
   uploadedBy          String
-  website             String
+  website             String?
+  activationCode      Int     @default(0)
+  status              String 
   Addresses           Addresses[]
   PlacementListings   PlacementListings[]
   Placements          Placements[]
   ProviderStaff       ProviderStaff[]
   ProviderUserGroups  ProviderUserGroups[]
+  ProviderCohorts     ProviderCohorts[]
 }
 
 model InstituteStudentUserGroups {
@@ -229,7 +243,6 @@ model ProviderUserGroups {
   userGroupId   String          @id @unique
   default       Boolean
   name          String
-  template      String
   updated       String
   providerId    String
   ProviderStaff ProviderStaff[]
@@ -290,7 +303,7 @@ model ProviderStaff {
   created         String
   details         Json
   email           String
-  notes           Json
+  notes           Json?
   status          String
   providerId      String
   userGroupId     String
