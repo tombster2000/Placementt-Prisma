@@ -98,6 +98,11 @@ export type InstituteStudents = $Result.DefaultSelection<Prisma.$InstituteStuden
  * 
  */
 export type ProviderStaff = $Result.DefaultSelection<Prisma.$ProviderStaffPayload>
+/**
+ * Model Potentialproviders
+ * 
+ */
+export type Potentialproviders = $Result.DefaultSelection<Prisma.$PotentialprovidersPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -390,6 +395,16 @@ export class PrismaClient<
     * ```
     */
   get providerStaff(): Prisma.ProviderStaffDelegate<ExtArgs>;
+
+  /**
+   * `prisma.potentialproviders`: Exposes CRUD operations for the **Potentialproviders** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Potentialproviders
+    * const potentialproviders = await prisma.potentialproviders.findMany()
+    * ```
+    */
+  get potentialproviders(): Prisma.PotentialprovidersDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -876,7 +891,8 @@ export namespace Prisma {
     StudentUsers: 'StudentUsers',
     InstituteStaff: 'InstituteStaff',
     InstituteStudents: 'InstituteStudents',
-    ProviderStaff: 'ProviderStaff'
+    ProviderStaff: 'ProviderStaff',
+    Potentialproviders: 'Potentialproviders'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -893,7 +909,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'addresses' | 'cohorts' | 'providerCohorts' | 'contacts' | 'instituteForms' | 'institutes' | 'logs' | 'placementListings' | 'placements' | 'providers' | 'instituteStudentUserGroups' | 'instituteStaffUserGroups' | 'providerUserGroups' | 'studentUsers' | 'instituteStaff' | 'instituteStudents' | 'providerStaff'
+      modelProps: 'addresses' | 'cohorts' | 'providerCohorts' | 'contacts' | 'instituteForms' | 'institutes' | 'logs' | 'placementListings' | 'placements' | 'providers' | 'instituteStudentUserGroups' | 'instituteStaffUserGroups' | 'providerUserGroups' | 'studentUsers' | 'instituteStaff' | 'instituteStudents' | 'providerStaff' | 'potentialproviders'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -2016,6 +2032,72 @@ export namespace Prisma {
           count: {
             args: Prisma.ProviderStaffCountArgs<ExtArgs>,
             result: $Utils.Optional<ProviderStaffCountAggregateOutputType> | number
+          }
+        }
+      }
+      Potentialproviders: {
+        payload: Prisma.$PotentialprovidersPayload<ExtArgs>
+        fields: Prisma.PotentialprovidersFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PotentialprovidersFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PotentialprovidersPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PotentialprovidersFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PotentialprovidersPayload>
+          }
+          findFirst: {
+            args: Prisma.PotentialprovidersFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PotentialprovidersPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PotentialprovidersFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PotentialprovidersPayload>
+          }
+          findMany: {
+            args: Prisma.PotentialprovidersFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PotentialprovidersPayload>[]
+          }
+          create: {
+            args: Prisma.PotentialprovidersCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PotentialprovidersPayload>
+          }
+          createMany: {
+            args: Prisma.PotentialprovidersCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.PotentialprovidersDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PotentialprovidersPayload>
+          }
+          update: {
+            args: Prisma.PotentialprovidersUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PotentialprovidersPayload>
+          }
+          deleteMany: {
+            args: Prisma.PotentialprovidersDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PotentialprovidersUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.PotentialprovidersUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$PotentialprovidersPayload>
+          }
+          aggregate: {
+            args: Prisma.PotentialprovidersAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePotentialproviders>
+          }
+          groupBy: {
+            args: Prisma.PotentialprovidersGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PotentialprovidersGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PotentialprovidersCountArgs<ExtArgs>,
+            result: $Utils.Optional<PotentialprovidersCountAggregateOutputType> | number
           }
         }
       }
@@ -20298,6 +20380,901 @@ export namespace Prisma {
 
 
   /**
+   * Model Potentialproviders
+   */
+
+  export type AggregatePotentialproviders = {
+    _count: PotentialprovidersCountAggregateOutputType | null
+    _min: PotentialprovidersMinAggregateOutputType | null
+    _max: PotentialprovidersMaxAggregateOutputType | null
+  }
+
+  export type PotentialprovidersMinAggregateOutputType = {
+    id: string | null
+    geoHash: string | null
+    nationalPhoneNumber: string | null
+    formattedAddress: string | null
+    websiteUri: string | null
+    name: string | null
+  }
+
+  export type PotentialprovidersMaxAggregateOutputType = {
+    id: string | null
+    geoHash: string | null
+    nationalPhoneNumber: string | null
+    formattedAddress: string | null
+    websiteUri: string | null
+    name: string | null
+  }
+
+  export type PotentialprovidersCountAggregateOutputType = {
+    id: number
+    types: number
+    geoHash: number
+    nationalPhoneNumber: number
+    email: number
+    formattedAddress: number
+    websiteUri: number
+    name: number
+    _all: number
+  }
+
+
+  export type PotentialprovidersMinAggregateInputType = {
+    id?: true
+    geoHash?: true
+    nationalPhoneNumber?: true
+    formattedAddress?: true
+    websiteUri?: true
+    name?: true
+  }
+
+  export type PotentialprovidersMaxAggregateInputType = {
+    id?: true
+    geoHash?: true
+    nationalPhoneNumber?: true
+    formattedAddress?: true
+    websiteUri?: true
+    name?: true
+  }
+
+  export type PotentialprovidersCountAggregateInputType = {
+    id?: true
+    types?: true
+    geoHash?: true
+    nationalPhoneNumber?: true
+    email?: true
+    formattedAddress?: true
+    websiteUri?: true
+    name?: true
+    _all?: true
+  }
+
+  export type PotentialprovidersAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Potentialproviders to aggregate.
+     */
+    where?: PotentialprovidersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Potentialproviders to fetch.
+     */
+    orderBy?: PotentialprovidersOrderByWithRelationInput | PotentialprovidersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PotentialprovidersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Potentialproviders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Potentialproviders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Potentialproviders
+    **/
+    _count?: true | PotentialprovidersCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PotentialprovidersMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PotentialprovidersMaxAggregateInputType
+  }
+
+  export type GetPotentialprovidersAggregateType<T extends PotentialprovidersAggregateArgs> = {
+        [P in keyof T & keyof AggregatePotentialproviders]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePotentialproviders[P]>
+      : GetScalarType<T[P], AggregatePotentialproviders[P]>
+  }
+
+
+
+
+  export type PotentialprovidersGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PotentialprovidersWhereInput
+    orderBy?: PotentialprovidersOrderByWithAggregationInput | PotentialprovidersOrderByWithAggregationInput[]
+    by: PotentialprovidersScalarFieldEnum[] | PotentialprovidersScalarFieldEnum
+    having?: PotentialprovidersScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PotentialprovidersCountAggregateInputType | true
+    _min?: PotentialprovidersMinAggregateInputType
+    _max?: PotentialprovidersMaxAggregateInputType
+  }
+
+  export type PotentialprovidersGroupByOutputType = {
+    id: string
+    types: string[]
+    geoHash: string
+    nationalPhoneNumber: string
+    email: string[]
+    formattedAddress: string
+    websiteUri: string
+    name: string
+    _count: PotentialprovidersCountAggregateOutputType | null
+    _min: PotentialprovidersMinAggregateOutputType | null
+    _max: PotentialprovidersMaxAggregateOutputType | null
+  }
+
+  type GetPotentialprovidersGroupByPayload<T extends PotentialprovidersGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PotentialprovidersGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PotentialprovidersGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PotentialprovidersGroupByOutputType[P]>
+            : GetScalarType<T[P], PotentialprovidersGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PotentialprovidersSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    types?: boolean
+    geoHash?: boolean
+    nationalPhoneNumber?: boolean
+    email?: boolean
+    formattedAddress?: boolean
+    websiteUri?: boolean
+    name?: boolean
+  }, ExtArgs["result"]["potentialproviders"]>
+
+  export type PotentialprovidersSelectScalar = {
+    id?: boolean
+    types?: boolean
+    geoHash?: boolean
+    nationalPhoneNumber?: boolean
+    email?: boolean
+    formattedAddress?: boolean
+    websiteUri?: boolean
+    name?: boolean
+  }
+
+
+  export type $PotentialprovidersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Potentialproviders"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      types: string[]
+      geoHash: string
+      nationalPhoneNumber: string
+      email: string[]
+      formattedAddress: string
+      websiteUri: string
+      name: string
+    }, ExtArgs["result"]["potentialproviders"]>
+    composites: {}
+  }
+
+
+  type PotentialprovidersGetPayload<S extends boolean | null | undefined | PotentialprovidersDefaultArgs> = $Result.GetResult<Prisma.$PotentialprovidersPayload, S>
+
+  type PotentialprovidersCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<PotentialprovidersFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: PotentialprovidersCountAggregateInputType | true
+    }
+
+  export interface PotentialprovidersDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Potentialproviders'], meta: { name: 'Potentialproviders' } }
+    /**
+     * Find zero or one Potentialproviders that matches the filter.
+     * @param {PotentialprovidersFindUniqueArgs} args - Arguments to find a Potentialproviders
+     * @example
+     * // Get one Potentialproviders
+     * const potentialproviders = await prisma.potentialproviders.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends PotentialprovidersFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, PotentialprovidersFindUniqueArgs<ExtArgs>>
+    ): Prisma__PotentialprovidersClient<$Result.GetResult<Prisma.$PotentialprovidersPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one Potentialproviders that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {PotentialprovidersFindUniqueOrThrowArgs} args - Arguments to find a Potentialproviders
+     * @example
+     * // Get one Potentialproviders
+     * const potentialproviders = await prisma.potentialproviders.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends PotentialprovidersFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PotentialprovidersFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__PotentialprovidersClient<$Result.GetResult<Prisma.$PotentialprovidersPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first Potentialproviders that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PotentialprovidersFindFirstArgs} args - Arguments to find a Potentialproviders
+     * @example
+     * // Get one Potentialproviders
+     * const potentialproviders = await prisma.potentialproviders.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends PotentialprovidersFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, PotentialprovidersFindFirstArgs<ExtArgs>>
+    ): Prisma__PotentialprovidersClient<$Result.GetResult<Prisma.$PotentialprovidersPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first Potentialproviders that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PotentialprovidersFindFirstOrThrowArgs} args - Arguments to find a Potentialproviders
+     * @example
+     * // Get one Potentialproviders
+     * const potentialproviders = await prisma.potentialproviders.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends PotentialprovidersFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, PotentialprovidersFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__PotentialprovidersClient<$Result.GetResult<Prisma.$PotentialprovidersPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more Potentialproviders that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PotentialprovidersFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Potentialproviders
+     * const potentialproviders = await prisma.potentialproviders.findMany()
+     * 
+     * // Get first 10 Potentialproviders
+     * const potentialproviders = await prisma.potentialproviders.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const potentialprovidersWithIdOnly = await prisma.potentialproviders.findMany({ select: { id: true } })
+     * 
+    **/
+    findMany<T extends PotentialprovidersFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PotentialprovidersFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PotentialprovidersPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a Potentialproviders.
+     * @param {PotentialprovidersCreateArgs} args - Arguments to create a Potentialproviders.
+     * @example
+     * // Create one Potentialproviders
+     * const Potentialproviders = await prisma.potentialproviders.create({
+     *   data: {
+     *     // ... data to create a Potentialproviders
+     *   }
+     * })
+     * 
+    **/
+    create<T extends PotentialprovidersCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, PotentialprovidersCreateArgs<ExtArgs>>
+    ): Prisma__PotentialprovidersClient<$Result.GetResult<Prisma.$PotentialprovidersPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many Potentialproviders.
+     *     @param {PotentialprovidersCreateManyArgs} args - Arguments to create many Potentialproviders.
+     *     @example
+     *     // Create many Potentialproviders
+     *     const potentialproviders = await prisma.potentialproviders.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends PotentialprovidersCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PotentialprovidersCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Potentialproviders.
+     * @param {PotentialprovidersDeleteArgs} args - Arguments to delete one Potentialproviders.
+     * @example
+     * // Delete one Potentialproviders
+     * const Potentialproviders = await prisma.potentialproviders.delete({
+     *   where: {
+     *     // ... filter to delete one Potentialproviders
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends PotentialprovidersDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, PotentialprovidersDeleteArgs<ExtArgs>>
+    ): Prisma__PotentialprovidersClient<$Result.GetResult<Prisma.$PotentialprovidersPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one Potentialproviders.
+     * @param {PotentialprovidersUpdateArgs} args - Arguments to update one Potentialproviders.
+     * @example
+     * // Update one Potentialproviders
+     * const potentialproviders = await prisma.potentialproviders.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends PotentialprovidersUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, PotentialprovidersUpdateArgs<ExtArgs>>
+    ): Prisma__PotentialprovidersClient<$Result.GetResult<Prisma.$PotentialprovidersPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more Potentialproviders.
+     * @param {PotentialprovidersDeleteManyArgs} args - Arguments to filter Potentialproviders to delete.
+     * @example
+     * // Delete a few Potentialproviders
+     * const { count } = await prisma.potentialproviders.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends PotentialprovidersDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, PotentialprovidersDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Potentialproviders.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PotentialprovidersUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Potentialproviders
+     * const potentialproviders = await prisma.potentialproviders.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends PotentialprovidersUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, PotentialprovidersUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Potentialproviders.
+     * @param {PotentialprovidersUpsertArgs} args - Arguments to update or create a Potentialproviders.
+     * @example
+     * // Update or create a Potentialproviders
+     * const potentialproviders = await prisma.potentialproviders.upsert({
+     *   create: {
+     *     // ... data to create a Potentialproviders
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Potentialproviders we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends PotentialprovidersUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, PotentialprovidersUpsertArgs<ExtArgs>>
+    ): Prisma__PotentialprovidersClient<$Result.GetResult<Prisma.$PotentialprovidersPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of Potentialproviders.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PotentialprovidersCountArgs} args - Arguments to filter Potentialproviders to count.
+     * @example
+     * // Count the number of Potentialproviders
+     * const count = await prisma.potentialproviders.count({
+     *   where: {
+     *     // ... the filter for the Potentialproviders we want to count
+     *   }
+     * })
+    **/
+    count<T extends PotentialprovidersCountArgs>(
+      args?: Subset<T, PotentialprovidersCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PotentialprovidersCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Potentialproviders.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PotentialprovidersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PotentialprovidersAggregateArgs>(args: Subset<T, PotentialprovidersAggregateArgs>): Prisma.PrismaPromise<GetPotentialprovidersAggregateType<T>>
+
+    /**
+     * Group by Potentialproviders.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PotentialprovidersGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PotentialprovidersGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PotentialprovidersGroupByArgs['orderBy'] }
+        : { orderBy?: PotentialprovidersGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PotentialprovidersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPotentialprovidersGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Potentialproviders model
+   */
+  readonly fields: PotentialprovidersFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Potentialproviders.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PotentialprovidersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the Potentialproviders model
+   */ 
+  interface PotentialprovidersFieldRefs {
+    readonly id: FieldRef<"Potentialproviders", 'String'>
+    readonly types: FieldRef<"Potentialproviders", 'String[]'>
+    readonly geoHash: FieldRef<"Potentialproviders", 'String'>
+    readonly nationalPhoneNumber: FieldRef<"Potentialproviders", 'String'>
+    readonly email: FieldRef<"Potentialproviders", 'String[]'>
+    readonly formattedAddress: FieldRef<"Potentialproviders", 'String'>
+    readonly websiteUri: FieldRef<"Potentialproviders", 'String'>
+    readonly name: FieldRef<"Potentialproviders", 'String'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * Potentialproviders findUnique
+   */
+  export type PotentialprovidersFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Potentialproviders
+     */
+    select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * Filter, which Potentialproviders to fetch.
+     */
+    where: PotentialprovidersWhereUniqueInput
+  }
+
+
+  /**
+   * Potentialproviders findUniqueOrThrow
+   */
+  export type PotentialprovidersFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Potentialproviders
+     */
+    select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * Filter, which Potentialproviders to fetch.
+     */
+    where: PotentialprovidersWhereUniqueInput
+  }
+
+
+  /**
+   * Potentialproviders findFirst
+   */
+  export type PotentialprovidersFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Potentialproviders
+     */
+    select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * Filter, which Potentialproviders to fetch.
+     */
+    where?: PotentialprovidersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Potentialproviders to fetch.
+     */
+    orderBy?: PotentialprovidersOrderByWithRelationInput | PotentialprovidersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Potentialproviders.
+     */
+    cursor?: PotentialprovidersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Potentialproviders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Potentialproviders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Potentialproviders.
+     */
+    distinct?: PotentialprovidersScalarFieldEnum | PotentialprovidersScalarFieldEnum[]
+  }
+
+
+  /**
+   * Potentialproviders findFirstOrThrow
+   */
+  export type PotentialprovidersFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Potentialproviders
+     */
+    select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * Filter, which Potentialproviders to fetch.
+     */
+    where?: PotentialprovidersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Potentialproviders to fetch.
+     */
+    orderBy?: PotentialprovidersOrderByWithRelationInput | PotentialprovidersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Potentialproviders.
+     */
+    cursor?: PotentialprovidersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Potentialproviders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Potentialproviders.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Potentialproviders.
+     */
+    distinct?: PotentialprovidersScalarFieldEnum | PotentialprovidersScalarFieldEnum[]
+  }
+
+
+  /**
+   * Potentialproviders findMany
+   */
+  export type PotentialprovidersFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Potentialproviders
+     */
+    select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * Filter, which Potentialproviders to fetch.
+     */
+    where?: PotentialprovidersWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Potentialproviders to fetch.
+     */
+    orderBy?: PotentialprovidersOrderByWithRelationInput | PotentialprovidersOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Potentialproviders.
+     */
+    cursor?: PotentialprovidersWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Potentialproviders from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Potentialproviders.
+     */
+    skip?: number
+    distinct?: PotentialprovidersScalarFieldEnum | PotentialprovidersScalarFieldEnum[]
+  }
+
+
+  /**
+   * Potentialproviders create
+   */
+  export type PotentialprovidersCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Potentialproviders
+     */
+    select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * The data needed to create a Potentialproviders.
+     */
+    data: XOR<PotentialprovidersCreateInput, PotentialprovidersUncheckedCreateInput>
+  }
+
+
+  /**
+   * Potentialproviders createMany
+   */
+  export type PotentialprovidersCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Potentialproviders.
+     */
+    data: PotentialprovidersCreateManyInput | PotentialprovidersCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * Potentialproviders update
+   */
+  export type PotentialprovidersUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Potentialproviders
+     */
+    select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * The data needed to update a Potentialproviders.
+     */
+    data: XOR<PotentialprovidersUpdateInput, PotentialprovidersUncheckedUpdateInput>
+    /**
+     * Choose, which Potentialproviders to update.
+     */
+    where: PotentialprovidersWhereUniqueInput
+  }
+
+
+  /**
+   * Potentialproviders updateMany
+   */
+  export type PotentialprovidersUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Potentialproviders.
+     */
+    data: XOR<PotentialprovidersUpdateManyMutationInput, PotentialprovidersUncheckedUpdateManyInput>
+    /**
+     * Filter which Potentialproviders to update
+     */
+    where?: PotentialprovidersWhereInput
+  }
+
+
+  /**
+   * Potentialproviders upsert
+   */
+  export type PotentialprovidersUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Potentialproviders
+     */
+    select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * The filter to search for the Potentialproviders to update in case it exists.
+     */
+    where: PotentialprovidersWhereUniqueInput
+    /**
+     * In case the Potentialproviders found by the `where` argument doesn't exist, create a new Potentialproviders with this data.
+     */
+    create: XOR<PotentialprovidersCreateInput, PotentialprovidersUncheckedCreateInput>
+    /**
+     * In case the Potentialproviders was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PotentialprovidersUpdateInput, PotentialprovidersUncheckedUpdateInput>
+  }
+
+
+  /**
+   * Potentialproviders delete
+   */
+  export type PotentialprovidersDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Potentialproviders
+     */
+    select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * Filter which Potentialproviders to delete.
+     */
+    where: PotentialprovidersWhereUniqueInput
+  }
+
+
+  /**
+   * Potentialproviders deleteMany
+   */
+  export type PotentialprovidersDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Potentialproviders to delete
+     */
+    where?: PotentialprovidersWhereInput
+  }
+
+
+  /**
+   * Potentialproviders without action
+   */
+  export type PotentialprovidersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Potentialproviders
+     */
+    select?: PotentialprovidersSelect<ExtArgs> | null
+  }
+
+
+
+  /**
    * Enums
    */
 
@@ -20601,6 +21578,20 @@ export namespace Prisma {
   };
 
   export type ProviderStaffScalarFieldEnum = (typeof ProviderStaffScalarFieldEnum)[keyof typeof ProviderStaffScalarFieldEnum]
+
+
+  export const PotentialprovidersScalarFieldEnum: {
+    id: 'id',
+    types: 'types',
+    geoHash: 'geoHash',
+    nationalPhoneNumber: 'nationalPhoneNumber',
+    email: 'email',
+    formattedAddress: 'formattedAddress',
+    websiteUri: 'websiteUri',
+    name: 'name'
+  };
+
+  export type PotentialprovidersScalarFieldEnum = (typeof PotentialprovidersScalarFieldEnum)[keyof typeof PotentialprovidersScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -22310,6 +23301,73 @@ export namespace Prisma {
     status?: StringWithAggregatesFilter<"ProviderStaff"> | string
     providerId?: StringWithAggregatesFilter<"ProviderStaff"> | string
     userGroupId?: StringWithAggregatesFilter<"ProviderStaff"> | string
+  }
+
+  export type PotentialprovidersWhereInput = {
+    AND?: PotentialprovidersWhereInput | PotentialprovidersWhereInput[]
+    OR?: PotentialprovidersWhereInput[]
+    NOT?: PotentialprovidersWhereInput | PotentialprovidersWhereInput[]
+    id?: StringFilter<"Potentialproviders"> | string
+    types?: StringNullableListFilter<"Potentialproviders">
+    geoHash?: StringFilter<"Potentialproviders"> | string
+    nationalPhoneNumber?: StringFilter<"Potentialproviders"> | string
+    email?: StringNullableListFilter<"Potentialproviders">
+    formattedAddress?: StringFilter<"Potentialproviders"> | string
+    websiteUri?: StringFilter<"Potentialproviders"> | string
+    name?: StringFilter<"Potentialproviders"> | string
+  }
+
+  export type PotentialprovidersOrderByWithRelationInput = {
+    id?: SortOrder
+    types?: SortOrder
+    geoHash?: SortOrder
+    nationalPhoneNumber?: SortOrder
+    email?: SortOrder
+    formattedAddress?: SortOrder
+    websiteUri?: SortOrder
+    name?: SortOrder
+  }
+
+  export type PotentialprovidersWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PotentialprovidersWhereInput | PotentialprovidersWhereInput[]
+    OR?: PotentialprovidersWhereInput[]
+    NOT?: PotentialprovidersWhereInput | PotentialprovidersWhereInput[]
+    types?: StringNullableListFilter<"Potentialproviders">
+    geoHash?: StringFilter<"Potentialproviders"> | string
+    nationalPhoneNumber?: StringFilter<"Potentialproviders"> | string
+    email?: StringNullableListFilter<"Potentialproviders">
+    formattedAddress?: StringFilter<"Potentialproviders"> | string
+    websiteUri?: StringFilter<"Potentialproviders"> | string
+    name?: StringFilter<"Potentialproviders"> | string
+  }, "id" | "id">
+
+  export type PotentialprovidersOrderByWithAggregationInput = {
+    id?: SortOrder
+    types?: SortOrder
+    geoHash?: SortOrder
+    nationalPhoneNumber?: SortOrder
+    email?: SortOrder
+    formattedAddress?: SortOrder
+    websiteUri?: SortOrder
+    name?: SortOrder
+    _count?: PotentialprovidersCountOrderByAggregateInput
+    _max?: PotentialprovidersMaxOrderByAggregateInput
+    _min?: PotentialprovidersMinOrderByAggregateInput
+  }
+
+  export type PotentialprovidersScalarWhereWithAggregatesInput = {
+    AND?: PotentialprovidersScalarWhereWithAggregatesInput | PotentialprovidersScalarWhereWithAggregatesInput[]
+    OR?: PotentialprovidersScalarWhereWithAggregatesInput[]
+    NOT?: PotentialprovidersScalarWhereWithAggregatesInput | PotentialprovidersScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Potentialproviders"> | string
+    types?: StringNullableListFilter<"Potentialproviders">
+    geoHash?: StringWithAggregatesFilter<"Potentialproviders"> | string
+    nationalPhoneNumber?: StringWithAggregatesFilter<"Potentialproviders"> | string
+    email?: StringNullableListFilter<"Potentialproviders">
+    formattedAddress?: StringWithAggregatesFilter<"Potentialproviders"> | string
+    websiteUri?: StringWithAggregatesFilter<"Potentialproviders"> | string
+    name?: StringWithAggregatesFilter<"Potentialproviders"> | string
   }
 
   export type AddressesCreateInput = {
@@ -24083,6 +25141,83 @@ export namespace Prisma {
     userGroupId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type PotentialprovidersCreateInput = {
+    id: string
+    types?: PotentialprovidersCreatetypesInput | string[]
+    geoHash: string
+    nationalPhoneNumber: string
+    email?: PotentialprovidersCreateemailInput | string[]
+    formattedAddress: string
+    websiteUri: string
+    name: string
+  }
+
+  export type PotentialprovidersUncheckedCreateInput = {
+    id: string
+    types?: PotentialprovidersCreatetypesInput | string[]
+    geoHash: string
+    nationalPhoneNumber: string
+    email?: PotentialprovidersCreateemailInput | string[]
+    formattedAddress: string
+    websiteUri: string
+    name: string
+  }
+
+  export type PotentialprovidersUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    types?: PotentialprovidersUpdatetypesInput | string[]
+    geoHash?: StringFieldUpdateOperationsInput | string
+    nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: PotentialprovidersUpdateemailInput | string[]
+    formattedAddress?: StringFieldUpdateOperationsInput | string
+    websiteUri?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PotentialprovidersUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    types?: PotentialprovidersUpdatetypesInput | string[]
+    geoHash?: StringFieldUpdateOperationsInput | string
+    nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: PotentialprovidersUpdateemailInput | string[]
+    formattedAddress?: StringFieldUpdateOperationsInput | string
+    websiteUri?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PotentialprovidersCreateManyInput = {
+    id: string
+    types?: PotentialprovidersCreatetypesInput | string[]
+    geoHash: string
+    nationalPhoneNumber: string
+    email?: PotentialprovidersCreateemailInput | string[]
+    formattedAddress: string
+    websiteUri: string
+    name: string
+  }
+
+  export type PotentialprovidersUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    types?: PotentialprovidersUpdatetypesInput | string[]
+    geoHash?: StringFieldUpdateOperationsInput | string
+    nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: PotentialprovidersUpdateemailInput | string[]
+    formattedAddress?: StringFieldUpdateOperationsInput | string
+    websiteUri?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PotentialprovidersUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    types?: PotentialprovidersUpdatetypesInput | string[]
+    geoHash?: StringFieldUpdateOperationsInput | string
+    nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: PotentialprovidersUpdateemailInput | string[]
+    formattedAddress?: StringFieldUpdateOperationsInput | string
+    websiteUri?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -25287,6 +26422,35 @@ export namespace Prisma {
     status?: SortOrder
     providerId?: SortOrder
     userGroupId?: SortOrder
+  }
+
+  export type PotentialprovidersCountOrderByAggregateInput = {
+    id?: SortOrder
+    types?: SortOrder
+    geoHash?: SortOrder
+    nationalPhoneNumber?: SortOrder
+    email?: SortOrder
+    formattedAddress?: SortOrder
+    websiteUri?: SortOrder
+    name?: SortOrder
+  }
+
+  export type PotentialprovidersMaxOrderByAggregateInput = {
+    id?: SortOrder
+    geoHash?: SortOrder
+    nationalPhoneNumber?: SortOrder
+    formattedAddress?: SortOrder
+    websiteUri?: SortOrder
+    name?: SortOrder
+  }
+
+  export type PotentialprovidersMinOrderByAggregateInput = {
+    id?: SortOrder
+    geoHash?: SortOrder
+    nationalPhoneNumber?: SortOrder
+    formattedAddress?: SortOrder
+    websiteUri?: SortOrder
+    name?: SortOrder
   }
 
   export type InstitutesCreateNestedOneWithoutAddressesInput = {
@@ -26980,6 +28144,24 @@ export namespace Prisma {
     upsert?: ProviderUserGroupsUpsertWithoutProviderStaffInput
     connect?: ProviderUserGroupsWhereUniqueInput
     update?: XOR<XOR<ProviderUserGroupsUpdateToOneWithWhereWithoutProviderStaffInput, ProviderUserGroupsUpdateWithoutProviderStaffInput>, ProviderUserGroupsUncheckedUpdateWithoutProviderStaffInput>
+  }
+
+  export type PotentialprovidersCreatetypesInput = {
+    set: string[]
+  }
+
+  export type PotentialprovidersCreateemailInput = {
+    set: string[]
+  }
+
+  export type PotentialprovidersUpdatetypesInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type PotentialprovidersUpdateemailInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -34108,6 +35290,10 @@ export namespace Prisma {
      * @deprecated Use ProviderStaffDefaultArgs instead
      */
     export type ProviderStaffArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = ProviderStaffDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use PotentialprovidersDefaultArgs instead
+     */
+    export type PotentialprovidersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PotentialprovidersDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
