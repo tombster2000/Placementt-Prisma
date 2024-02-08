@@ -310,3 +310,12 @@ model ProviderStaff {
   provider        Providers          @relation(fields: [providerId], references: [providerId])
   userGroup       ProviderUserGroups @relation(fields: [userGroupId], references: [userGroupId])
 }
+model Potentialproviders{
+  id String @id @unique
+  types String[]
+  geoHash String
+  nationalPhoneNumber String
+  formattedAddress String
+  websiteUri String
+  name String
+}
