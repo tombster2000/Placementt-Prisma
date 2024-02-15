@@ -103,6 +103,11 @@ export type ProviderStaff = $Result.DefaultSelection<Prisma.$ProviderStaffPayloa
  * 
  */
 export type Potentialproviders = $Result.DefaultSelection<Prisma.$PotentialprovidersPayload>
+/**
+ * Model pointOfOrigin
+ * 
+ */
+export type pointOfOrigin = $Result.DefaultSelection<Prisma.$pointOfOriginPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -405,6 +410,16 @@ export class PrismaClient<
     * ```
     */
   get potentialproviders(): Prisma.PotentialprovidersDelegate<ExtArgs>;
+
+  /**
+   * `prisma.pointOfOrigin`: Exposes CRUD operations for the **pointOfOrigin** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PointOfOrigins
+    * const pointOfOrigins = await prisma.pointOfOrigin.findMany()
+    * ```
+    */
+  get pointOfOrigin(): Prisma.pointOfOriginDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -892,7 +907,8 @@ export namespace Prisma {
     InstituteStaff: 'InstituteStaff',
     InstituteStudents: 'InstituteStudents',
     ProviderStaff: 'ProviderStaff',
-    Potentialproviders: 'Potentialproviders'
+    Potentialproviders: 'Potentialproviders',
+    pointOfOrigin: 'pointOfOrigin'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -909,7 +925,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     meta: {
-      modelProps: 'addresses' | 'cohorts' | 'providerCohorts' | 'contacts' | 'instituteForms' | 'institutes' | 'logs' | 'placementListings' | 'placements' | 'providers' | 'instituteStudentUserGroups' | 'instituteStaffUserGroups' | 'providerUserGroups' | 'studentUsers' | 'instituteStaff' | 'instituteStudents' | 'providerStaff' | 'potentialproviders'
+      modelProps: 'addresses' | 'cohorts' | 'providerCohorts' | 'contacts' | 'instituteForms' | 'institutes' | 'logs' | 'placementListings' | 'placements' | 'providers' | 'instituteStudentUserGroups' | 'instituteStaffUserGroups' | 'providerUserGroups' | 'studentUsers' | 'instituteStaff' | 'instituteStudents' | 'providerStaff' | 'potentialproviders' | 'pointOfOrigin'
       txIsolationLevel: Prisma.TransactionIsolationLevel
     },
     model: {
@@ -2101,6 +2117,72 @@ export namespace Prisma {
           }
         }
       }
+      pointOfOrigin: {
+        payload: Prisma.$pointOfOriginPayload<ExtArgs>
+        fields: Prisma.pointOfOriginFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.pointOfOriginFindUniqueArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$pointOfOriginPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.pointOfOriginFindUniqueOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$pointOfOriginPayload>
+          }
+          findFirst: {
+            args: Prisma.pointOfOriginFindFirstArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$pointOfOriginPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.pointOfOriginFindFirstOrThrowArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$pointOfOriginPayload>
+          }
+          findMany: {
+            args: Prisma.pointOfOriginFindManyArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$pointOfOriginPayload>[]
+          }
+          create: {
+            args: Prisma.pointOfOriginCreateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$pointOfOriginPayload>
+          }
+          createMany: {
+            args: Prisma.pointOfOriginCreateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          delete: {
+            args: Prisma.pointOfOriginDeleteArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$pointOfOriginPayload>
+          }
+          update: {
+            args: Prisma.pointOfOriginUpdateArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$pointOfOriginPayload>
+          }
+          deleteMany: {
+            args: Prisma.pointOfOriginDeleteManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          updateMany: {
+            args: Prisma.pointOfOriginUpdateManyArgs<ExtArgs>,
+            result: Prisma.BatchPayload
+          }
+          upsert: {
+            args: Prisma.pointOfOriginUpsertArgs<ExtArgs>,
+            result: $Utils.PayloadToResult<Prisma.$pointOfOriginPayload>
+          }
+          aggregate: {
+            args: Prisma.PointOfOriginAggregateArgs<ExtArgs>,
+            result: $Utils.Optional<AggregatePointOfOrigin>
+          }
+          groupBy: {
+            args: Prisma.pointOfOriginGroupByArgs<ExtArgs>,
+            result: $Utils.Optional<PointOfOriginGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.pointOfOriginCountArgs<ExtArgs>,
+            result: $Utils.Optional<PointOfOriginCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2761,6 +2843,40 @@ export namespace Prisma {
    */
   export type InstituteStudentsCountOutputTypeCountPlacementsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PlacementsWhereInput
+  }
+
+
+
+  /**
+   * Count Type PointOfOriginCountOutputType
+   */
+
+  export type PointOfOriginCountOutputType = {
+    Potentialproviders: number
+  }
+
+  export type PointOfOriginCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Potentialproviders?: boolean | PointOfOriginCountOutputTypeCountPotentialprovidersArgs
+  }
+
+  // Custom InputTypes
+
+  /**
+   * PointOfOriginCountOutputType without action
+   */
+  export type PointOfOriginCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PointOfOriginCountOutputType
+     */
+    select?: PointOfOriginCountOutputTypeSelect<ExtArgs> | null
+  }
+
+
+  /**
+   * PointOfOriginCountOutputType without action
+   */
+  export type PointOfOriginCountOutputTypeCountPotentialprovidersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PotentialprovidersWhereInput
   }
 
 
@@ -20396,6 +20512,7 @@ export namespace Prisma {
     formattedAddress: string | null
     websiteUri: string | null
     name: string | null
+    poid: string | null
   }
 
   export type PotentialprovidersMaxAggregateOutputType = {
@@ -20405,6 +20522,7 @@ export namespace Prisma {
     formattedAddress: string | null
     websiteUri: string | null
     name: string | null
+    poid: string | null
   }
 
   export type PotentialprovidersCountAggregateOutputType = {
@@ -20416,6 +20534,7 @@ export namespace Prisma {
     formattedAddress: number
     websiteUri: number
     name: number
+    poid: number
     _all: number
   }
 
@@ -20427,6 +20546,7 @@ export namespace Prisma {
     formattedAddress?: true
     websiteUri?: true
     name?: true
+    poid?: true
   }
 
   export type PotentialprovidersMaxAggregateInputType = {
@@ -20436,6 +20556,7 @@ export namespace Prisma {
     formattedAddress?: true
     websiteUri?: true
     name?: true
+    poid?: true
   }
 
   export type PotentialprovidersCountAggregateInputType = {
@@ -20447,6 +20568,7 @@ export namespace Prisma {
     formattedAddress?: true
     websiteUri?: true
     name?: true
+    poid?: true
     _all?: true
   }
 
@@ -20531,6 +20653,7 @@ export namespace Prisma {
     formattedAddress: string
     websiteUri: string
     name: string
+    poid: string
     _count: PotentialprovidersCountAggregateOutputType | null
     _min: PotentialprovidersMinAggregateOutputType | null
     _max: PotentialprovidersMaxAggregateOutputType | null
@@ -20559,6 +20682,8 @@ export namespace Prisma {
     formattedAddress?: boolean
     websiteUri?: boolean
     name?: boolean
+    poid?: boolean
+    pointOfOrigin?: boolean | pointOfOriginDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["potentialproviders"]>
 
   export type PotentialprovidersSelectScalar = {
@@ -20570,12 +20695,19 @@ export namespace Prisma {
     formattedAddress?: boolean
     websiteUri?: boolean
     name?: boolean
+    poid?: boolean
+  }
+
+  export type PotentialprovidersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pointOfOrigin?: boolean | pointOfOriginDefaultArgs<ExtArgs>
   }
 
 
   export type $PotentialprovidersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Potentialproviders"
-    objects: {}
+    objects: {
+      pointOfOrigin: Prisma.$pointOfOriginPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       types: string[]
@@ -20585,6 +20717,7 @@ export namespace Prisma {
       formattedAddress: string
       websiteUri: string
       name: string
+      poid: string
     }, ExtArgs["result"]["potentialproviders"]>
     composites: {}
   }
@@ -20950,6 +21083,7 @@ export namespace Prisma {
   export interface Prisma__PotentialprovidersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
 
+    pointOfOrigin<T extends pointOfOriginDefaultArgs<ExtArgs> = {}>(args?: Subset<T, pointOfOriginDefaultArgs<ExtArgs>>): Prisma__pointOfOriginClient<$Result.GetResult<Prisma.$pointOfOriginPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null, Null, ExtArgs>;
 
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -20987,6 +21121,7 @@ export namespace Prisma {
     readonly formattedAddress: FieldRef<"Potentialproviders", 'String'>
     readonly websiteUri: FieldRef<"Potentialproviders", 'String'>
     readonly name: FieldRef<"Potentialproviders", 'String'>
+    readonly poid: FieldRef<"Potentialproviders", 'String'>
   }
     
 
@@ -21000,6 +21135,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Potentialproviders
      */
     select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PotentialprovidersInclude<ExtArgs> | null
     /**
      * Filter, which Potentialproviders to fetch.
      */
@@ -21016,6 +21155,10 @@ export namespace Prisma {
      */
     select?: PotentialprovidersSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PotentialprovidersInclude<ExtArgs> | null
+    /**
      * Filter, which Potentialproviders to fetch.
      */
     where: PotentialprovidersWhereUniqueInput
@@ -21030,6 +21173,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Potentialproviders
      */
     select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PotentialprovidersInclude<ExtArgs> | null
     /**
      * Filter, which Potentialproviders to fetch.
      */
@@ -21076,6 +21223,10 @@ export namespace Prisma {
      */
     select?: PotentialprovidersSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PotentialprovidersInclude<ExtArgs> | null
+    /**
      * Filter, which Potentialproviders to fetch.
      */
     where?: PotentialprovidersWhereInput
@@ -21121,6 +21272,10 @@ export namespace Prisma {
      */
     select?: PotentialprovidersSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PotentialprovidersInclude<ExtArgs> | null
+    /**
      * Filter, which Potentialproviders to fetch.
      */
     where?: PotentialprovidersWhereInput
@@ -21161,6 +21316,10 @@ export namespace Prisma {
      */
     select?: PotentialprovidersSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PotentialprovidersInclude<ExtArgs> | null
+    /**
      * The data needed to create a Potentialproviders.
      */
     data: XOR<PotentialprovidersCreateInput, PotentialprovidersUncheckedCreateInput>
@@ -21187,6 +21346,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Potentialproviders
      */
     select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PotentialprovidersInclude<ExtArgs> | null
     /**
      * The data needed to update a Potentialproviders.
      */
@@ -21222,6 +21385,10 @@ export namespace Prisma {
      */
     select?: PotentialprovidersSelect<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PotentialprovidersInclude<ExtArgs> | null
+    /**
      * The filter to search for the Potentialproviders to update in case it exists.
      */
     where: PotentialprovidersWhereUniqueInput
@@ -21244,6 +21411,10 @@ export namespace Prisma {
      * Select specific fields to fetch from the Potentialproviders
      */
     select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PotentialprovidersInclude<ExtArgs> | null
     /**
      * Filter which Potentialproviders to delete.
      */
@@ -21270,6 +21441,929 @@ export namespace Prisma {
      * Select specific fields to fetch from the Potentialproviders
      */
     select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PotentialprovidersInclude<ExtArgs> | null
+  }
+
+
+
+  /**
+   * Model pointOfOrigin
+   */
+
+  export type AggregatePointOfOrigin = {
+    _count: PointOfOriginCountAggregateOutputType | null
+    _min: PointOfOriginMinAggregateOutputType | null
+    _max: PointOfOriginMaxAggregateOutputType | null
+  }
+
+  export type PointOfOriginMinAggregateOutputType = {
+    poid: string | null
+    Name: string | null
+    geoHash: string | null
+  }
+
+  export type PointOfOriginMaxAggregateOutputType = {
+    poid: string | null
+    Name: string | null
+    geoHash: string | null
+  }
+
+  export type PointOfOriginCountAggregateOutputType = {
+    poid: number
+    Name: number
+    geoHash: number
+    _all: number
+  }
+
+
+  export type PointOfOriginMinAggregateInputType = {
+    poid?: true
+    Name?: true
+    geoHash?: true
+  }
+
+  export type PointOfOriginMaxAggregateInputType = {
+    poid?: true
+    Name?: true
+    geoHash?: true
+  }
+
+  export type PointOfOriginCountAggregateInputType = {
+    poid?: true
+    Name?: true
+    geoHash?: true
+    _all?: true
+  }
+
+  export type PointOfOriginAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which pointOfOrigin to aggregate.
+     */
+    where?: pointOfOriginWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pointOfOrigins to fetch.
+     */
+    orderBy?: pointOfOriginOrderByWithRelationInput | pointOfOriginOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: pointOfOriginWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pointOfOrigins from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pointOfOrigins.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned pointOfOrigins
+    **/
+    _count?: true | PointOfOriginCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PointOfOriginMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PointOfOriginMaxAggregateInputType
+  }
+
+  export type GetPointOfOriginAggregateType<T extends PointOfOriginAggregateArgs> = {
+        [P in keyof T & keyof AggregatePointOfOrigin]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePointOfOrigin[P]>
+      : GetScalarType<T[P], AggregatePointOfOrigin[P]>
+  }
+
+
+
+
+  export type pointOfOriginGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: pointOfOriginWhereInput
+    orderBy?: pointOfOriginOrderByWithAggregationInput | pointOfOriginOrderByWithAggregationInput[]
+    by: PointOfOriginScalarFieldEnum[] | PointOfOriginScalarFieldEnum
+    having?: pointOfOriginScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PointOfOriginCountAggregateInputType | true
+    _min?: PointOfOriginMinAggregateInputType
+    _max?: PointOfOriginMaxAggregateInputType
+  }
+
+  export type PointOfOriginGroupByOutputType = {
+    poid: string
+    Name: string
+    geoHash: string
+    _count: PointOfOriginCountAggregateOutputType | null
+    _min: PointOfOriginMinAggregateOutputType | null
+    _max: PointOfOriginMaxAggregateOutputType | null
+  }
+
+  type GetPointOfOriginGroupByPayload<T extends pointOfOriginGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PointOfOriginGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PointOfOriginGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PointOfOriginGroupByOutputType[P]>
+            : GetScalarType<T[P], PointOfOriginGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type pointOfOriginSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    poid?: boolean
+    Name?: boolean
+    geoHash?: boolean
+    Potentialproviders?: boolean | pointOfOrigin$PotentialprovidersArgs<ExtArgs>
+    _count?: boolean | PointOfOriginCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pointOfOrigin"]>
+
+  export type pointOfOriginSelectScalar = {
+    poid?: boolean
+    Name?: boolean
+    geoHash?: boolean
+  }
+
+  export type pointOfOriginInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Potentialproviders?: boolean | pointOfOrigin$PotentialprovidersArgs<ExtArgs>
+    _count?: boolean | PointOfOriginCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+
+  export type $pointOfOriginPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "pointOfOrigin"
+    objects: {
+      Potentialproviders: Prisma.$PotentialprovidersPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      poid: string
+      Name: string
+      geoHash: string
+    }, ExtArgs["result"]["pointOfOrigin"]>
+    composites: {}
+  }
+
+
+  type pointOfOriginGetPayload<S extends boolean | null | undefined | pointOfOriginDefaultArgs> = $Result.GetResult<Prisma.$pointOfOriginPayload, S>
+
+  type pointOfOriginCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
+    Omit<pointOfOriginFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: PointOfOriginCountAggregateInputType | true
+    }
+
+  export interface pointOfOriginDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['pointOfOrigin'], meta: { name: 'pointOfOrigin' } }
+    /**
+     * Find zero or one PointOfOrigin that matches the filter.
+     * @param {pointOfOriginFindUniqueArgs} args - Arguments to find a PointOfOrigin
+     * @example
+     * // Get one PointOfOrigin
+     * const pointOfOrigin = await prisma.pointOfOrigin.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUnique<T extends pointOfOriginFindUniqueArgs<ExtArgs>>(
+      args: SelectSubset<T, pointOfOriginFindUniqueArgs<ExtArgs>>
+    ): Prisma__pointOfOriginClient<$Result.GetResult<Prisma.$pointOfOriginPayload<ExtArgs>, T, 'findUnique'> | null, null, ExtArgs>
+
+    /**
+     * Find one PointOfOrigin that matches the filter or throw an error  with `error.code='P2025'` 
+     *     if no matches were found.
+     * @param {pointOfOriginFindUniqueOrThrowArgs} args - Arguments to find a PointOfOrigin
+     * @example
+     * // Get one PointOfOrigin
+     * const pointOfOrigin = await prisma.pointOfOrigin.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findUniqueOrThrow<T extends pointOfOriginFindUniqueOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, pointOfOriginFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__pointOfOriginClient<$Result.GetResult<Prisma.$pointOfOriginPayload<ExtArgs>, T, 'findUniqueOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find the first PointOfOrigin that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pointOfOriginFindFirstArgs} args - Arguments to find a PointOfOrigin
+     * @example
+     * // Get one PointOfOrigin
+     * const pointOfOrigin = await prisma.pointOfOrigin.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirst<T extends pointOfOriginFindFirstArgs<ExtArgs>>(
+      args?: SelectSubset<T, pointOfOriginFindFirstArgs<ExtArgs>>
+    ): Prisma__pointOfOriginClient<$Result.GetResult<Prisma.$pointOfOriginPayload<ExtArgs>, T, 'findFirst'> | null, null, ExtArgs>
+
+    /**
+     * Find the first PointOfOrigin that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pointOfOriginFindFirstOrThrowArgs} args - Arguments to find a PointOfOrigin
+     * @example
+     * // Get one PointOfOrigin
+     * const pointOfOrigin = await prisma.pointOfOrigin.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+    **/
+    findFirstOrThrow<T extends pointOfOriginFindFirstOrThrowArgs<ExtArgs>>(
+      args?: SelectSubset<T, pointOfOriginFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__pointOfOriginClient<$Result.GetResult<Prisma.$pointOfOriginPayload<ExtArgs>, T, 'findFirstOrThrow'>, never, ExtArgs>
+
+    /**
+     * Find zero or more PointOfOrigins that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pointOfOriginFindManyArgs=} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PointOfOrigins
+     * const pointOfOrigins = await prisma.pointOfOrigin.findMany()
+     * 
+     * // Get first 10 PointOfOrigins
+     * const pointOfOrigins = await prisma.pointOfOrigin.findMany({ take: 10 })
+     * 
+     * // Only select the `poid`
+     * const pointOfOriginWithPoidOnly = await prisma.pointOfOrigin.findMany({ select: { poid: true } })
+     * 
+    **/
+    findMany<T extends pointOfOriginFindManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, pointOfOriginFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pointOfOriginPayload<ExtArgs>, T, 'findMany'>>
+
+    /**
+     * Create a PointOfOrigin.
+     * @param {pointOfOriginCreateArgs} args - Arguments to create a PointOfOrigin.
+     * @example
+     * // Create one PointOfOrigin
+     * const PointOfOrigin = await prisma.pointOfOrigin.create({
+     *   data: {
+     *     // ... data to create a PointOfOrigin
+     *   }
+     * })
+     * 
+    **/
+    create<T extends pointOfOriginCreateArgs<ExtArgs>>(
+      args: SelectSubset<T, pointOfOriginCreateArgs<ExtArgs>>
+    ): Prisma__pointOfOriginClient<$Result.GetResult<Prisma.$pointOfOriginPayload<ExtArgs>, T, 'create'>, never, ExtArgs>
+
+    /**
+     * Create many PointOfOrigins.
+     *     @param {pointOfOriginCreateManyArgs} args - Arguments to create many PointOfOrigins.
+     *     @example
+     *     // Create many PointOfOrigins
+     *     const pointOfOrigin = await prisma.pointOfOrigin.createMany({
+     *       data: {
+     *         // ... provide data here
+     *       }
+     *     })
+     *     
+    **/
+    createMany<T extends pointOfOriginCreateManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, pointOfOriginCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a PointOfOrigin.
+     * @param {pointOfOriginDeleteArgs} args - Arguments to delete one PointOfOrigin.
+     * @example
+     * // Delete one PointOfOrigin
+     * const PointOfOrigin = await prisma.pointOfOrigin.delete({
+     *   where: {
+     *     // ... filter to delete one PointOfOrigin
+     *   }
+     * })
+     * 
+    **/
+    delete<T extends pointOfOriginDeleteArgs<ExtArgs>>(
+      args: SelectSubset<T, pointOfOriginDeleteArgs<ExtArgs>>
+    ): Prisma__pointOfOriginClient<$Result.GetResult<Prisma.$pointOfOriginPayload<ExtArgs>, T, 'delete'>, never, ExtArgs>
+
+    /**
+     * Update one PointOfOrigin.
+     * @param {pointOfOriginUpdateArgs} args - Arguments to update one PointOfOrigin.
+     * @example
+     * // Update one PointOfOrigin
+     * const pointOfOrigin = await prisma.pointOfOrigin.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    update<T extends pointOfOriginUpdateArgs<ExtArgs>>(
+      args: SelectSubset<T, pointOfOriginUpdateArgs<ExtArgs>>
+    ): Prisma__pointOfOriginClient<$Result.GetResult<Prisma.$pointOfOriginPayload<ExtArgs>, T, 'update'>, never, ExtArgs>
+
+    /**
+     * Delete zero or more PointOfOrigins.
+     * @param {pointOfOriginDeleteManyArgs} args - Arguments to filter PointOfOrigins to delete.
+     * @example
+     * // Delete a few PointOfOrigins
+     * const { count } = await prisma.pointOfOrigin.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+    **/
+    deleteMany<T extends pointOfOriginDeleteManyArgs<ExtArgs>>(
+      args?: SelectSubset<T, pointOfOriginDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PointOfOrigins.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pointOfOriginUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PointOfOrigins
+     * const pointOfOrigin = await prisma.pointOfOrigin.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+    **/
+    updateMany<T extends pointOfOriginUpdateManyArgs<ExtArgs>>(
+      args: SelectSubset<T, pointOfOriginUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PointOfOrigin.
+     * @param {pointOfOriginUpsertArgs} args - Arguments to update or create a PointOfOrigin.
+     * @example
+     * // Update or create a PointOfOrigin
+     * const pointOfOrigin = await prisma.pointOfOrigin.upsert({
+     *   create: {
+     *     // ... data to create a PointOfOrigin
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PointOfOrigin we want to update
+     *   }
+     * })
+    **/
+    upsert<T extends pointOfOriginUpsertArgs<ExtArgs>>(
+      args: SelectSubset<T, pointOfOriginUpsertArgs<ExtArgs>>
+    ): Prisma__pointOfOriginClient<$Result.GetResult<Prisma.$pointOfOriginPayload<ExtArgs>, T, 'upsert'>, never, ExtArgs>
+
+    /**
+     * Count the number of PointOfOrigins.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pointOfOriginCountArgs} args - Arguments to filter PointOfOrigins to count.
+     * @example
+     * // Count the number of PointOfOrigins
+     * const count = await prisma.pointOfOrigin.count({
+     *   where: {
+     *     // ... the filter for the PointOfOrigins we want to count
+     *   }
+     * })
+    **/
+    count<T extends pointOfOriginCountArgs>(
+      args?: Subset<T, pointOfOriginCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PointOfOriginCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PointOfOrigin.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PointOfOriginAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PointOfOriginAggregateArgs>(args: Subset<T, PointOfOriginAggregateArgs>): Prisma.PrismaPromise<GetPointOfOriginAggregateType<T>>
+
+    /**
+     * Group by PointOfOrigin.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pointOfOriginGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends pointOfOriginGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: pointOfOriginGroupByArgs['orderBy'] }
+        : { orderBy?: pointOfOriginGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, pointOfOriginGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPointOfOriginGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the pointOfOrigin model
+   */
+  readonly fields: pointOfOriginFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for pointOfOrigin.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__pointOfOriginClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+
+    Potentialproviders<T extends pointOfOrigin$PotentialprovidersArgs<ExtArgs> = {}>(args?: Subset<T, pointOfOrigin$PotentialprovidersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PotentialprovidersPayload<ExtArgs>, T, 'findMany'> | Null>;
+
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+
+
+  /**
+   * Fields of the pointOfOrigin model
+   */ 
+  interface pointOfOriginFieldRefs {
+    readonly poid: FieldRef<"pointOfOrigin", 'String'>
+    readonly Name: FieldRef<"pointOfOrigin", 'String'>
+    readonly geoHash: FieldRef<"pointOfOrigin", 'String'>
+  }
+    
+
+  // Custom InputTypes
+
+  /**
+   * pointOfOrigin findUnique
+   */
+  export type pointOfOriginFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pointOfOrigin
+     */
+    select?: pointOfOriginSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: pointOfOriginInclude<ExtArgs> | null
+    /**
+     * Filter, which pointOfOrigin to fetch.
+     */
+    where: pointOfOriginWhereUniqueInput
+  }
+
+
+  /**
+   * pointOfOrigin findUniqueOrThrow
+   */
+  export type pointOfOriginFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pointOfOrigin
+     */
+    select?: pointOfOriginSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: pointOfOriginInclude<ExtArgs> | null
+    /**
+     * Filter, which pointOfOrigin to fetch.
+     */
+    where: pointOfOriginWhereUniqueInput
+  }
+
+
+  /**
+   * pointOfOrigin findFirst
+   */
+  export type pointOfOriginFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pointOfOrigin
+     */
+    select?: pointOfOriginSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: pointOfOriginInclude<ExtArgs> | null
+    /**
+     * Filter, which pointOfOrigin to fetch.
+     */
+    where?: pointOfOriginWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pointOfOrigins to fetch.
+     */
+    orderBy?: pointOfOriginOrderByWithRelationInput | pointOfOriginOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for pointOfOrigins.
+     */
+    cursor?: pointOfOriginWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pointOfOrigins from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pointOfOrigins.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of pointOfOrigins.
+     */
+    distinct?: PointOfOriginScalarFieldEnum | PointOfOriginScalarFieldEnum[]
+  }
+
+
+  /**
+   * pointOfOrigin findFirstOrThrow
+   */
+  export type pointOfOriginFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pointOfOrigin
+     */
+    select?: pointOfOriginSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: pointOfOriginInclude<ExtArgs> | null
+    /**
+     * Filter, which pointOfOrigin to fetch.
+     */
+    where?: pointOfOriginWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pointOfOrigins to fetch.
+     */
+    orderBy?: pointOfOriginOrderByWithRelationInput | pointOfOriginOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for pointOfOrigins.
+     */
+    cursor?: pointOfOriginWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pointOfOrigins from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pointOfOrigins.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of pointOfOrigins.
+     */
+    distinct?: PointOfOriginScalarFieldEnum | PointOfOriginScalarFieldEnum[]
+  }
+
+
+  /**
+   * pointOfOrigin findMany
+   */
+  export type pointOfOriginFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pointOfOrigin
+     */
+    select?: pointOfOriginSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: pointOfOriginInclude<ExtArgs> | null
+    /**
+     * Filter, which pointOfOrigins to fetch.
+     */
+    where?: pointOfOriginWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pointOfOrigins to fetch.
+     */
+    orderBy?: pointOfOriginOrderByWithRelationInput | pointOfOriginOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing pointOfOrigins.
+     */
+    cursor?: pointOfOriginWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pointOfOrigins from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pointOfOrigins.
+     */
+    skip?: number
+    distinct?: PointOfOriginScalarFieldEnum | PointOfOriginScalarFieldEnum[]
+  }
+
+
+  /**
+   * pointOfOrigin create
+   */
+  export type pointOfOriginCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pointOfOrigin
+     */
+    select?: pointOfOriginSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: pointOfOriginInclude<ExtArgs> | null
+    /**
+     * The data needed to create a pointOfOrigin.
+     */
+    data: XOR<pointOfOriginCreateInput, pointOfOriginUncheckedCreateInput>
+  }
+
+
+  /**
+   * pointOfOrigin createMany
+   */
+  export type pointOfOriginCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many pointOfOrigins.
+     */
+    data: pointOfOriginCreateManyInput | pointOfOriginCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+
+  /**
+   * pointOfOrigin update
+   */
+  export type pointOfOriginUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pointOfOrigin
+     */
+    select?: pointOfOriginSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: pointOfOriginInclude<ExtArgs> | null
+    /**
+     * The data needed to update a pointOfOrigin.
+     */
+    data: XOR<pointOfOriginUpdateInput, pointOfOriginUncheckedUpdateInput>
+    /**
+     * Choose, which pointOfOrigin to update.
+     */
+    where: pointOfOriginWhereUniqueInput
+  }
+
+
+  /**
+   * pointOfOrigin updateMany
+   */
+  export type pointOfOriginUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update pointOfOrigins.
+     */
+    data: XOR<pointOfOriginUpdateManyMutationInput, pointOfOriginUncheckedUpdateManyInput>
+    /**
+     * Filter which pointOfOrigins to update
+     */
+    where?: pointOfOriginWhereInput
+  }
+
+
+  /**
+   * pointOfOrigin upsert
+   */
+  export type pointOfOriginUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pointOfOrigin
+     */
+    select?: pointOfOriginSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: pointOfOriginInclude<ExtArgs> | null
+    /**
+     * The filter to search for the pointOfOrigin to update in case it exists.
+     */
+    where: pointOfOriginWhereUniqueInput
+    /**
+     * In case the pointOfOrigin found by the `where` argument doesn't exist, create a new pointOfOrigin with this data.
+     */
+    create: XOR<pointOfOriginCreateInput, pointOfOriginUncheckedCreateInput>
+    /**
+     * In case the pointOfOrigin was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<pointOfOriginUpdateInput, pointOfOriginUncheckedUpdateInput>
+  }
+
+
+  /**
+   * pointOfOrigin delete
+   */
+  export type pointOfOriginDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pointOfOrigin
+     */
+    select?: pointOfOriginSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: pointOfOriginInclude<ExtArgs> | null
+    /**
+     * Filter which pointOfOrigin to delete.
+     */
+    where: pointOfOriginWhereUniqueInput
+  }
+
+
+  /**
+   * pointOfOrigin deleteMany
+   */
+  export type pointOfOriginDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which pointOfOrigins to delete
+     */
+    where?: pointOfOriginWhereInput
+  }
+
+
+  /**
+   * pointOfOrigin.Potentialproviders
+   */
+  export type pointOfOrigin$PotentialprovidersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Potentialproviders
+     */
+    select?: PotentialprovidersSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: PotentialprovidersInclude<ExtArgs> | null
+    where?: PotentialprovidersWhereInput
+    orderBy?: PotentialprovidersOrderByWithRelationInput | PotentialprovidersOrderByWithRelationInput[]
+    cursor?: PotentialprovidersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PotentialprovidersScalarFieldEnum | PotentialprovidersScalarFieldEnum[]
+  }
+
+
+  /**
+   * pointOfOrigin without action
+   */
+  export type pointOfOriginDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pointOfOrigin
+     */
+    select?: pointOfOriginSelect<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well.
+     */
+    include?: pointOfOriginInclude<ExtArgs> | null
   }
 
 
@@ -21588,10 +22682,20 @@ export namespace Prisma {
     email: 'email',
     formattedAddress: 'formattedAddress',
     websiteUri: 'websiteUri',
-    name: 'name'
+    name: 'name',
+    poid: 'poid'
   };
 
   export type PotentialprovidersScalarFieldEnum = (typeof PotentialprovidersScalarFieldEnum)[keyof typeof PotentialprovidersScalarFieldEnum]
+
+
+  export const PointOfOriginScalarFieldEnum: {
+    poid: 'poid',
+    Name: 'Name',
+    geoHash: 'geoHash'
+  };
+
+  export type PointOfOriginScalarFieldEnum = (typeof PointOfOriginScalarFieldEnum)[keyof typeof PointOfOriginScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -23315,6 +24419,8 @@ export namespace Prisma {
     formattedAddress?: StringFilter<"Potentialproviders"> | string
     websiteUri?: StringFilter<"Potentialproviders"> | string
     name?: StringFilter<"Potentialproviders"> | string
+    poid?: StringFilter<"Potentialproviders"> | string
+    pointOfOrigin?: XOR<PointOfOriginRelationFilter, pointOfOriginWhereInput>
   }
 
   export type PotentialprovidersOrderByWithRelationInput = {
@@ -23326,6 +24432,8 @@ export namespace Prisma {
     formattedAddress?: SortOrder
     websiteUri?: SortOrder
     name?: SortOrder
+    poid?: SortOrder
+    pointOfOrigin?: pointOfOriginOrderByWithRelationInput
   }
 
   export type PotentialprovidersWhereUniqueInput = Prisma.AtLeast<{
@@ -23340,6 +24448,8 @@ export namespace Prisma {
     formattedAddress?: StringFilter<"Potentialproviders"> | string
     websiteUri?: StringFilter<"Potentialproviders"> | string
     name?: StringFilter<"Potentialproviders"> | string
+    poid?: StringFilter<"Potentialproviders"> | string
+    pointOfOrigin?: XOR<PointOfOriginRelationFilter, pointOfOriginWhereInput>
   }, "id" | "id">
 
   export type PotentialprovidersOrderByWithAggregationInput = {
@@ -23351,6 +24461,7 @@ export namespace Prisma {
     formattedAddress?: SortOrder
     websiteUri?: SortOrder
     name?: SortOrder
+    poid?: SortOrder
     _count?: PotentialprovidersCountOrderByAggregateInput
     _max?: PotentialprovidersMaxOrderByAggregateInput
     _min?: PotentialprovidersMinOrderByAggregateInput
@@ -23368,6 +24479,52 @@ export namespace Prisma {
     formattedAddress?: StringWithAggregatesFilter<"Potentialproviders"> | string
     websiteUri?: StringWithAggregatesFilter<"Potentialproviders"> | string
     name?: StringWithAggregatesFilter<"Potentialproviders"> | string
+    poid?: StringWithAggregatesFilter<"Potentialproviders"> | string
+  }
+
+  export type pointOfOriginWhereInput = {
+    AND?: pointOfOriginWhereInput | pointOfOriginWhereInput[]
+    OR?: pointOfOriginWhereInput[]
+    NOT?: pointOfOriginWhereInput | pointOfOriginWhereInput[]
+    poid?: StringFilter<"pointOfOrigin"> | string
+    Name?: StringFilter<"pointOfOrigin"> | string
+    geoHash?: StringFilter<"pointOfOrigin"> | string
+    Potentialproviders?: PotentialprovidersListRelationFilter
+  }
+
+  export type pointOfOriginOrderByWithRelationInput = {
+    poid?: SortOrder
+    Name?: SortOrder
+    geoHash?: SortOrder
+    Potentialproviders?: PotentialprovidersOrderByRelationAggregateInput
+  }
+
+  export type pointOfOriginWhereUniqueInput = Prisma.AtLeast<{
+    poid?: string
+    AND?: pointOfOriginWhereInput | pointOfOriginWhereInput[]
+    OR?: pointOfOriginWhereInput[]
+    NOT?: pointOfOriginWhereInput | pointOfOriginWhereInput[]
+    Name?: StringFilter<"pointOfOrigin"> | string
+    geoHash?: StringFilter<"pointOfOrigin"> | string
+    Potentialproviders?: PotentialprovidersListRelationFilter
+  }, "poid" | "poid">
+
+  export type pointOfOriginOrderByWithAggregationInput = {
+    poid?: SortOrder
+    Name?: SortOrder
+    geoHash?: SortOrder
+    _count?: pointOfOriginCountOrderByAggregateInput
+    _max?: pointOfOriginMaxOrderByAggregateInput
+    _min?: pointOfOriginMinOrderByAggregateInput
+  }
+
+  export type pointOfOriginScalarWhereWithAggregatesInput = {
+    AND?: pointOfOriginScalarWhereWithAggregatesInput | pointOfOriginScalarWhereWithAggregatesInput[]
+    OR?: pointOfOriginScalarWhereWithAggregatesInput[]
+    NOT?: pointOfOriginScalarWhereWithAggregatesInput | pointOfOriginScalarWhereWithAggregatesInput[]
+    poid?: StringWithAggregatesFilter<"pointOfOrigin"> | string
+    Name?: StringWithAggregatesFilter<"pointOfOrigin"> | string
+    geoHash?: StringWithAggregatesFilter<"pointOfOrigin"> | string
   }
 
   export type AddressesCreateInput = {
@@ -25150,6 +26307,7 @@ export namespace Prisma {
     formattedAddress: string
     websiteUri: string
     name: string
+    pointOfOrigin: pointOfOriginCreateNestedOneWithoutPotentialprovidersInput
   }
 
   export type PotentialprovidersUncheckedCreateInput = {
@@ -25161,6 +26319,7 @@ export namespace Prisma {
     formattedAddress: string
     websiteUri: string
     name: string
+    poid: string
   }
 
   export type PotentialprovidersUpdateInput = {
@@ -25172,6 +26331,7 @@ export namespace Prisma {
     formattedAddress?: StringFieldUpdateOperationsInput | string
     websiteUri?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    pointOfOrigin?: pointOfOriginUpdateOneRequiredWithoutPotentialprovidersNestedInput
   }
 
   export type PotentialprovidersUncheckedUpdateInput = {
@@ -25183,6 +26343,7 @@ export namespace Prisma {
     formattedAddress?: StringFieldUpdateOperationsInput | string
     websiteUri?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    poid?: StringFieldUpdateOperationsInput | string
   }
 
   export type PotentialprovidersCreateManyInput = {
@@ -25194,6 +26355,7 @@ export namespace Prisma {
     formattedAddress: string
     websiteUri: string
     name: string
+    poid: string
   }
 
   export type PotentialprovidersUpdateManyMutationInput = {
@@ -25216,6 +26378,53 @@ export namespace Prisma {
     formattedAddress?: StringFieldUpdateOperationsInput | string
     websiteUri?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
+    poid?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type pointOfOriginCreateInput = {
+    poid: string
+    Name: string
+    geoHash: string
+    Potentialproviders?: PotentialprovidersCreateNestedManyWithoutPointOfOriginInput
+  }
+
+  export type pointOfOriginUncheckedCreateInput = {
+    poid: string
+    Name: string
+    geoHash: string
+    Potentialproviders?: PotentialprovidersUncheckedCreateNestedManyWithoutPointOfOriginInput
+  }
+
+  export type pointOfOriginUpdateInput = {
+    poid?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    geoHash?: StringFieldUpdateOperationsInput | string
+    Potentialproviders?: PotentialprovidersUpdateManyWithoutPointOfOriginNestedInput
+  }
+
+  export type pointOfOriginUncheckedUpdateInput = {
+    poid?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    geoHash?: StringFieldUpdateOperationsInput | string
+    Potentialproviders?: PotentialprovidersUncheckedUpdateManyWithoutPointOfOriginNestedInput
+  }
+
+  export type pointOfOriginCreateManyInput = {
+    poid: string
+    Name: string
+    geoHash: string
+  }
+
+  export type pointOfOriginUpdateManyMutationInput = {
+    poid?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    geoHash?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type pointOfOriginUncheckedUpdateManyInput = {
+    poid?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    geoHash?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -26424,6 +27633,11 @@ export namespace Prisma {
     userGroupId?: SortOrder
   }
 
+  export type PointOfOriginRelationFilter = {
+    is?: pointOfOriginWhereInput
+    isNot?: pointOfOriginWhereInput
+  }
+
   export type PotentialprovidersCountOrderByAggregateInput = {
     id?: SortOrder
     types?: SortOrder
@@ -26433,6 +27647,7 @@ export namespace Prisma {
     formattedAddress?: SortOrder
     websiteUri?: SortOrder
     name?: SortOrder
+    poid?: SortOrder
   }
 
   export type PotentialprovidersMaxOrderByAggregateInput = {
@@ -26442,6 +27657,7 @@ export namespace Prisma {
     formattedAddress?: SortOrder
     websiteUri?: SortOrder
     name?: SortOrder
+    poid?: SortOrder
   }
 
   export type PotentialprovidersMinOrderByAggregateInput = {
@@ -26451,6 +27667,35 @@ export namespace Prisma {
     formattedAddress?: SortOrder
     websiteUri?: SortOrder
     name?: SortOrder
+    poid?: SortOrder
+  }
+
+  export type PotentialprovidersListRelationFilter = {
+    every?: PotentialprovidersWhereInput
+    some?: PotentialprovidersWhereInput
+    none?: PotentialprovidersWhereInput
+  }
+
+  export type PotentialprovidersOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type pointOfOriginCountOrderByAggregateInput = {
+    poid?: SortOrder
+    Name?: SortOrder
+    geoHash?: SortOrder
+  }
+
+  export type pointOfOriginMaxOrderByAggregateInput = {
+    poid?: SortOrder
+    Name?: SortOrder
+    geoHash?: SortOrder
+  }
+
+  export type pointOfOriginMinOrderByAggregateInput = {
+    poid?: SortOrder
+    Name?: SortOrder
+    geoHash?: SortOrder
   }
 
   export type InstitutesCreateNestedOneWithoutAddressesInput = {
@@ -28154,6 +29399,12 @@ export namespace Prisma {
     set: string[]
   }
 
+  export type pointOfOriginCreateNestedOneWithoutPotentialprovidersInput = {
+    create?: XOR<pointOfOriginCreateWithoutPotentialprovidersInput, pointOfOriginUncheckedCreateWithoutPotentialprovidersInput>
+    connectOrCreate?: pointOfOriginCreateOrConnectWithoutPotentialprovidersInput
+    connect?: pointOfOriginWhereUniqueInput
+  }
+
   export type PotentialprovidersUpdatetypesInput = {
     set?: string[]
     push?: string | string[]
@@ -28162,6 +29413,56 @@ export namespace Prisma {
   export type PotentialprovidersUpdateemailInput = {
     set?: string[]
     push?: string | string[]
+  }
+
+  export type pointOfOriginUpdateOneRequiredWithoutPotentialprovidersNestedInput = {
+    create?: XOR<pointOfOriginCreateWithoutPotentialprovidersInput, pointOfOriginUncheckedCreateWithoutPotentialprovidersInput>
+    connectOrCreate?: pointOfOriginCreateOrConnectWithoutPotentialprovidersInput
+    upsert?: pointOfOriginUpsertWithoutPotentialprovidersInput
+    connect?: pointOfOriginWhereUniqueInput
+    update?: XOR<XOR<pointOfOriginUpdateToOneWithWhereWithoutPotentialprovidersInput, pointOfOriginUpdateWithoutPotentialprovidersInput>, pointOfOriginUncheckedUpdateWithoutPotentialprovidersInput>
+  }
+
+  export type PotentialprovidersCreateNestedManyWithoutPointOfOriginInput = {
+    create?: XOR<PotentialprovidersCreateWithoutPointOfOriginInput, PotentialprovidersUncheckedCreateWithoutPointOfOriginInput> | PotentialprovidersCreateWithoutPointOfOriginInput[] | PotentialprovidersUncheckedCreateWithoutPointOfOriginInput[]
+    connectOrCreate?: PotentialprovidersCreateOrConnectWithoutPointOfOriginInput | PotentialprovidersCreateOrConnectWithoutPointOfOriginInput[]
+    createMany?: PotentialprovidersCreateManyPointOfOriginInputEnvelope
+    connect?: PotentialprovidersWhereUniqueInput | PotentialprovidersWhereUniqueInput[]
+  }
+
+  export type PotentialprovidersUncheckedCreateNestedManyWithoutPointOfOriginInput = {
+    create?: XOR<PotentialprovidersCreateWithoutPointOfOriginInput, PotentialprovidersUncheckedCreateWithoutPointOfOriginInput> | PotentialprovidersCreateWithoutPointOfOriginInput[] | PotentialprovidersUncheckedCreateWithoutPointOfOriginInput[]
+    connectOrCreate?: PotentialprovidersCreateOrConnectWithoutPointOfOriginInput | PotentialprovidersCreateOrConnectWithoutPointOfOriginInput[]
+    createMany?: PotentialprovidersCreateManyPointOfOriginInputEnvelope
+    connect?: PotentialprovidersWhereUniqueInput | PotentialprovidersWhereUniqueInput[]
+  }
+
+  export type PotentialprovidersUpdateManyWithoutPointOfOriginNestedInput = {
+    create?: XOR<PotentialprovidersCreateWithoutPointOfOriginInput, PotentialprovidersUncheckedCreateWithoutPointOfOriginInput> | PotentialprovidersCreateWithoutPointOfOriginInput[] | PotentialprovidersUncheckedCreateWithoutPointOfOriginInput[]
+    connectOrCreate?: PotentialprovidersCreateOrConnectWithoutPointOfOriginInput | PotentialprovidersCreateOrConnectWithoutPointOfOriginInput[]
+    upsert?: PotentialprovidersUpsertWithWhereUniqueWithoutPointOfOriginInput | PotentialprovidersUpsertWithWhereUniqueWithoutPointOfOriginInput[]
+    createMany?: PotentialprovidersCreateManyPointOfOriginInputEnvelope
+    set?: PotentialprovidersWhereUniqueInput | PotentialprovidersWhereUniqueInput[]
+    disconnect?: PotentialprovidersWhereUniqueInput | PotentialprovidersWhereUniqueInput[]
+    delete?: PotentialprovidersWhereUniqueInput | PotentialprovidersWhereUniqueInput[]
+    connect?: PotentialprovidersWhereUniqueInput | PotentialprovidersWhereUniqueInput[]
+    update?: PotentialprovidersUpdateWithWhereUniqueWithoutPointOfOriginInput | PotentialprovidersUpdateWithWhereUniqueWithoutPointOfOriginInput[]
+    updateMany?: PotentialprovidersUpdateManyWithWhereWithoutPointOfOriginInput | PotentialprovidersUpdateManyWithWhereWithoutPointOfOriginInput[]
+    deleteMany?: PotentialprovidersScalarWhereInput | PotentialprovidersScalarWhereInput[]
+  }
+
+  export type PotentialprovidersUncheckedUpdateManyWithoutPointOfOriginNestedInput = {
+    create?: XOR<PotentialprovidersCreateWithoutPointOfOriginInput, PotentialprovidersUncheckedCreateWithoutPointOfOriginInput> | PotentialprovidersCreateWithoutPointOfOriginInput[] | PotentialprovidersUncheckedCreateWithoutPointOfOriginInput[]
+    connectOrCreate?: PotentialprovidersCreateOrConnectWithoutPointOfOriginInput | PotentialprovidersCreateOrConnectWithoutPointOfOriginInput[]
+    upsert?: PotentialprovidersUpsertWithWhereUniqueWithoutPointOfOriginInput | PotentialprovidersUpsertWithWhereUniqueWithoutPointOfOriginInput[]
+    createMany?: PotentialprovidersCreateManyPointOfOriginInputEnvelope
+    set?: PotentialprovidersWhereUniqueInput | PotentialprovidersWhereUniqueInput[]
+    disconnect?: PotentialprovidersWhereUniqueInput | PotentialprovidersWhereUniqueInput[]
+    delete?: PotentialprovidersWhereUniqueInput | PotentialprovidersWhereUniqueInput[]
+    connect?: PotentialprovidersWhereUniqueInput | PotentialprovidersWhereUniqueInput[]
+    update?: PotentialprovidersUpdateWithWhereUniqueWithoutPointOfOriginInput | PotentialprovidersUpdateWithWhereUniqueWithoutPointOfOriginInput[]
+    updateMany?: PotentialprovidersUpdateManyWithWhereWithoutPointOfOriginInput | PotentialprovidersUpdateManyWithWhereWithoutPointOfOriginInput[]
+    deleteMany?: PotentialprovidersScalarWhereInput | PotentialprovidersScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -33215,6 +34516,109 @@ export namespace Prisma {
     providerId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type pointOfOriginCreateWithoutPotentialprovidersInput = {
+    poid: string
+    Name: string
+    geoHash: string
+  }
+
+  export type pointOfOriginUncheckedCreateWithoutPotentialprovidersInput = {
+    poid: string
+    Name: string
+    geoHash: string
+  }
+
+  export type pointOfOriginCreateOrConnectWithoutPotentialprovidersInput = {
+    where: pointOfOriginWhereUniqueInput
+    create: XOR<pointOfOriginCreateWithoutPotentialprovidersInput, pointOfOriginUncheckedCreateWithoutPotentialprovidersInput>
+  }
+
+  export type pointOfOriginUpsertWithoutPotentialprovidersInput = {
+    update: XOR<pointOfOriginUpdateWithoutPotentialprovidersInput, pointOfOriginUncheckedUpdateWithoutPotentialprovidersInput>
+    create: XOR<pointOfOriginCreateWithoutPotentialprovidersInput, pointOfOriginUncheckedCreateWithoutPotentialprovidersInput>
+    where?: pointOfOriginWhereInput
+  }
+
+  export type pointOfOriginUpdateToOneWithWhereWithoutPotentialprovidersInput = {
+    where?: pointOfOriginWhereInput
+    data: XOR<pointOfOriginUpdateWithoutPotentialprovidersInput, pointOfOriginUncheckedUpdateWithoutPotentialprovidersInput>
+  }
+
+  export type pointOfOriginUpdateWithoutPotentialprovidersInput = {
+    poid?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    geoHash?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type pointOfOriginUncheckedUpdateWithoutPotentialprovidersInput = {
+    poid?: StringFieldUpdateOperationsInput | string
+    Name?: StringFieldUpdateOperationsInput | string
+    geoHash?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PotentialprovidersCreateWithoutPointOfOriginInput = {
+    id: string
+    types?: PotentialprovidersCreatetypesInput | string[]
+    geoHash: string
+    nationalPhoneNumber: string
+    email?: PotentialprovidersCreateemailInput | string[]
+    formattedAddress: string
+    websiteUri: string
+    name: string
+  }
+
+  export type PotentialprovidersUncheckedCreateWithoutPointOfOriginInput = {
+    id: string
+    types?: PotentialprovidersCreatetypesInput | string[]
+    geoHash: string
+    nationalPhoneNumber: string
+    email?: PotentialprovidersCreateemailInput | string[]
+    formattedAddress: string
+    websiteUri: string
+    name: string
+  }
+
+  export type PotentialprovidersCreateOrConnectWithoutPointOfOriginInput = {
+    where: PotentialprovidersWhereUniqueInput
+    create: XOR<PotentialprovidersCreateWithoutPointOfOriginInput, PotentialprovidersUncheckedCreateWithoutPointOfOriginInput>
+  }
+
+  export type PotentialprovidersCreateManyPointOfOriginInputEnvelope = {
+    data: PotentialprovidersCreateManyPointOfOriginInput | PotentialprovidersCreateManyPointOfOriginInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PotentialprovidersUpsertWithWhereUniqueWithoutPointOfOriginInput = {
+    where: PotentialprovidersWhereUniqueInput
+    update: XOR<PotentialprovidersUpdateWithoutPointOfOriginInput, PotentialprovidersUncheckedUpdateWithoutPointOfOriginInput>
+    create: XOR<PotentialprovidersCreateWithoutPointOfOriginInput, PotentialprovidersUncheckedCreateWithoutPointOfOriginInput>
+  }
+
+  export type PotentialprovidersUpdateWithWhereUniqueWithoutPointOfOriginInput = {
+    where: PotentialprovidersWhereUniqueInput
+    data: XOR<PotentialprovidersUpdateWithoutPointOfOriginInput, PotentialprovidersUncheckedUpdateWithoutPointOfOriginInput>
+  }
+
+  export type PotentialprovidersUpdateManyWithWhereWithoutPointOfOriginInput = {
+    where: PotentialprovidersScalarWhereInput
+    data: XOR<PotentialprovidersUpdateManyMutationInput, PotentialprovidersUncheckedUpdateManyWithoutPointOfOriginInput>
+  }
+
+  export type PotentialprovidersScalarWhereInput = {
+    AND?: PotentialprovidersScalarWhereInput | PotentialprovidersScalarWhereInput[]
+    OR?: PotentialprovidersScalarWhereInput[]
+    NOT?: PotentialprovidersScalarWhereInput | PotentialprovidersScalarWhereInput[]
+    id?: StringFilter<"Potentialproviders"> | string
+    types?: StringNullableListFilter<"Potentialproviders">
+    geoHash?: StringFilter<"Potentialproviders"> | string
+    nationalPhoneNumber?: StringFilter<"Potentialproviders"> | string
+    email?: StringNullableListFilter<"Potentialproviders">
+    formattedAddress?: StringFilter<"Potentialproviders"> | string
+    websiteUri?: StringFilter<"Potentialproviders"> | string
+    name?: StringFilter<"Potentialproviders"> | string
+    poid?: StringFilter<"Potentialproviders"> | string
+  }
+
   export type ContactsCreateManyAddressInput = {
     contactId: string
     contactForename: string
@@ -35177,6 +36581,50 @@ export namespace Prisma {
     userGroupId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type PotentialprovidersCreateManyPointOfOriginInput = {
+    id: string
+    types?: PotentialprovidersCreatetypesInput | string[]
+    geoHash: string
+    nationalPhoneNumber: string
+    email?: PotentialprovidersCreateemailInput | string[]
+    formattedAddress: string
+    websiteUri: string
+    name: string
+  }
+
+  export type PotentialprovidersUpdateWithoutPointOfOriginInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    types?: PotentialprovidersUpdatetypesInput | string[]
+    geoHash?: StringFieldUpdateOperationsInput | string
+    nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: PotentialprovidersUpdateemailInput | string[]
+    formattedAddress?: StringFieldUpdateOperationsInput | string
+    websiteUri?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PotentialprovidersUncheckedUpdateWithoutPointOfOriginInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    types?: PotentialprovidersUpdatetypesInput | string[]
+    geoHash?: StringFieldUpdateOperationsInput | string
+    nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: PotentialprovidersUpdateemailInput | string[]
+    formattedAddress?: StringFieldUpdateOperationsInput | string
+    websiteUri?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PotentialprovidersUncheckedUpdateManyWithoutPointOfOriginInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    types?: PotentialprovidersUpdatetypesInput | string[]
+    geoHash?: StringFieldUpdateOperationsInput | string
+    nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
+    email?: PotentialprovidersUpdateemailInput | string[]
+    formattedAddress?: StringFieldUpdateOperationsInput | string
+    websiteUri?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
 
 
   /**
@@ -35222,6 +36670,10 @@ export namespace Prisma {
      * @deprecated Use InstituteStudentsCountOutputTypeDefaultArgs instead
      */
     export type InstituteStudentsCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = InstituteStudentsCountOutputTypeDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use PointOfOriginCountOutputTypeDefaultArgs instead
+     */
+    export type PointOfOriginCountOutputTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PointOfOriginCountOutputTypeDefaultArgs<ExtArgs>
     /**
      * @deprecated Use AddressesDefaultArgs instead
      */
@@ -35294,6 +36746,10 @@ export namespace Prisma {
      * @deprecated Use PotentialprovidersDefaultArgs instead
      */
     export type PotentialprovidersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = PotentialprovidersDefaultArgs<ExtArgs>
+    /**
+     * @deprecated Use pointOfOriginDefaultArgs instead
+     */
+    export type pointOfOriginArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = pointOfOriginDefaultArgs<ExtArgs>
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany
