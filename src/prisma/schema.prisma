@@ -18,8 +18,8 @@ model Addresses {
   addressId         String              @id @unique
   name              String
   stage             String?
-  addressLine1     String?
-  addressLine2     String?
+  addressLine1      String?
+  addressLine2      String?
   contactForename   String?
   contactSurname    String?
   country           String?
@@ -40,7 +40,7 @@ model Addresses {
 
 model Cohorts {
   cohortId          String              @id @unique
-  designatedStaff   String            
+  designatedStaff   String
   stage             String
   placementType     String
   name              String
@@ -57,13 +57,13 @@ model Cohorts {
 }
 
 model ProviderCohorts {
-  cohortId        String    @id @unique
-  stage           String
-  name            String
-  address         Addresses @relation(fields: [addressId], references: [addressId])
-  addressId       String
-  providerId      String
-  provider        Providers @relation(fields: [providerId], references: [providerId])
+  cohortId   String    @id @unique
+  stage      String
+  name       String
+  address    Addresses @relation(fields: [addressId], references: [addressId])
+  addressId  String
+  providerId String
+  provider   Providers @relation(fields: [providerId], references: [providerId])
 }
 
 model Contacts {
@@ -208,8 +208,8 @@ model Providers {
   subsector           String
   uploadedBy          String
   website             String?
-  activationCode      Int     @default(0)
-  status              String 
+  activationCode      Int                  @default(0)
+  status              String
   Addresses           Addresses[]
   PlacementListings   PlacementListings[]
   Placements          Placements[]
@@ -310,13 +310,23 @@ model ProviderStaff {
   provider        Providers          @relation(fields: [providerId], references: [providerId])
   userGroup       ProviderUserGroups @relation(fields: [userGroupId], references: [userGroupId])
 }
-model Potentialproviders{
-  id String @id @unique
-  types String[]
-  geoHash String
+
+model Potentialproviders {
+  id                  String        @id @unique
+  types               String[]
+  geoHash             String
   nationalPhoneNumber String
-  email String[]
-  formattedAddress String
-  websiteUri String
-  name String
+  email               String[]
+  formattedAddress    String
+  websiteUri          String
+  name                String
+  pointOfOrigin       pointOfOrigin @relation(fields: [poid], references: [poid])
+  poid                String
+}
+
+model pointOfOrigin {
+  poid               String               @id @unique
+  Name               String
+  geoHash            String
+  Potentialproviders Potentialproviders[]
 }
