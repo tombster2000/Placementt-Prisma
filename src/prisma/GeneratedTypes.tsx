@@ -6,7 +6,7 @@ import {Addresses, Cohorts, Contacts,
     InstituteForms,
     InstituteStudentUserGroups,
     InstituteStaffUserGroups,
-    ProviderUserGroups,Potentialproviders} from "./generated/client";
+    ProviderUserGroups,Potentialproviders,pointOfOrigin} from "./generated/client";
 
 export type Address = Addresses;
 export type Cohort = Cohorts;
@@ -26,3 +26,4 @@ export type InstituteStaff = InstituteStaffObj;
 export type InstituteStudent = InstituteStudents;
 export type ProviderStaff = ProviderStaffObj;
 export type PotentialProvider = Potentialproviders;
+export type PointOfOrigin = pointOfOrigin;
