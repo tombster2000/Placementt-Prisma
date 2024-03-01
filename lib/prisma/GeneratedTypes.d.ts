@@ -1,4 +1,4 @@
-import { Addresses, Cohorts, Contacts, InstituteStudents, Institutes, Logs, PlacementListings, Placements, Providers, StudentUsers, InstituteStaff as InstituteStaffObj, ProviderStaff as ProviderStaffObj, InstituteForms, InstituteStudentUserGroups, InstituteStaffUserGroups, ProviderUserGroups, Potentialproviders } from "./generated/client";
+import { Addresses, Cohorts, Contacts, InstituteStudents, Institutes, Logs, PlacementListings, Placements, Providers, StudentUsers, InstituteStaff as InstituteStaffObj, ProviderStaff as ProviderStaffObj, InstituteForms, InstituteStudentUserGroups, InstituteStaffUserGroups, ProviderUserGroups, Potentialproviders, pointOfOrigin } from "./generated/client";
 export type Address = Addresses;
 export type Cohort = Cohorts;
 export type Contact = Contacts;
@@ -16,3 +16,4 @@ export type InstituteStaff = InstituteStaffObj;
 export type InstituteStudent = InstituteStudents;
 export type ProviderStaff = ProviderStaffObj;
 export type PotentialProvider = Potentialproviders;
+export type PointOfOrigin = pointOfOrigin;

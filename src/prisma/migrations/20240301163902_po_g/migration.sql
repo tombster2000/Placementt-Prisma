@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "pointOfOrigin" ALTER COLUMN "Name" DROP NOT NULL,
+ALTER COLUMN "geoHash" DROP NOT NULL;

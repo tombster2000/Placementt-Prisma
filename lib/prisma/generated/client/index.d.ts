@@ -21572,8 +21572,8 @@ export namespace Prisma {
 
   export type PointOfOriginGroupByOutputType = {
     poid: string
-    Name: string
-    geoHash: string
+    Name: string | null
+    geoHash: string | null
     _count: PointOfOriginCountAggregateOutputType | null
     _min: PointOfOriginMinAggregateOutputType | null
     _max: PointOfOriginMaxAggregateOutputType | null
@@ -21620,8 +21620,8 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       poid: string
-      Name: string
-      geoHash: string
+      Name: string | null
+      geoHash: string | null
     }, ExtArgs["result"]["pointOfOrigin"]>
     composites: {}
   }
@@ -22220,7 +22220,7 @@ export namespace Prisma {
     /**
      * The data needed to create a pointOfOrigin.
      */
-    data: XOR<pointOfOriginCreateInput, pointOfOriginUncheckedCreateInput>
+    data?: XOR<pointOfOriginCreateInput, pointOfOriginUncheckedCreateInput>
   }
 
 
@@ -24487,15 +24487,15 @@ export namespace Prisma {
     OR?: pointOfOriginWhereInput[]
     NOT?: pointOfOriginWhereInput | pointOfOriginWhereInput[]
     poid?: StringFilter<"pointOfOrigin"> | string
-    Name?: StringFilter<"pointOfOrigin"> | string
-    geoHash?: StringFilter<"pointOfOrigin"> | string
+    Name?: StringNullableFilter<"pointOfOrigin"> | string | null
+    geoHash?: StringNullableFilter<"pointOfOrigin"> | string | null
     Potentialproviders?: PotentialprovidersListRelationFilter
   }
 
   export type pointOfOriginOrderByWithRelationInput = {
     poid?: SortOrder
-    Name?: SortOrder
-    geoHash?: SortOrder
+    Name?: SortOrderInput | SortOrder
+    geoHash?: SortOrderInput | SortOrder
     Potentialproviders?: PotentialprovidersOrderByRelationAggregateInput
   }
 
@@ -24504,15 +24504,15 @@ export namespace Prisma {
     AND?: pointOfOriginWhereInput | pointOfOriginWhereInput[]
     OR?: pointOfOriginWhereInput[]
     NOT?: pointOfOriginWhereInput | pointOfOriginWhereInput[]
-    Name?: StringFilter<"pointOfOrigin"> | string
-    geoHash?: StringFilter<"pointOfOrigin"> | string
+    Name?: StringNullableFilter<"pointOfOrigin"> | string | null
+    geoHash?: StringNullableFilter<"pointOfOrigin"> | string | null
     Potentialproviders?: PotentialprovidersListRelationFilter
   }, "poid" | "poid">
 
   export type pointOfOriginOrderByWithAggregationInput = {
     poid?: SortOrder
-    Name?: SortOrder
-    geoHash?: SortOrder
+    Name?: SortOrderInput | SortOrder
+    geoHash?: SortOrderInput | SortOrder
     _count?: pointOfOriginCountOrderByAggregateInput
     _max?: pointOfOriginMaxOrderByAggregateInput
     _min?: pointOfOriginMinOrderByAggregateInput
@@ -24523,8 +24523,8 @@ export namespace Prisma {
     OR?: pointOfOriginScalarWhereWithAggregatesInput[]
     NOT?: pointOfOriginScalarWhereWithAggregatesInput | pointOfOriginScalarWhereWithAggregatesInput[]
     poid?: StringWithAggregatesFilter<"pointOfOrigin"> | string
-    Name?: StringWithAggregatesFilter<"pointOfOrigin"> | string
-    geoHash?: StringWithAggregatesFilter<"pointOfOrigin"> | string
+    Name?: StringNullableWithAggregatesFilter<"pointOfOrigin"> | string | null
+    geoHash?: StringNullableWithAggregatesFilter<"pointOfOrigin"> | string | null
   }
 
   export type AddressesCreateInput = {
@@ -26382,49 +26382,49 @@ export namespace Prisma {
   }
 
   export type pointOfOriginCreateInput = {
-    poid: string
-    Name: string
-    geoHash: string
+    poid?: string
+    Name?: string | null
+    geoHash?: string | null
     Potentialproviders?: PotentialprovidersCreateNestedManyWithoutPointOfOriginInput
   }
 
   export type pointOfOriginUncheckedCreateInput = {
-    poid: string
-    Name: string
-    geoHash: string
+    poid?: string
+    Name?: string | null
+    geoHash?: string | null
     Potentialproviders?: PotentialprovidersUncheckedCreateNestedManyWithoutPointOfOriginInput
   }
 
   export type pointOfOriginUpdateInput = {
     poid?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    geoHash?: StringFieldUpdateOperationsInput | string
+    Name?: NullableStringFieldUpdateOperationsInput | string | null
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
     Potentialproviders?: PotentialprovidersUpdateManyWithoutPointOfOriginNestedInput
   }
 
   export type pointOfOriginUncheckedUpdateInput = {
     poid?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    geoHash?: StringFieldUpdateOperationsInput | string
+    Name?: NullableStringFieldUpdateOperationsInput | string | null
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
     Potentialproviders?: PotentialprovidersUncheckedUpdateManyWithoutPointOfOriginNestedInput
   }
 
   export type pointOfOriginCreateManyInput = {
-    poid: string
-    Name: string
-    geoHash: string
+    poid?: string
+    Name?: string | null
+    geoHash?: string | null
   }
 
   export type pointOfOriginUpdateManyMutationInput = {
     poid?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    geoHash?: StringFieldUpdateOperationsInput | string
+    Name?: NullableStringFieldUpdateOperationsInput | string | null
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type pointOfOriginUncheckedUpdateManyInput = {
     poid?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    geoHash?: StringFieldUpdateOperationsInput | string
+    Name?: NullableStringFieldUpdateOperationsInput | string | null
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -34517,15 +34517,15 @@ export namespace Prisma {
   }
 
   export type pointOfOriginCreateWithoutPotentialprovidersInput = {
-    poid: string
-    Name: string
-    geoHash: string
+    poid?: string
+    Name?: string | null
+    geoHash?: string | null
   }
 
   export type pointOfOriginUncheckedCreateWithoutPotentialprovidersInput = {
-    poid: string
-    Name: string
-    geoHash: string
+    poid?: string
+    Name?: string | null
+    geoHash?: string | null
   }
 
   export type pointOfOriginCreateOrConnectWithoutPotentialprovidersInput = {
@@ -34546,14 +34546,14 @@ export namespace Prisma {
 
   export type pointOfOriginUpdateWithoutPotentialprovidersInput = {
     poid?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    geoHash?: StringFieldUpdateOperationsInput | string
+    Name?: NullableStringFieldUpdateOperationsInput | string | null
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type pointOfOriginUncheckedUpdateWithoutPotentialprovidersInput = {
     poid?: StringFieldUpdateOperationsInput | string
-    Name?: StringFieldUpdateOperationsInput | string
-    geoHash?: StringFieldUpdateOperationsInput | string
+    Name?: NullableStringFieldUpdateOperationsInput | string | null
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PotentialprovidersCreateWithoutPointOfOriginInput = {

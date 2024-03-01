@@ -325,8 +325,8 @@ model Potentialproviders {
 }
 
 model pointOfOrigin {
-  poid               String               @id @unique
-  Name               String
-  geoHash            String
+  poid               String               @id @unique @default(cuid())
+  Name               String?
+  geoHash            String?
   Potentialproviders Potentialproviders[]
 }
