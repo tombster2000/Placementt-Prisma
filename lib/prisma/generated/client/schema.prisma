@@ -312,13 +312,13 @@ model ProviderStaff {
 }
 
 model Potentialproviders {
-  id                  String        @id @unique
+  id                  String        @id @unique @default(cuid())
   types               String[]
-  geoHash             String
-  nationalPhoneNumber String
+  geoHash             String?
+  nationalPhoneNumber String?
   email               String[]
-  formattedAddress    String
-  websiteUri          String
+  formattedAddress    String?
+  websiteUri          String?
   name                String
   pointOfOrigin       pointOfOrigin @relation(fields: [poid], references: [poid])
   poid                String
