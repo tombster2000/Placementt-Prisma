@@ -20647,11 +20647,11 @@ export namespace Prisma {
   export type PotentialprovidersGroupByOutputType = {
     id: string
     types: string[]
-    geoHash: string
+    geoHash: string | null
     nationalPhoneNumber: string
     email: string[]
-    formattedAddress: string
-    websiteUri: string
+    formattedAddress: string | null
+    websiteUri: string | null
     name: string
     poid: string
     _count: PotentialprovidersCountAggregateOutputType | null
@@ -20711,11 +20711,11 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       types: string[]
-      geoHash: string
+      geoHash: string | null
       nationalPhoneNumber: string
       email: string[]
-      formattedAddress: string
-      websiteUri: string
+      formattedAddress: string | null
+      websiteUri: string | null
       name: string
       poid: string
     }, ExtArgs["result"]["potentialproviders"]>
@@ -24413,11 +24413,11 @@ export namespace Prisma {
     NOT?: PotentialprovidersWhereInput | PotentialprovidersWhereInput[]
     id?: StringFilter<"Potentialproviders"> | string
     types?: StringNullableListFilter<"Potentialproviders">
-    geoHash?: StringFilter<"Potentialproviders"> | string
+    geoHash?: StringNullableFilter<"Potentialproviders"> | string | null
     nationalPhoneNumber?: StringFilter<"Potentialproviders"> | string
     email?: StringNullableListFilter<"Potentialproviders">
-    formattedAddress?: StringFilter<"Potentialproviders"> | string
-    websiteUri?: StringFilter<"Potentialproviders"> | string
+    formattedAddress?: StringNullableFilter<"Potentialproviders"> | string | null
+    websiteUri?: StringNullableFilter<"Potentialproviders"> | string | null
     name?: StringFilter<"Potentialproviders"> | string
     poid?: StringFilter<"Potentialproviders"> | string
     pointOfOrigin?: XOR<PointOfOriginRelationFilter, pointOfOriginWhereInput>
@@ -24426,11 +24426,11 @@ export namespace Prisma {
   export type PotentialprovidersOrderByWithRelationInput = {
     id?: SortOrder
     types?: SortOrder
-    geoHash?: SortOrder
+    geoHash?: SortOrderInput | SortOrder
     nationalPhoneNumber?: SortOrder
     email?: SortOrder
-    formattedAddress?: SortOrder
-    websiteUri?: SortOrder
+    formattedAddress?: SortOrderInput | SortOrder
+    websiteUri?: SortOrderInput | SortOrder
     name?: SortOrder
     poid?: SortOrder
     pointOfOrigin?: pointOfOriginOrderByWithRelationInput
@@ -24442,11 +24442,11 @@ export namespace Prisma {
     OR?: PotentialprovidersWhereInput[]
     NOT?: PotentialprovidersWhereInput | PotentialprovidersWhereInput[]
     types?: StringNullableListFilter<"Potentialproviders">
-    geoHash?: StringFilter<"Potentialproviders"> | string
+    geoHash?: StringNullableFilter<"Potentialproviders"> | string | null
     nationalPhoneNumber?: StringFilter<"Potentialproviders"> | string
     email?: StringNullableListFilter<"Potentialproviders">
-    formattedAddress?: StringFilter<"Potentialproviders"> | string
-    websiteUri?: StringFilter<"Potentialproviders"> | string
+    formattedAddress?: StringNullableFilter<"Potentialproviders"> | string | null
+    websiteUri?: StringNullableFilter<"Potentialproviders"> | string | null
     name?: StringFilter<"Potentialproviders"> | string
     poid?: StringFilter<"Potentialproviders"> | string
     pointOfOrigin?: XOR<PointOfOriginRelationFilter, pointOfOriginWhereInput>
@@ -24455,11 +24455,11 @@ export namespace Prisma {
   export type PotentialprovidersOrderByWithAggregationInput = {
     id?: SortOrder
     types?: SortOrder
-    geoHash?: SortOrder
+    geoHash?: SortOrderInput | SortOrder
     nationalPhoneNumber?: SortOrder
     email?: SortOrder
-    formattedAddress?: SortOrder
-    websiteUri?: SortOrder
+    formattedAddress?: SortOrderInput | SortOrder
+    websiteUri?: SortOrderInput | SortOrder
     name?: SortOrder
     poid?: SortOrder
     _count?: PotentialprovidersCountOrderByAggregateInput
@@ -24473,11 +24473,11 @@ export namespace Prisma {
     NOT?: PotentialprovidersScalarWhereWithAggregatesInput | PotentialprovidersScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Potentialproviders"> | string
     types?: StringNullableListFilter<"Potentialproviders">
-    geoHash?: StringWithAggregatesFilter<"Potentialproviders"> | string
+    geoHash?: StringNullableWithAggregatesFilter<"Potentialproviders"> | string | null
     nationalPhoneNumber?: StringWithAggregatesFilter<"Potentialproviders"> | string
     email?: StringNullableListFilter<"Potentialproviders">
-    formattedAddress?: StringWithAggregatesFilter<"Potentialproviders"> | string
-    websiteUri?: StringWithAggregatesFilter<"Potentialproviders"> | string
+    formattedAddress?: StringNullableWithAggregatesFilter<"Potentialproviders"> | string | null
+    websiteUri?: StringNullableWithAggregatesFilter<"Potentialproviders"> | string | null
     name?: StringWithAggregatesFilter<"Potentialproviders"> | string
     poid?: StringWithAggregatesFilter<"Potentialproviders"> | string
   }
@@ -26299,25 +26299,25 @@ export namespace Prisma {
   }
 
   export type PotentialprovidersCreateInput = {
-    id: string
+    id?: string
     types?: PotentialprovidersCreatetypesInput | string[]
-    geoHash: string
+    geoHash?: string | null
     nationalPhoneNumber: string
     email?: PotentialprovidersCreateemailInput | string[]
-    formattedAddress: string
-    websiteUri: string
+    formattedAddress?: string | null
+    websiteUri?: string | null
     name: string
     pointOfOrigin: pointOfOriginCreateNestedOneWithoutPotentialprovidersInput
   }
 
   export type PotentialprovidersUncheckedCreateInput = {
-    id: string
+    id?: string
     types?: PotentialprovidersCreatetypesInput | string[]
-    geoHash: string
+    geoHash?: string | null
     nationalPhoneNumber: string
     email?: PotentialprovidersCreateemailInput | string[]
-    formattedAddress: string
-    websiteUri: string
+    formattedAddress?: string | null
+    websiteUri?: string | null
     name: string
     poid: string
   }
@@ -26325,11 +26325,11 @@ export namespace Prisma {
   export type PotentialprovidersUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     types?: PotentialprovidersUpdatetypesInput | string[]
-    geoHash?: StringFieldUpdateOperationsInput | string
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
     nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
     email?: PotentialprovidersUpdateemailInput | string[]
-    formattedAddress?: StringFieldUpdateOperationsInput | string
-    websiteUri?: StringFieldUpdateOperationsInput | string
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUri?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     pointOfOrigin?: pointOfOriginUpdateOneRequiredWithoutPotentialprovidersNestedInput
   }
@@ -26337,23 +26337,23 @@ export namespace Prisma {
   export type PotentialprovidersUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     types?: PotentialprovidersUpdatetypesInput | string[]
-    geoHash?: StringFieldUpdateOperationsInput | string
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
     nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
     email?: PotentialprovidersUpdateemailInput | string[]
-    formattedAddress?: StringFieldUpdateOperationsInput | string
-    websiteUri?: StringFieldUpdateOperationsInput | string
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUri?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     poid?: StringFieldUpdateOperationsInput | string
   }
 
   export type PotentialprovidersCreateManyInput = {
-    id: string
+    id?: string
     types?: PotentialprovidersCreatetypesInput | string[]
-    geoHash: string
+    geoHash?: string | null
     nationalPhoneNumber: string
     email?: PotentialprovidersCreateemailInput | string[]
-    formattedAddress: string
-    websiteUri: string
+    formattedAddress?: string | null
+    websiteUri?: string | null
     name: string
     poid: string
   }
@@ -26361,22 +26361,22 @@ export namespace Prisma {
   export type PotentialprovidersUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     types?: PotentialprovidersUpdatetypesInput | string[]
-    geoHash?: StringFieldUpdateOperationsInput | string
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
     nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
     email?: PotentialprovidersUpdateemailInput | string[]
-    formattedAddress?: StringFieldUpdateOperationsInput | string
-    websiteUri?: StringFieldUpdateOperationsInput | string
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUri?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
   }
 
   export type PotentialprovidersUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     types?: PotentialprovidersUpdatetypesInput | string[]
-    geoHash?: StringFieldUpdateOperationsInput | string
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
     nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
     email?: PotentialprovidersUpdateemailInput | string[]
-    formattedAddress?: StringFieldUpdateOperationsInput | string
-    websiteUri?: StringFieldUpdateOperationsInput | string
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUri?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
     poid?: StringFieldUpdateOperationsInput | string
   }
@@ -34557,24 +34557,24 @@ export namespace Prisma {
   }
 
   export type PotentialprovidersCreateWithoutPointOfOriginInput = {
-    id: string
+    id?: string
     types?: PotentialprovidersCreatetypesInput | string[]
-    geoHash: string
+    geoHash?: string | null
     nationalPhoneNumber: string
     email?: PotentialprovidersCreateemailInput | string[]
-    formattedAddress: string
-    websiteUri: string
+    formattedAddress?: string | null
+    websiteUri?: string | null
     name: string
   }
 
   export type PotentialprovidersUncheckedCreateWithoutPointOfOriginInput = {
-    id: string
+    id?: string
     types?: PotentialprovidersCreatetypesInput | string[]
-    geoHash: string
+    geoHash?: string | null
     nationalPhoneNumber: string
     email?: PotentialprovidersCreateemailInput | string[]
-    formattedAddress: string
-    websiteUri: string
+    formattedAddress?: string | null
+    websiteUri?: string | null
     name: string
   }
 
@@ -34610,11 +34610,11 @@ export namespace Prisma {
     NOT?: PotentialprovidersScalarWhereInput | PotentialprovidersScalarWhereInput[]
     id?: StringFilter<"Potentialproviders"> | string
     types?: StringNullableListFilter<"Potentialproviders">
-    geoHash?: StringFilter<"Potentialproviders"> | string
+    geoHash?: StringNullableFilter<"Potentialproviders"> | string | null
     nationalPhoneNumber?: StringFilter<"Potentialproviders"> | string
     email?: StringNullableListFilter<"Potentialproviders">
-    formattedAddress?: StringFilter<"Potentialproviders"> | string
-    websiteUri?: StringFilter<"Potentialproviders"> | string
+    formattedAddress?: StringNullableFilter<"Potentialproviders"> | string | null
+    websiteUri?: StringNullableFilter<"Potentialproviders"> | string | null
     name?: StringFilter<"Potentialproviders"> | string
     poid?: StringFilter<"Potentialproviders"> | string
   }
@@ -36582,46 +36582,46 @@ export namespace Prisma {
   }
 
   export type PotentialprovidersCreateManyPointOfOriginInput = {
-    id: string
+    id?: string
     types?: PotentialprovidersCreatetypesInput | string[]
-    geoHash: string
+    geoHash?: string | null
     nationalPhoneNumber: string
     email?: PotentialprovidersCreateemailInput | string[]
-    formattedAddress: string
-    websiteUri: string
+    formattedAddress?: string | null
+    websiteUri?: string | null
     name: string
   }
 
   export type PotentialprovidersUpdateWithoutPointOfOriginInput = {
     id?: StringFieldUpdateOperationsInput | string
     types?: PotentialprovidersUpdatetypesInput | string[]
-    geoHash?: StringFieldUpdateOperationsInput | string
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
     nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
     email?: PotentialprovidersUpdateemailInput | string[]
-    formattedAddress?: StringFieldUpdateOperationsInput | string
-    websiteUri?: StringFieldUpdateOperationsInput | string
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUri?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
   }
 
   export type PotentialprovidersUncheckedUpdateWithoutPointOfOriginInput = {
     id?: StringFieldUpdateOperationsInput | string
     types?: PotentialprovidersUpdatetypesInput | string[]
-    geoHash?: StringFieldUpdateOperationsInput | string
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
     nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
     email?: PotentialprovidersUpdateemailInput | string[]
-    formattedAddress?: StringFieldUpdateOperationsInput | string
-    websiteUri?: StringFieldUpdateOperationsInput | string
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUri?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
   }
 
   export type PotentialprovidersUncheckedUpdateManyWithoutPointOfOriginInput = {
     id?: StringFieldUpdateOperationsInput | string
     types?: PotentialprovidersUpdatetypesInput | string[]
-    geoHash?: StringFieldUpdateOperationsInput | string
+    geoHash?: NullableStringFieldUpdateOperationsInput | string | null
     nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
     email?: PotentialprovidersUpdateemailInput | string[]
-    formattedAddress?: StringFieldUpdateOperationsInput | string
-    websiteUri?: StringFieldUpdateOperationsInput | string
+    formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    websiteUri?: NullableStringFieldUpdateOperationsInput | string | null
     name?: StringFieldUpdateOperationsInput | string
   }
 
