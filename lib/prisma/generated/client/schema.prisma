@@ -315,7 +315,7 @@ model Potentialproviders {
   id                  String        @id @unique @default(cuid())
   types               String[]
   geoHash             String?
-  nationalPhoneNumber String
+  nationalPhoneNumber String?
   email               String[]
   formattedAddress    String?
   websiteUri          String?

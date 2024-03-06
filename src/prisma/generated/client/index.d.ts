@@ -20648,7 +20648,7 @@ export namespace Prisma {
     id: string
     types: string[]
     geoHash: string | null
-    nationalPhoneNumber: string
+    nationalPhoneNumber: string | null
     email: string[]
     formattedAddress: string | null
     websiteUri: string | null
@@ -20712,7 +20712,7 @@ export namespace Prisma {
       id: string
       types: string[]
       geoHash: string | null
-      nationalPhoneNumber: string
+      nationalPhoneNumber: string | null
       email: string[]
       formattedAddress: string | null
       websiteUri: string | null
@@ -24414,7 +24414,7 @@ export namespace Prisma {
     id?: StringFilter<"Potentialproviders"> | string
     types?: StringNullableListFilter<"Potentialproviders">
     geoHash?: StringNullableFilter<"Potentialproviders"> | string | null
-    nationalPhoneNumber?: StringFilter<"Potentialproviders"> | string
+    nationalPhoneNumber?: StringNullableFilter<"Potentialproviders"> | string | null
     email?: StringNullableListFilter<"Potentialproviders">
     formattedAddress?: StringNullableFilter<"Potentialproviders"> | string | null
     websiteUri?: StringNullableFilter<"Potentialproviders"> | string | null
@@ -24427,7 +24427,7 @@ export namespace Prisma {
     id?: SortOrder
     types?: SortOrder
     geoHash?: SortOrderInput | SortOrder
-    nationalPhoneNumber?: SortOrder
+    nationalPhoneNumber?: SortOrderInput | SortOrder
     email?: SortOrder
     formattedAddress?: SortOrderInput | SortOrder
     websiteUri?: SortOrderInput | SortOrder
@@ -24443,7 +24443,7 @@ export namespace Prisma {
     NOT?: PotentialprovidersWhereInput | PotentialprovidersWhereInput[]
     types?: StringNullableListFilter<"Potentialproviders">
     geoHash?: StringNullableFilter<"Potentialproviders"> | string | null
-    nationalPhoneNumber?: StringFilter<"Potentialproviders"> | string
+    nationalPhoneNumber?: StringNullableFilter<"Potentialproviders"> | string | null
     email?: StringNullableListFilter<"Potentialproviders">
     formattedAddress?: StringNullableFilter<"Potentialproviders"> | string | null
     websiteUri?: StringNullableFilter<"Potentialproviders"> | string | null
@@ -24456,7 +24456,7 @@ export namespace Prisma {
     id?: SortOrder
     types?: SortOrder
     geoHash?: SortOrderInput | SortOrder
-    nationalPhoneNumber?: SortOrder
+    nationalPhoneNumber?: SortOrderInput | SortOrder
     email?: SortOrder
     formattedAddress?: SortOrderInput | SortOrder
     websiteUri?: SortOrderInput | SortOrder
@@ -24474,7 +24474,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Potentialproviders"> | string
     types?: StringNullableListFilter<"Potentialproviders">
     geoHash?: StringNullableWithAggregatesFilter<"Potentialproviders"> | string | null
-    nationalPhoneNumber?: StringWithAggregatesFilter<"Potentialproviders"> | string
+    nationalPhoneNumber?: StringNullableWithAggregatesFilter<"Potentialproviders"> | string | null
     email?: StringNullableListFilter<"Potentialproviders">
     formattedAddress?: StringNullableWithAggregatesFilter<"Potentialproviders"> | string | null
     websiteUri?: StringNullableWithAggregatesFilter<"Potentialproviders"> | string | null
@@ -26302,7 +26302,7 @@ export namespace Prisma {
     id?: string
     types?: PotentialprovidersCreatetypesInput | string[]
     geoHash?: string | null
-    nationalPhoneNumber: string
+    nationalPhoneNumber?: string | null
     email?: PotentialprovidersCreateemailInput | string[]
     formattedAddress?: string | null
     websiteUri?: string | null
@@ -26314,7 +26314,7 @@ export namespace Prisma {
     id?: string
     types?: PotentialprovidersCreatetypesInput | string[]
     geoHash?: string | null
-    nationalPhoneNumber: string
+    nationalPhoneNumber?: string | null
     email?: PotentialprovidersCreateemailInput | string[]
     formattedAddress?: string | null
     websiteUri?: string | null
@@ -26326,7 +26326,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     types?: PotentialprovidersUpdatetypesInput | string[]
     geoHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
+    nationalPhoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: PotentialprovidersUpdateemailInput | string[]
     formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     websiteUri?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26338,7 +26338,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     types?: PotentialprovidersUpdatetypesInput | string[]
     geoHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
+    nationalPhoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: PotentialprovidersUpdateemailInput | string[]
     formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     websiteUri?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26350,7 +26350,7 @@ export namespace Prisma {
     id?: string
     types?: PotentialprovidersCreatetypesInput | string[]
     geoHash?: string | null
-    nationalPhoneNumber: string
+    nationalPhoneNumber?: string | null
     email?: PotentialprovidersCreateemailInput | string[]
     formattedAddress?: string | null
     websiteUri?: string | null
@@ -26362,7 +26362,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     types?: PotentialprovidersUpdatetypesInput | string[]
     geoHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
+    nationalPhoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: PotentialprovidersUpdateemailInput | string[]
     formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     websiteUri?: NullableStringFieldUpdateOperationsInput | string | null
@@ -26373,7 +26373,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     types?: PotentialprovidersUpdatetypesInput | string[]
     geoHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
+    nationalPhoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: PotentialprovidersUpdateemailInput | string[]
     formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     websiteUri?: NullableStringFieldUpdateOperationsInput | string | null
@@ -34560,7 +34560,7 @@ export namespace Prisma {
     id?: string
     types?: PotentialprovidersCreatetypesInput | string[]
     geoHash?: string | null
-    nationalPhoneNumber: string
+    nationalPhoneNumber?: string | null
     email?: PotentialprovidersCreateemailInput | string[]
     formattedAddress?: string | null
     websiteUri?: string | null
@@ -34571,7 +34571,7 @@ export namespace Prisma {
     id?: string
     types?: PotentialprovidersCreatetypesInput | string[]
     geoHash?: string | null
-    nationalPhoneNumber: string
+    nationalPhoneNumber?: string | null
     email?: PotentialprovidersCreateemailInput | string[]
     formattedAddress?: string | null
     websiteUri?: string | null
@@ -34611,7 +34611,7 @@ export namespace Prisma {
     id?: StringFilter<"Potentialproviders"> | string
     types?: StringNullableListFilter<"Potentialproviders">
     geoHash?: StringNullableFilter<"Potentialproviders"> | string | null
-    nationalPhoneNumber?: StringFilter<"Potentialproviders"> | string
+    nationalPhoneNumber?: StringNullableFilter<"Potentialproviders"> | string | null
     email?: StringNullableListFilter<"Potentialproviders">
     formattedAddress?: StringNullableFilter<"Potentialproviders"> | string | null
     websiteUri?: StringNullableFilter<"Potentialproviders"> | string | null
@@ -36585,7 +36585,7 @@ export namespace Prisma {
     id?: string
     types?: PotentialprovidersCreatetypesInput | string[]
     geoHash?: string | null
-    nationalPhoneNumber: string
+    nationalPhoneNumber?: string | null
     email?: PotentialprovidersCreateemailInput | string[]
     formattedAddress?: string | null
     websiteUri?: string | null
@@ -36596,7 +36596,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     types?: PotentialprovidersUpdatetypesInput | string[]
     geoHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
+    nationalPhoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: PotentialprovidersUpdateemailInput | string[]
     formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     websiteUri?: NullableStringFieldUpdateOperationsInput | string | null
@@ -36607,7 +36607,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     types?: PotentialprovidersUpdatetypesInput | string[]
     geoHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
+    nationalPhoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: PotentialprovidersUpdateemailInput | string[]
     formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     websiteUri?: NullableStringFieldUpdateOperationsInput | string | null
@@ -36618,7 +36618,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     types?: PotentialprovidersUpdatetypesInput | string[]
     geoHash?: NullableStringFieldUpdateOperationsInput | string | null
-    nationalPhoneNumber?: StringFieldUpdateOperationsInput | string
+    nationalPhoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
     email?: PotentialprovidersUpdateemailInput | string[]
     formattedAddress?: NullableStringFieldUpdateOperationsInput | string | null
     websiteUri?: NullableStringFieldUpdateOperationsInput | string | null
